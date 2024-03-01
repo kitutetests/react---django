@@ -1,0 +1,66 @@
+
+.big_container{  
+    background-color: white;
+    cursor: pointer;
+    width: 50%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+  
+}
+
+.credentials form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.res-password{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.credentials input{
+    margin-bottom: 20px;
+    height: 30px;
+}
+.msg h4{
+    color: red;
+}
+.reset-password{
+    color: #f1a310;
+}
+.register{
+    color: #358f02;
+}
+body{
+    background-color: rgb(175, 172, 172);
+}
+
+input[type=submit]{
+    width: 100%;
+    background-color: #f68b1e;
+    border: none;
+    color: white;
+
+}
+
+@media (max-width: 768px) {
+    .big_container{ 
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+}

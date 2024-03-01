@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    background-color: rgb(7, 4, 19);
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+
+}
+.logo{
+    margin-left: 20px;
+}
+.greet{
+    margin-right: 40px;
+}
+.link-container{
+    width: 20%;
+    background-color: rgb(7, 4, 19);
+    height: 100vh;
+    display: inline-block;
+    border-top: 1px solid white;
+}
+.content-container{
+    width: 50%;
+    display: inline-block;
+}
+.link-container ul li{
+    list-style: none;
+    height: 40px;
+    text-align: center;
+   
+}
+.link-container ul li a{
+    text-decoration: none;
+    color: white;
+    
+}
+.link-container ul li:active{
+    background-color: white;
+    color: black;
+}

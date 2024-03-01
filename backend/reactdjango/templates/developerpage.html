@@ -1,0 +1,34 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'developer.css' %}">
+    <title>owner page</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="logo">
+                <h2>JEFF</h2>
+            </div>
+            <div class="greet">
+                <h5>welcome {{developer.name}}</h5>
+            </div>
+        </div>
+        <div class="link-container">
+            <ul>
+                <li><a href="">Profile</a></li>
+                <li><a href="">Houses</a></li>
+                <li><a href="">Post</a></li>
+            </ul>
+        </div>
+        
+        {% block content%}    
+        {% endblock%}
+        
+    </div>
+</body>
+</html>
