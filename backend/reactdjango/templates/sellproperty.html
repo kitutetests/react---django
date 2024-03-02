@@ -1,0 +1,25 @@
+
+{% extends 'developerpage.html'%}
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'sellproperty.css' %}">
+    <title>Developer profile</title>
+</head>
+<body>
+ <div class="sell-property">
+    <form action="/sell_property" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+       
+        <button type="submit">Post</button>
+    </form>
+ </div>  
+
+{% endblock %}    
+</body>
+</html>

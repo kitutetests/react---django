@@ -1,0 +1,14 @@
+.post-property{
+    vertical-align: top;
+    margin-left: 10px;
+    display: inline-block;
+    width: 50%;
+   margin-top: 5px;
+    }
+p{
+    margin-bottom: 30px;
+}
+textarea{
+    height: 60px;
+    display: block;
+}

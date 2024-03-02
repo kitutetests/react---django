@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
-from . models import Profile,Property_for_renting,Property_on_sale
+from . models import *
 from django.contrib import auth,messages
-
+from . forms import *
 # Create your views here.
 def register(request):
    
@@ -40,7 +40,7 @@ def login(request):
                 
             auth.login(request, user)
         
-            return redirect(developer_page)
+            return redirect(developer_profile)
            
         else:
             messages.error(request, 'Invalid credentials.')
@@ -61,3 +61,39 @@ def developer_profile(request):
      user = request.user
      developer = Profile.objects.get(email=user.username)
      return render(request, 'profile.html',{'developer':developer})
+
+def post_rentals(request):
+     user = request.user
+     developer = Profile.objects.get(email=user.username)
+     
+     if request.method == 'POST':
+          form = HouseRentForm(request.POST , request.FILES)
+
+          if form.is_valid():
+                post = form.save(commit=False)
+                post.owner = developer
+                post.save()
+     else:
+          form = HouseRentForm()
+     return render (request , 'post-rentals.html',{'form':form})
+
+
+def sell_property(request):
+     user = request.user
+     developer = Profile.objects.get(email=user.username)
+     
+     if request.method == 'POST':
+          form = SellPropertyForm(request.POST , request.FILES)
+
+          if form.is_valid():
+                post = form.save(commit=False)
+                post.owner = developer
+                post.save()
+     else:
+          form = SellPropertyForm()
+     return render (request , 'sellproperty.html',{'form':form})
+
+def view_properties(request):
+     rentals = Property_for_renting.objects.all()
+     return render (request , 'rentals.html',{'rentals':rentals})
+    

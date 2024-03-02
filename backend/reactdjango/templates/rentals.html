@@ -1,0 +1,65 @@
+{% extends 'header.html'%}
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'rentals.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Rentals</title>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="search-container">
+            <form action="">
+                {% csrf_token %}
+                <label for="search-location">Location </label>
+                <span>Enter location and press search</span>
+                <input type="search" name="search" placeholder="location">
+
+                <label for="Rent">Rent </label>
+                <span>filter by budget</span>
+                <input type="search" name="search" placeholder="Rent">
+
+                <label for="Features">Features </label>
+                <span>filter by features</span>
+                <input type="search" name="search" placeholder="Features">
+                <input type="submit" class="search-btn" value="search">
+            </form>
+        </div>
+
+
+        <div class="adverts">
+            <p>Jeff limited is a company in kenya helping house and land owners get clients for their properties</p>
+            <p>We are provide a safe platform for you to buy a property(Land,House etc) in kenya</p>
+            <p>We also connect landlords with potential tenants </p>
+            <p>call us through <b>+254769624433</b></p>
+            <div class="social-icons">
+                <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        {% for rental in rentals %}
+        <div class="houses-container">
+           <div class="photo">
+                <img src="{{rental.photos.url}}">
+           </div>
+           <div class="details">
+                <p>Location: {{rental.location}}</p>
+                <p>Rent: {{rental.price}}</p>
+                <p>{{rental.size}}</p>
+           </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}    
+</body>
+</html>
