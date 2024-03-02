@@ -1,0 +1,39 @@
+{% extends 'header.html'%}
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'searchrental.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<div class="main-container">
+    {% if rent %}
+    {% for rental in rent %}
+    <div class="houses-container">
+       <div class="photo">
+            <img src="{{rental.photos.url}}">
+       </div>
+       <div class="details">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
+            <p>{{rental.house_type}}</p>
+            
+       </div>
+
+       <div class="cost">
+             ksh {{rental.price}}
+            
+       </div>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3 style="color: red;">search doesn't match any property </h3>
+    {% endif %}
+</div>
+{% endblock %}     
+</body>
+</html>

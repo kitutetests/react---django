@@ -9,25 +9,26 @@
     <link rel="stylesheet" href="{% static 'rentals.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <title>Rentals</title>
 </head>
 <body>
 
     <div class="main-container">
         <div class="search-container">
-            <form action="">
+            <form action="/search_rentals"  method="POST">
                 {% csrf_token %}
                 <label for="search-location">Location </label>
                 <span>Enter location and press search</span>
-                <input type="search" name="search" placeholder="location">
+                <input type="search" name="location" placeholder="location">
 
                 <label for="Rent">Rent </label>
                 <span>filter by budget</span>
-                <input type="search" name="search" placeholder="Rent">
+                <input type="search" name="Rent" placeholder="Rent">
 
                 <label for="Features">Features </label>
                 <span>filter by features</span>
-                <input type="search" name="search" placeholder="Features">
+                <input type="search" name="Features" placeholder="Features">
                 <input type="submit" class="search-btn" value="search">
             </form>
         </div>
@@ -52,9 +53,14 @@
                 <img src="{{rental.photos.url}}">
            </div>
            <div class="details">
-                <p>Location: {{rental.location}}</p>
-                <p>Rent: {{rental.price}}</p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
                 <p>{{rental.size}}</p>
+                
+           </div>
+
+           <div class="cost">
+                 ksh {{rental.price}}
+                
            </div>
 
         </div>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from . models import *
 from django.contrib import auth,messages
 from . forms import *
+from django.db.models import Q
 # Create your views here.
 def register(request):
    
@@ -96,4 +97,20 @@ def sell_property(request):
 def view_properties(request):
      rentals = Property_for_renting.objects.all()
      return render (request , 'rentals.html',{'rentals':rentals})
-    
+
+def search_rental(request):
+    if request.method == 'POST':
+        query_location = request.POST['location']
+        query_rent = request.POST['Rent']
+        query_features = request.POST['Features']
+
+        rentals = Property_for_renting.objects.filter(
+         Q(location__icontains=query_location) |
+         Q(size__icontains=query_rent) |
+         Q(features__icontains=query_features)
+        )
+        
+        return render(request ,'searchrental.html',{'rentals':rentals})
+    else:
+        # Handle GET requests (display search form)
+        return render(request, 'search_form.html')

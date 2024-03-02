@@ -10,6 +10,9 @@
     color: white;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    top: 0;
+    
 }
 .buy-property{
     background-color: rgb(255, 102, 0);
@@ -21,9 +24,7 @@
     color: white;
     font-weight: bold;
     text-align: center;
-    
     font-size: 15px;
     text-decoration: none;
-   
     padding-left: 8px;
 }
