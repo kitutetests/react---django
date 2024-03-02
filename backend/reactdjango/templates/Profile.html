@@ -1,5 +1,6 @@
-{% extends 'base.html'%}
+{% extends 'developerpage.html'%}
 {% load static %}
+{%block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,11 @@
     <title>Developer profile</title>
 </head>
 <body>
-    {%block content%}
-
+   
+    <div class="profile">
+        <p>name{{developer.name}}</p>
+        <p>name{{developer.email}}</p>
+    </div>
 
     {% endblock %}    
 </body>
