@@ -1,0 +1,74 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'rentaldetails.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>house details</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="image-container">
+            <img src="{{rental.photos.url}}" alt="">
+        </div>
+
+        {% if rental.video %}
+        <div class="video-container">
+            <video class="video" src="{{rental.video.url }}" controls autoplay loop muted>
+                Your browser does not support the video tag.
+        </div>
+        {% endif %}
+        <div class="about">
+        
+            <div class="about-house">
+                <p>House type : {{rental.size}}</p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
+                <p>Rent per month : ksh {{rental.price}}</p>
+                <p>Deposit : {{rental.deposit}}</p>
+                <p>Water cost : {{rental.water_fee}}</p>
+                <p>Garbage cost : {{rental.garbage_fee}}</p>
+            </div>
+        </div>
+        {% if features_list %}
+        
+        <div class="Features">
+            <h3 style="text-align: center; text-decoration: underline;">Features</h3>
+            <ul>
+                {% for features in features_list %}
+                <li>{{features}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        {% endif %}
+        <div class="book">
+            <div class="contact">
+                <a href="">
+                    <div class="call-landlord">
+                        <p>Call landlord</p>
+                       
+                    </div>
+                </a>
+    
+                <a href="">
+                    <div class="whatsapp-landlord">
+                        <p>WhatsApp</p>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+        <hr>
+        <div class="houses-in-the-area">
+            <h3 style="text-align: center; text-decoration: underline;">Other Houses in this area</h3>
+        </div>
+      
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -5,7 +5,7 @@ class HouseRentForm(forms.ModelForm):
    
     class Meta:
         model = Property_for_renting
-        fields = ['size','features','location','photos','video','price','contact']
+        fields = ['size','apartment_name','location','features','photos','video','price','deposit','water_fee','garbage_fee','landlord_contact','caretaker_contact','agent_name','agent_contact']
 
 
     

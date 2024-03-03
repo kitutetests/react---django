@@ -98,19 +98,25 @@ def view_properties(request):
      rentals = Property_for_renting.objects.all()
      return render (request , 'rentals.html',{'rentals':rentals})
 
-def search_rental(request):
-    if request.method == 'POST':
-        query_location = request.POST['location']
-        query_rent = request.POST['Rent']
-        query_features = request.POST['Features']
+def property_details(request, pk):
+     rental = Property_for_renting.objects.get(id = pk)
+     features_list = rental.features.split('.') if rental.features else []
+     return render (request , 'rentaldetails.html',{'rental':rental,'features_list':features_list})
+     
 
-        rentals = Property_for_renting.objects.filter(
-         Q(location__icontains=query_location) |
-         Q(size__icontains=query_rent) |
-         Q(features__icontains=query_features)
-        )
+def search_rental(request):
+    query_location = request.POST['location']
+    query_min_rent = request.POST['min-rent']
+    query_max_rent = request.POST['max-rent']
+    query_features = request.POST['Features']
+    if request.method == 'POST':
+         rentals = Property_for_renting.objects.all()
+         if query_location:
+            rentals = rentals.filter(location__icontains=query_location)
+         if query_min_rent and query_max_rent:
+            rentals = rentals.filter(price__range=(query_min_rent, query_max_rent))
+         if query_features:
+            rentals = rentals.filter(features__icontains=query_features)
         
-        return render(request ,'searchrental.html',{'rentals':rentals})
-    else:
-        # Handle GET requests (display search form)
-        return render(request, 'search_form.html')
+    return render(request ,'searchrental.html',{'rentals':rentals})
+   

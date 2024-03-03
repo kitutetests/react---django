@@ -1,5 +1,6 @@
 {% extends 'header.html'%}
 {% load static %}
+{% load humanize %}
 {%block content%}
 <!DOCTYPE html>
 <html lang="en">
@@ -11,20 +12,21 @@
 </head>
 <body>
 <div class="main-container">
-    {% if rent %}
-    {% for rental in rent %}
+    {% if rentals %}
+    {% for rental in rentals %}
     <div class="houses-container">
+        
        <div class="photo">
             <img src="{{rental.photos.url}}">
        </div>
        <div class="details">
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
-            <p>{{rental.house_type}}</p>
+            <p>{{rental.size}}</p>
             
        </div>
 
        <div class="cost">
-             ksh {{rental.price}}
+        <p style="padding-top: 5px;">ksh {{rental.price|intcomma }} per month</p>
             
        </div>
 

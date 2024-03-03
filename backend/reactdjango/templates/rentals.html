@@ -1,5 +1,6 @@
 {% extends 'header.html'%}
 {% load static %}
+
 {%block content%}
 <!DOCTYPE html>
 <html lang="en">
@@ -16,19 +17,20 @@
 
     <div class="main-container">
         <div class="search-container">
-            <form action="/search_rentals"  method="POST">
+            <form method="POST" action="/search_rentals">
                 {% csrf_token %}
                 <label for="search-location">Location </label>
                 <span>Enter location and press search</span>
                 <input type="search" name="location" placeholder="location">
 
-                <label for="Rent">Rent </label>
+               <label for="Rent">Rent </label>
                 <span>filter by budget</span>
-                <input type="search" name="Rent" placeholder="Rent">
+                <input type="number" class="min-rent" name="min-rent" placeholder="0">
+                <input type="number" class="max-rent" name="max-rent" placeholder="max-rent">
 
                 <label for="Features">Features </label>
                 <span>filter by features</span>
-                <input type="search" name="Features" placeholder="Features">
+                <input type="search" name="Features" placeholder="Features"> 
                 <input type="submit" class="search-btn" value="search">
             </form>
         </div>
@@ -48,22 +50,25 @@
         </div>
 
         {% for rental in rentals %}
-        <div class="houses-container">
-           <div class="photo">
-                <img src="{{rental.photos.url}}">
-           </div>
-           <div class="details">
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
-                <p>{{rental.size}}</p>
-                
-           </div>
-
-           <div class="cost">
-                 ksh {{rental.price}}
-                
-           </div>
-
-        </div>
+        <a href="/property_details/{{rental.id}}">
+            <div class="houses-container">
+                <div class="photo">
+                     <img src="{{rental.photos.url}}">
+                </div>
+                <div class="details">
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
+                     <p>{{rental.size}}</p>
+                     
+                </div>
+     
+                <div class="cost">
+                     <p style="padding-top: 5px;">ksh {{ rental.price }}/month</p>
+                 
+                </div>
+     
+             </div>
+        </a>
+        
         {% endfor %}
     </div>
     {% endblock %}    

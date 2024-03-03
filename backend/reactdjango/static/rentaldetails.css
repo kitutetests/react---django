@@ -1,0 +1,80 @@
+.main-container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+}
+.image-container{
+    width: 40%;
+    
+    height: 300px;
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+.image-container img{
+    max-width: 100%;
+   
+    height: auto;
+}
+.video-container{
+    width: 40%;
+    display: inline-block;
+    border: 1px solid black;
+}
+.video-container video{
+    max-width: 100%;
+    height: 300px;
+}
+.about{
+    background-color: rgb(4, 221, 40);
+    width: 100%;
+    border-radius: 3px;
+}
+.about-house{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+.Features{
+    width: 90%;
+    margin-left: 15px;
+}
+
+
+.Features ul li{
+    padding: 4px;
+    font-size: 17px;
+}
+.about-house p{
+    font-size: 18px;
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+}
+.book{
+    width: 100%;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.book a{
+    text-decoration: none;
+}
+.contact{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.call-landlord , .whatsapp-landlord{
+   height: 40px;
+   border-radius: 20px;
+   width: 300px;
+   background-color: rgb(255, 176, 5);
+   color: white;
+   font-weight: bold;
+   text-align: center;
+}
+.call-landlord p , .whatsapp-landlord p{
+    padding-top: 10px;
+}
