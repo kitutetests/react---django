@@ -1,0 +1,46 @@
+{% extends 'header.html'%}
+{% load static %}
+{% load humanize %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'search_property_on_sale.css' %}">
+    <title>Search rentals</title>
+</head>
+
+
+<body>
+<div class="main-container">
+    {% if properties %}
+    {% for property in properties %}
+    <a href="">
+        <div class="property-container">
+        
+            <div class="photo">
+                 <img src="{{property.photos.url}}">
+            </div>
+            <div class="details">
+                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{property.location}}</p>
+                 <p>{{property.size}}</p>
+                 
+            </div>
+     
+            <div class="cost">
+             <p style="padding-top: 5px;">ksh {{property.price|intcomma }} per month</p>
+                 
+            </div>
+     
+         </div>
+    </a>
+   
+    {% endfor %}
+    {% else %}
+    <h3 style="color: red;">search doesn't match any property </h3>
+    {% endif %}
+</div>
+{% endblock %}     
+</body>
+</html>

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{% static 'rentaldetails.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>house details</title>
+    <title>property details</title>
     <style>
-        .rent-property{
+        .buy-property{
             display: none;
         }
     </style>
@@ -20,21 +20,21 @@
 <body>
     <div class="main-container">
         <div class="image-container">
-            <img src="{{rental.photos.url}}" alt="">
+            <img src="{{on_sale_property.photos.url}}" alt="">
         </div>
 
-        {% if rental.video %}
+        {% if on_sale_property.video %}
         <div class="video-container">
-            <video class="video" src="{{rental.video.url }}" controls autoplay loop muted>
+            <video class="video" src="{{on_sale_property.video.url }}" controls autoplay loop muted>
                 Your browser does not support the video tag.
         </div>
         {% endif %}
         <div class="about">
         
             <div class="about-house">
-                <p>House type : {{rental.size}}</p>
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
-                <p>Rent per month : ksh {{rental.price}}</p>
+                <p>House type : {{on_sale_property.property_type}}</p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{on_sale_property.location}}</p>
+                <p>Rent per month : ksh {{on_sale_property.price}}</p>
                 <p>Deposit : {{rental.deposit}}</p>
                 <p>Water cost : {{rental.water_fee}}</p>
                 <p>Garbage cost : {{rental.garbage_fee}}</p>
@@ -56,7 +56,7 @@
             <div class="contact">
                 <a href="">
                     <div class="call-landlord">
-                        <p>Call landlord</p>
+                        <p>Call Owner</p>
                        
                     </div>
                 </a>
@@ -70,32 +70,29 @@
             
         </div>
         <hr>
-        {% if related_rentals %}
+        {% if related_property %}
         <div class="houses-in-the-area">
-            <h3 style="text-align: center; text-decoration: underline;">Other Houses in this area</h3>
+            <h3 style="text-align: center; text-decoration: underline;">Other reated properties</h3>
 
-            {% for rental in related_rentals %}
-            <a href="/property_details/{{rental.id}}">
-                <div class="houses-container">
-            
-                    <div class="photo">
-                         <img src="{{rental.photos.url}}">
-                    </div>
-                    <div class="details">
-                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
-                         <p>{{rental.size}}</p>
-                         
-                    </div>
-             
-                    <div class="cost">
-                     <p style="padding-top: 5px;">ksh {{rental.price|intcomma }} per month</p>
-                         
-                    </div>
-                
-                 </div>
-            </a>
-            
+           
+            <div class="houses-container">
+            {% for property in related_property %}
+                <div class="photo">
+                     <img src="{{property.photos.url}}">
+                </div>
+                <div class="details">
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{property.location}}</p>
+                     <p>{{property.size}}</p>
+                     
+                </div>
+         
+                <div class="cost">
+                 <p style="padding-top: 5px;">ksh {{property.price|intcomma }} per month</p>
+                     
+                </div>
             {% endfor %}
+             </div>
+
             {% endif %}
         </div>
       

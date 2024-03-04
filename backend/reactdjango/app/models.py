@@ -49,14 +49,16 @@ class Property_on_sale(models.Model):
     choices=(
         ('Rentals' , 'Rentals'),
         ('Land' , 'Land'),
-        ('Home' , 'Home'),
+        ('House' , 'House'),
+        ('Vehicle' , 'Vehicle'),
     )
     property_type = models.CharField(choices=choices , max_length=50)
     features= models.TextField()
     location = models.CharField(max_length=1000)
-    photos = models.ImageField(upload_to='images/' ,blank=True ,null=True)
+    photos = models.ImageField(upload_to='images/' ,null=True)
     video = models.FileField(upload_to='videos/',  blank=True,null=True) 
     price = models.IntegerField()
+    payment_process = models.TextField(null=True)
     contact = models.CharField(max_length=20) 
     posted = models.DateTimeField(auto_now=True)  
     is_available = models.BooleanField(default=True)  

@@ -98,14 +98,16 @@ def view_properties(request):
      rentals = Property_for_renting.objects.all()
      return render (request , 'rentals.html',{'rentals':rentals})
 
-def property_details(request, pk):
+def rentals_details(request, pk):
      rental = Property_for_renting.objects.get(id = pk)
      features_list = rental.features.split('.') if rental.features else []
-     return render (request , 'rentaldetails.html',{'rental':rental,'features_list':features_list})
+     related_rentals = Property_for_renting.objects.filter(location = rental.location, size = rental.size).exclude(id=pk)
+     return render (request , 'rentaldetails.html',{'rental':rental,'features_list':features_list,'related_rentals':related_rentals})
      
 
 def search_rental(request):
     query_location = request.POST['location']
+    query_size = request.POST['Size']
     query_min_rent = request.POST['min-rent']
     query_max_rent = request.POST['max-rent']
     query_features = request.POST['Features']
@@ -113,10 +115,51 @@ def search_rental(request):
          rentals = Property_for_renting.objects.all()
          if query_location:
             rentals = rentals.filter(location__icontains=query_location)
+         if query_size:
+            rentals = rentals.filter(size__icontains=query_size)
          if query_min_rent and query_max_rent:
             rentals = rentals.filter(price__range=(query_min_rent, query_max_rent))
          if query_features:
             rentals = rentals.filter(features__icontains=query_features)
         
     return render(request ,'searchrental.html',{'rentals':rentals})
-   
+
+
+def properties_on_sale(request):
+     properties = Property_on_sale.objects.all()
+     return render(request, 'buyproperty.html' ,{'properties':properties})
+
+
+def property_on_sale_details(request, pk):
+     on_sale_property = Property_on_sale.objects.get(id = pk)
+     features_list = on_sale_property.features.split('.') if on_sale_property.features else []
+
+
+     related_property = Property_on_sale.objects.filter(
+                        location = on_sale_property.location, 
+                        property_type = on_sale_property.property_type,
+                        price = on_sale_property.price
+                        ).exclude(id=pk)
+                       
+
+     return render (request , 'on_sale_property_details.html',{'on_sale_property':on_sale_property,'features_list':features_list,' related_property': related_property})
+  
+
+def search_property(request):
+    query_location = request.POST['location']
+    query_min_price = request.POST['min-Price']
+    query_max_price = request.POST['max-Price']
+    query_type = request.POST['Size']
+
+    if request.method == 'POST':
+         properties = Property_on_sale.objects.all()
+         if query_location:
+            properties = properties.filter(location__icontains=query_location)
+
+         if query_min_price and query_max_price:
+            properties = properties.filter(price__range=(query_min_price, query_max_price))
+
+         if query_type:
+            properties = properties.filter(features__icontains=query_type)
+        
+    return render(request ,'search_property_on_sale.html',{'properties':properties})

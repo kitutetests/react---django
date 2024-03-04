@@ -1,6 +1,6 @@
 {% extends 'header.html'%}
 {% load static %}
-
+{% load humanize %}
 {%block content%}
 <!DOCTYPE html>
 <html lang="en">
@@ -17,22 +17,47 @@
 
     <div class="main-container">
         <div class="search-container">
-            <form method="POST" action="/search_rentals">
-                {% csrf_token %}
-                <label for="search-location">Location </label>
-                <span>Enter location and press search</span>
-                <input type="search" name="location" placeholder="location">
-
-               <label for="Rent">Rent </label>
-                <span>filter by budget</span>
-                <input type="number" class="min-rent" name="min-rent" placeholder="0">
-                <input type="number" class="max-rent" name="max-rent" placeholder="max-rent">
-
-                <label for="Features">Features </label>
-                <span>filter by features</span>
-                <input type="search" name="Features" placeholder="Features"> 
-                <input type="submit" class="search-btn" value="search">
-            </form>
+            <div class="form">
+                <form method="POST" action="/search_rentals">
+                    {% csrf_token %}
+                    <div class="size">
+                        <label for="Size">Size </label>
+                        <span>filter by Size</span>
+                        <select name="Size" id="size-filter">
+                            <option value="">Select Size</option>
+                            <option value="single room">Single Room</option>
+                            <option value="Double room">Double Room</option>
+                            <option value="Bedsitter">Bedsitter</option>
+                            <option value="1 Bedroom">1 Bedroom</option>
+                            <option value="2 Bedrooms">2 Bedrooms</option>
+                            <option value="3 Bedrooms">3 Bedrooms</option>
+                            <option value="4 Bedrooms">4 Bedrooms</option>
+                            <option value="5 Bedrooms">5 Bedrooms</option>
+                            <option value="Above 5 Bedrooms">Above 5 Bedrooms</option>
+                        </select>
+                    </div>
+                    
+                    <div class="location">
+                        <label for="search-location">Location </label>
+                        <span>fiter by location</span>
+                        <input type="search" name="location" placeholder="location">
+                    </div>
+    
+                    
+    
+                    <label for="Rent">Rent </label>
+                    <span>filter by range</span>
+                    <input type="number" class="min-rent" name="min-rent" placeholder="min-rent">
+                    <input type="number" class="max-rent" name="max-rent" placeholder="max-rent">
+    
+                  
+                    <label for="Features">Features </label>
+                    <span>filter by features</span>
+                    <input type="search" name="Features" placeholder="Features"> 
+                    <input type="submit" class="search-btn" value="search">
+                </form>
+            </div>
+            
         </div>
 
 
@@ -49,7 +74,7 @@
             </div>
         </div>
 
-        {% for rental in rentals %}
+        {% for rental in rentals reversed %}
         <a href="/property_details/{{rental.id}}">
             <div class="houses-container">
                 <div class="photo">
@@ -62,7 +87,7 @@
                 </div>
      
                 <div class="cost">
-                     <p style="padding-top: 5px;">ksh {{ rental.price }}/month</p>
+                     <p style="padding-top: 5px;">ksh {{ rental.price|intcomma }} per month</p>
                  
                 </div>
      

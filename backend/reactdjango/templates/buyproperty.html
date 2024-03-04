@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+{% load humanize %}
+{% load static%}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'buyproperty.css' %}">
+    <title>buy property</title>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="search-container">
+            <div class="form">
+                <form method="POST" action="/search_property">
+                    {% csrf_token %}
+                    <div class="size">
+                        <label for="Size">Property type</label>
+                        <span>filter by type</span>
+                        <input type="search" name="Size" placeholder="1 bedroom"  > 
+                         
+                    </div>
+                    
+                    <div class="location">
+                        <label for="search-location">Location </label>
+                        <span>fiter by location</span>
+                        <input type="search" name="location" placeholder="location">
+                    </div>
+
+                    <label for="Rent">Price</label>
+                    <span>filter by range</span>
+                    <input type="number" class="min-Price" name="min-Price" placeholder="min-Price">
+                    <input type="number" class="max-Price" name="max-Price" placeholder="max-Price">
+     
+                    <input type="submit" class="search-btn" value="search">
+                </form>
+            </div>
+            
+        </div>
+
+        
+        <div class="adverts">
+            <p>Jeff limited is a company in kenya helping house and land owners get clients for their properties</p>
+            <p>We are provide a safe platform for you to buy a property(Land,House etc) in kenya</p>
+            <p>We also connect landlords with potential tenants </p>
+            <p>call us through <b>+254769624433</b></p>
+            <div class="social-icons">
+                <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        {% for property in properties reversed %}
+        <a href="/view_property_on_sale_details/{{property.id}}">
+            <div class="property-container">
+                <div class="photo-container">
+                     <img src="{{property.photos.url}}">
+                </div>
+                <div class="property-details">
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{property.location}}</p>
+                     <p>{{property.property_type}}</p>
+                     
+                </div>
+     
+                <div class="property-cost">
+                     <p style="padding-top: 5px;">ksh {{ property.price|intcomma }} per month</p>
+                 
+                </div>
+     
+             </div>
+        </a>
+        
+        {% endfor %}
+    </div>
+
+    {% endblock %}    
+</body>
+</html>

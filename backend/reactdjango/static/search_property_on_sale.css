@@ -1,15 +1,15 @@
+
+.buy-property{
+    display: none;
+}
 .main-container{
     width: 95%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 53px;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
 
-.houses-container{
+.property-container{
     background-color: white;
     width: 24%;
     display: inline-block;

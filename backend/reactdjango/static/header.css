@@ -14,17 +14,77 @@
     top: 0;
     
 }
-.buy-property{
-    background-color: rgb(255, 102, 0);
+.logo-header img{
+    width: 18%;
+}
+.buy-property , .rent-property{
+    background-color: rgb(4, 221, 40);
     border-radius: 7px;
     height: 30px;
     width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.buy-property a{
+a .buy-property  , a .rent-property {
     color: white;
     font-weight: bold;
     text-align: center;
     font-size: 15px;
-    text-decoration: none;
-    padding-left: 8px;
+   
+   
+  
 }
+a{
+    text-decoration: none;
+}
+footer{
+    width: 100%;
+    background-color: rgb(41, 38, 38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+   
+    position: relative;
+    bottom: 0;
+}
+.logo{
+    margin-left: 20px;
+    color: white;
+    
+}
+
+.logo-image img{
+    width: 30%;
+    
+}
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-container a{
+    color: white;
+    text-decoration: none;
+    padding-top: 10px;
+}
+.company , .support{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .phone-contact , .your-location{
+        display: none;
+    }
+    .logo-header{
+        margin-left: 8px;
+    }
+    .buy-property{
+        margin-right: 10px;
+    }
+}
+

@@ -8,29 +8,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'searchrental.css' %}">
-    <title>Document</title>
+    <title>Search rentals</title>
 </head>
+<style>
+    .rent-property{
+        display: none;
+    }
+</style>
+
 <body>
 <div class="main-container">
     {% if rentals %}
     {% for rental in rentals %}
-    <div class="houses-container">
-        
-       <div class="photo">
-            <img src="{{rental.photos.url}}">
-       </div>
-       <div class="details">
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
-            <p>{{rental.size}}</p>
+    <a href="/property_details/{{rental.id}}">
+        <div class="houses-container">
             
-       </div>
-
-       <div class="cost">
-        <p style="padding-top: 5px;">ksh {{rental.price|intcomma }} per month</p>
-            
-       </div>
-
-    </div>
+            <div class="photo">
+                    <img src="{{rental.photos.url}}">
+            </div>
+            <div class="details">
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
+                    <p>{{rental.size}}</p>
+                    
+            </div>
+    
+            <div class="cost">
+                <p style="padding-top: 5px;">ksh {{rental.price|intcomma }} per month</p>
+                    
+            </div>
+    
+        </div>
+    </a>
+    
     {% endfor %}
     {% else %}
     <h3 style="color: red;">search doesn't match any property </h3>

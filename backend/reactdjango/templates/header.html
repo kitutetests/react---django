@@ -12,17 +12,58 @@
 <body>
     <header>
         <div class="nav-bar">
-         <h1>JEFF</h1>
-         <h4><i class="fa fa-phone" aria-hidden="true"></i> +254769624433</h4>
-         <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Njoro,Nakuru</h4>
-         <div class="buy-property">
-            <a href="">Buy Property</a>
-         </div>
+            <div class="logo-header">
+                <img src="{% static 'images/realestatelogo.png' %}" alt="">
+             </div>
+                <h4 class="phone-contact"><i class="fa fa-phone" aria-hidden="true"></i> +254769624433</h4>
+                <h4 class="your-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Njoro,Nakuru</h4>
+            
+            <div class="btn">
+                <a href="/buy_property">
+                    <div class="buy-property">
+                         Buy Property
+                    </div>
+                </a>
+    
+               <a href="/view_property">
+                    <div class="rent-property">
+                        Rentals
+                    </div>
+                </a>
+            </div>
+            
         </div>
     </header>
 
     {% block content%}    
     {% endblock%}
+<footer>
+    <div class="logo">
+         <div class="logo-image">
+            <img src="{% static 'images/realestatelogo.png' %}" alt="">
+         </div>
+         <h3>J.L.C limited</h3>
+        
+        <p> &copy; <script>document.write(new Date().getFullYear())</script> J.L.C  All rights reserved</p>
+        
+    </div>
 
+    <div class="footer-container">
+
+        <div class="company">
+            <P style="font-weight: bold; padding-bottom: 15px; color: white; font-size: 18px;">Company</P>
+            <a href="">About</a>
+            <a href="">Location</a>
+            <a href="">Terms and Conditions</a>
+        </div>
+
+        <div class="support">
+            <P style="font-weight: bold; padding-bottom: 15px; color: white; font-size: 18px;">Support</P>
+            <a href="">Contact</a>
+            <a href="">Email Us</a>
+            <a href="">FAQS</a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
