@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'rentaldetails.css' %}">
+    <link rel="stylesheet" href="{% static 'on_sale_property_details.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>property details</title>
@@ -31,13 +31,11 @@
         {% endif %}
         <div class="about">
         
-            <div class="about-house">
-                <p>House type : {{on_sale_property.property_type}}</p>
+            <div class="about-property">
+                <p>Property type : {{on_sale_property.property_type}}</p>
                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{on_sale_property.location}}</p>
-                <p>Rent per month : ksh {{on_sale_property.price}}</p>
-                <p>Deposit : {{rental.deposit}}</p>
-                <p>Water cost : {{rental.water_fee}}</p>
-                <p>Garbage cost : {{rental.garbage_fee}}</p>
+                <p>Price : ksh {{on_sale_property.price|intcomma }}</p>
+                <p>payment_process : {{on_sale_property.payment_process}}</p>
             </div>
         </div>
         {% if features_list %}
@@ -55,14 +53,14 @@
         <div class="book">
             <div class="contact">
                 <a href="">
-                    <div class="call-landlord">
+                    <div class="call-owner">
                         <p>Call Owner</p>
                        
                     </div>
                 </a>
     
                 <a href="">
-                    <div class="whatsapp-landlord">
+                    <div class="whatsapp-owner">
                         <p>WhatsApp</p>
                     </div>
                 </a>
@@ -70,19 +68,20 @@
             
         </div>
         <hr>
+        
         {% if related_property %}
-        <div class="houses-in-the-area">
+        <div class="property-in-the-area">
             <h3 style="text-align: center; text-decoration: underline;">Other reated properties</h3>
 
-           
-            <div class="houses-container">
             {% for property in related_property %}
+            <div class="property-container">
+            
                 <div class="photo">
                      <img src="{{property.photos.url}}">
                 </div>
                 <div class="details">
                      <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{property.location}}</p>
-                     <p>{{property.size}}</p>
+                     <p>{{property.property_type}}</p>
                      
                 </div>
          
@@ -90,10 +89,10 @@
                  <p style="padding-top: 5px;">ksh {{property.price|intcomma }} per month</p>
                      
                 </div>
-            {% endfor %}
+            
              </div>
-
-            {% endif %}
+             {% endfor %}
+             {% endif %}
         </div>
       
     </div>

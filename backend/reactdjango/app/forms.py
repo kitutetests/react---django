@@ -13,7 +13,7 @@ class SellPropertyForm(forms.ModelForm):
    
     class Meta:
         model = Property_on_sale
-        fields = ['property_type','features','location','photos','video','price','contact']
+        fields = ['property_type','features','location','photos','video','price','payment_process','contact']
 
 
   

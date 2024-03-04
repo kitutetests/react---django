@@ -42,16 +42,3 @@
     color: white;
     
 }
-
-.link-container ul li:hover {
-    background-color: white; /* Background color on hover and when link is active */
-    color: black; /* Text color on hover and when link is active */
-}
- /* li:hover{
-    background-color: white;
-    color: black;
-}
-.link-container ul li:active a{
-    background-color: white;
-    color: black;
-} */

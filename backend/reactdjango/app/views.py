@@ -134,15 +134,13 @@ def property_on_sale_details(request, pk):
      on_sale_property = Property_on_sale.objects.get(id = pk)
      features_list = on_sale_property.features.split('.') if on_sale_property.features else []
 
-
      related_property = Property_on_sale.objects.filter(
-                        location = on_sale_property.location, 
-                        property_type = on_sale_property.property_type,
-                        price = on_sale_property.price
-                        ).exclude(id=pk)
-                       
 
-     return render (request , 'on_sale_property_details.html',{'on_sale_property':on_sale_property,'features_list':features_list,' related_property': related_property})
+                         Q(location=on_sale_property.location, property_type=on_sale_property.property_type) | 
+                         Q(property_type=on_sale_property.property_type, price=on_sale_property.price)
+                         ).exclude(id=pk)                  
+
+     return render (request , 'on_sale_property_details.html',{'on_sale_property':on_sale_property,'features_list':features_list,'related_property': related_property})
   
 
 def search_property(request):
@@ -160,6 +158,6 @@ def search_property(request):
             properties = properties.filter(price__range=(query_min_price, query_max_price))
 
          if query_type:
-            properties = properties.filter(features__icontains=query_type)
+            properties = properties.filter(property_type__icontains=query_type)
         
     return render(request ,'search_property_on_sale.html',{'properties':properties})

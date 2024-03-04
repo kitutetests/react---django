@@ -1,0 +1,129 @@
+.main-container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+}
+.image-container{
+    width: 40%;
+    height: 300px;
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+.image-container img{
+    max-width: 100%;
+    object-fit: cover;
+    max-height: 100%;
+}
+.video-container{
+    width: 40%;
+    display: inline-block;
+    border: 1px solid black;
+    vertical-align: top;
+}
+.video-container video{
+    max-width: 100%;
+    height: 300px;
+}
+.about{
+    margin-top: 10px;
+    background-color: rgb(4, 221, 40);
+    width: 100%;
+    border-radius: 3px;
+}
+.about-property{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+.Features{
+    width: 90%;
+    margin-left: 15px;
+}
+
+
+.Features ul li{
+    padding: 4px;
+    font-size: 17px;
+}
+.about-property p{
+    font-size: 18px;
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+}
+.book{
+    width: 100%;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.book a{
+    text-decoration: none;
+}
+.contact{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.call-owner , .whatsapp-owner{
+   height: 40px;
+   border-radius: 20px;
+   width: 300px;
+   background-color: rgb(4, 221, 40);
+   color: white;
+   font-weight: bold;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.property-container{
+    background-color: white;
+    width: 24%;
+    display: inline-block;
+    border-top-left-radius: 5px; /* Adjust the radius value as needed */
+    border-top-right-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid black;
+   
+}
+.photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.photo img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+p{
+    margin: 5px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.cost{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: rgb(38, 216, 38);
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
