@@ -7,7 +7,7 @@
 .image-container{
     width: 40%;
     height: 300px;
-    border: 1px solid black;
+    
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
@@ -20,7 +20,7 @@
 .video-container{
     width: 40%;
     display: inline-block;
-    border: 1px solid black;
+    
     vertical-align: top;
 }
 .video-container video{
@@ -80,6 +80,18 @@
    align-items: center;
    justify-content: center;
 }
+.google-map{
+    width: 5%;
+    background-color: white;
+    margin-bottom: 5px;
+    float: right;
+}
+.google-map img{
+    width: 100%;
+}
+.property-in-the-area{
+    margin-top: 10px;
+}
 .property-container{
     background-color: white;
     width: 24%;
@@ -88,7 +100,8 @@
     border-top-right-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(38, 216, 38)
+    
    
 }
 .photo {
@@ -123,7 +136,73 @@ a{
     color: white;
     border: none;
     background-color: rgb(38, 216, 38);
-    height: 30px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .main-container{
+        width: 99%;
+        margin-top: 53px;
+    }
+    .image-container{
+        width: 100%;
+        height: auto;
+
+    }
+    .video-container{
+        width: 100%;
+    }
+    .video-container video{
+        width: 100%;
+        height: auto;
+    }
+    .about-property{
+        width: 100%;
+    }
+    .about-property p{
+        display: block;
+        width: 95%;
+        margin: 7px;
+    }
+    .Features {
+        width: 100%;
+        margin: 0;
+    }
+    li{
+        margin-left: 5px;
+    }
+    h3{
+        width: 95%;
+    }
+    .call-owner , .whatsapp-owner{
+        height: 30px;
+        border-radius: 10px;
+        width: 100%;
+        font-weight: lighter;
+    }
+    .call-owner p , .whatsapp-owner p{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .contact {
+        margin-top: 10px;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .property-container{
+        width: 47%;
+        margin-left: 5px;
+        margin-right: 0;
+        
+    }
+    .photo {
+        height: 170px;
+    }
+    p{
+        margin: 2px
+    }
 }

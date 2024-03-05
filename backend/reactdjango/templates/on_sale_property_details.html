@@ -34,8 +34,22 @@
             <div class="about-property">
                 <p>Property type : {{on_sale_property.property_type}}</p>
                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{on_sale_property.location}}</p>
+                
                 <p>Price : ksh {{on_sale_property.price|intcomma }}</p>
+
+                
                 <p>payment_process : {{on_sale_property.payment_process}}</p>
+                {% if on_sale_property.pin_location %}
+
+                <a href="{{on_sale_property.pin_location}}" target="_blank">
+                    <div class="google-map">
+                        <img src="{% static 'images/googlemapslogo.webp' %}" alt="googlemaps">
+                        
+                    </div>
+                   
+                </a>
+
+                {% endif %}
             </div>
         </div>
         {% if features_list %}
@@ -70,9 +84,9 @@
         <hr>
         
         {% if related_property %}
+        
+        <h3 style="text-align: center;">Other reated properties</h3>
         <div class="property-in-the-area">
-            <h3 style="text-align: center; text-decoration: underline;">Other reated properties</h3>
-
             {% for property in related_property %}
             <div class="property-container">
             

@@ -71,9 +71,9 @@
         </div>
         <hr>
         {% if related_rentals %}
+        
+        <h3 style="text-align: center; ">Other Houses in this area</h3>
         <div class="houses-in-the-area">
-            <h3 style="text-align: center; text-decoration: underline;">Other Houses in this area</h3>
-
             {% for rental in related_rentals %}
             <a href="/property_details/{{rental.id}}">
                 <div class="houses-container">

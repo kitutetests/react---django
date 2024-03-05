@@ -60,6 +60,9 @@ p{
     display: inline-block;
     width: 30%;
 }
+.size{
+    vertical-align: top;
+}
 .size input , .location input{
     width: 100%;
 }
@@ -107,7 +110,7 @@ form{
     border-top-right-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(38, 216, 38);
     vertical-align: top;
    
 }
@@ -137,9 +140,12 @@ form{
     color: white;
     border: none;
     background-color: rgb(38, 216, 38);
-    height: 30px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-weight: bold;
+    
 }
 @media (max-width: 768px) {
     .main-container{
@@ -151,17 +157,16 @@ form{
     }
     .adverts{
         display: none;
-        width: 100%;
-        margin-bottom: 5px;
+        
     }
     .houses-container{
         width: 47%;
         margin-left: 5px;
         margin-right: 0;
-        height: 300px;
+        
     }
     .photo {
-        height: 200px;
+        height: 170px;
     }
     .size , .location{
        

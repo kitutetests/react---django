@@ -17,7 +17,8 @@ a{
     border-top-right-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid black;
+    vertical-align: top;
+    border: 1px solid rgb(38, 216, 38);
    
 }
 .photo {
@@ -48,7 +49,26 @@ p{
     color: white;
     border: none;
     background-color: rgb(38, 216, 38);
-    height: 30px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .main-container{
+        width: 100%;
+    }
+    .houses-container{
+        width: 47%;
+        margin-left: 5px;
+        margin-right: 0;
+        
+    }
+    .photo {
+        height: 170px;
+    }
+    p{
+        margin: 2px;
+    }
 }

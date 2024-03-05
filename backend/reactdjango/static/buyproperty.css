@@ -34,6 +34,9 @@
     display: inline-block;
     width: 40%;
 }
+.size{
+    vertical-align: top;
+}
 .size input , .location input{
     width: 100%;
 }
@@ -43,7 +46,7 @@
     width: 30%;
 }
 
-input{
+input , select{
     display: block;
     width: 30%;
     height: 30px;
@@ -96,7 +99,7 @@ p{
     border-top-right-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(38, 216, 38);
     vertical-align: top;
    
 }
@@ -126,7 +129,42 @@ p{
     color: white;
     border: none;
     background-color: rgb(38, 216, 38);
-    height: 30px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-weight: bold;
 }
+
+@media (max-width: 768px) {
+        .search-container{
+            width: 100%;
+            margin-top: 5px;
+        }
+        .size , .location{
+       
+            width: 47%;
+        }
+        .min-rent , .max-rent{
+            width: 45%;
+        }
+        input , select{
+            width: 70%;
+        }
+        .adverts{
+            display: none;
+            
+        }
+        .property-container{
+            width: 47%;
+            margin-left: 5px;
+            margin-right: 0;
+            
+        }
+        .photo-container {
+            height: 170px;
+        }
+        p{
+            margin: 2px;
+        }
+    }
