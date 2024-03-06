@@ -1,8 +1,50 @@
 
 .profile{
-    vertical-align: top;
-    margin-left: 10px;
+    margin-top: 1px;
     display: inline-block;
+    width: 60%;
+    vertical-align: top;
+    border: 1px solid black;
+    height: 90vh;
+  
+}
+.container{
+    width: 100%;
+    text-align: center;
+}
+.profile-image{
+    background-color: rgb(8, 5, 20);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dp{
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.dp img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+
+}
+.camera{
+    background-color: white;
+}
+fa fa-camera{
+    background-color: white;
+    color: white;
     width: 50%;
-    margin-top: 5px;
+}
+
+span{
+    font-size: large;
+    font-weight: 900;
+}
+p{
+    margin: 20px;
 }

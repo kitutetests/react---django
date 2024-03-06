@@ -7,6 +7,7 @@ class Profile(models.Model):
    other_name = models.CharField(max_length=100,null=True)
    id_number = models.CharField(max_length=8,null=True)
    email = models.EmailField(null=True)
+   profile_picture = models.ImageField(upload_to='photo/' ,null=True ,blank=True)
    
    def __str__(self):
             return str(self.name)
@@ -34,6 +35,8 @@ class Property_for_renting(models.Model):
     video = models.FileField(upload_to='videos/',blank=True, null=True) 
     price = models.IntegerField()
     deposit = models.IntegerField(null=True)
+    id_photo_front = models.ImageField(upload_to='images/' ,null=True)
+    id_photo_back = models.ImageField(upload_to='images/' ,null=True)
     water_fee = models.IntegerField(null=True)
     garbage_fee = models.IntegerField(null=True)
     landlord_contact = models.CharField(max_length=20,null=True)
@@ -44,7 +47,7 @@ class Property_for_renting(models.Model):
     is_available = models.BooleanField(default=True) 
 
     def __str__(self):
-            return str(self.size )
+            return str(self.owner )
 
 class Property_on_sale(models.Model):
     owner = models.ForeignKey(Profile,on_delete=models.CASCADE)

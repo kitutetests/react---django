@@ -7,14 +7,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Developer profile</title>
 </head>
 <body>
    
-    <div class="profile">
-        <p>name{{developer.name}}</p>
-        <p>name{{developer.email}}</p>
-    </div>
+        <div class="profile">
+            <div class="container">
+                <div class="profile-image">
+                    <div class="dp">
+                        {% if developer.profile_photo %}
+                            <img src="{{ developer.profile_photo.url }}" alt="Profile Picture">
+                        {% else %}
+                            <img src="{% static 'images/default dp.jpg' %}" alt="Default Profile Picture">
+                        {% endif %}
+                        
+                    </div>
+                    <div class="camera">
+                        <a href="/developer-profile-update"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                    </div>
+                    
+                </div>
+    
+                <p><span>First name</span> : {{developer.name}}</p>
+                <p><span>Last name</span> : {{developer.name}}</p>
+                <p><span>Email</span> : {{developer.email}}</p>
+                <p><span>Id Number</span> : {{developer.id_number}}</p>
+                <p><span>Number of Houses</span> : {{developer.email}}</p>
+            </div>
+            
+
+        </div>
+    
+   
 
     {% endblock %}    
 </body>

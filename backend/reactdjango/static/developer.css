@@ -25,7 +25,14 @@
     background-color: rgb(7, 4, 19);
     height: 100vh;
     display: inline-block;
+    
     border-top: 1px solid white;
+}
+.left-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
 }
 .content-container{
     width: 50%;
@@ -41,4 +48,31 @@
     text-decoration: none;
     color: white;
     
+}
+
+.log-out{
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.log-out p{
+    color: black;
+    font-weight: bold;
+}
+a {
+    text-decoration: none;
+}
+
+.log-out:hover {
+    background-color: red;
+   
+}
+.log-out:hover p{
+    color: white;
 }

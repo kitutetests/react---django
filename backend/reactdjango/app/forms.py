@@ -1,6 +1,11 @@
 from django import forms
 
-from .models import Property_for_renting,Property_on_sale
+from .models import Property_for_renting,Property_on_sale,Profile
+class ProfileForm(forms.ModelForm):
+   
+    class Meta:
+        model = Profile
+        fields = ['profile_picture']
 
 class HouseRentForm(forms.ModelForm):
    

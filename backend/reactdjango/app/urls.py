@@ -4,9 +4,11 @@ urlpatterns = [
    
     path('register',views.register,name='register'),
     path('login',views.login,name='login'),
+     path('logout',views.logout,name='logout'),
     path('',views.home,name='home'),
     path('developer-page',views.developer_page,name='developer_page'),
     path('developer-profile',views.developer_profile,name='developer_profile'),
+    path('developer-profile-update',views.developer_profile_update,name='developer_profile-update'),
     path('post_rentals',views.post_rentals,name='post_rentals'),
     path('sell_property',views.sell_property,name='sell_property'),
     path('view_property',views.view_properties,name='view_property'),

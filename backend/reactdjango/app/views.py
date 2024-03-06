@@ -4,6 +4,7 @@ from . models import *
 from django.contrib import auth,messages
 from . forms import *
 from django.db.models import Q
+from django.contrib.auth import logout
 # Create your views here.
 def register(request):
    
@@ -50,7 +51,12 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'login.html')
+    
+def logout(request):
+    auth.logout(request)
+    return redirect(login)
 
+   
 def home(request):
      return render(request, 'homepage.html')
 
@@ -63,7 +69,25 @@ def developer_page(request):
 def developer_profile(request):
      user = request.user
      developer = Profile.objects.get(email=user.username)
+
      return render(request, 'profile.html',{'developer':developer})
+
+
+def developer_profile_update(request):
+     user = request.user
+     developer = Profile.objects.get(email=user.username)
+     
+     if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=developer)
+        if form.is_valid():
+            form.save()
+            return redirect('developer_profile')  # Redirect to the developer profile page after saving
+     else:
+        form = ProfileForm(instance=developer) 
+
+     return render(request, 'profile-update.html',{'form':form})
+
+
 
 def post_rentals(request):
      user = request.user
