@@ -40,6 +40,11 @@
     {% else %}
     <h3 style="color: red;">search doesn't match any property </h3>
     {% endif %}
+
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+    <script src="{% static 'home-btn.js'%}"></script>
+
 </div>
 {% endblock %}     
 </body>

@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
    name = models.CharField(max_length=100,null=True)
+   other_name = models.CharField(max_length=100,null=True)
+   id_number = models.CharField(max_length=8,null=True)
    email = models.EmailField(null=True)
    
    def __str__(self):

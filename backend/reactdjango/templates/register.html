@@ -17,8 +17,12 @@
                 <form method="POST" action="/register">
                         {% csrf_token %}   
                          
-                        <input type="text" name="name" placeholder="input name" required>
+                        <input type="text" name="name" placeholder="input first name" required>
+
+                        <input type="text" name="other_name" placeholder="input last name" required>
                 
+                        <input type="number" name="id_number" placeholder="input id number" maxlength="8">
+
                         <input type="email" name="email"  placeholder="input email" required>
            
                         <input type="password" name="password1" placeholder="input password" required >

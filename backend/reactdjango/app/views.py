@@ -9,15 +9,17 @@ def register(request):
    
     if request.method == 'POST':
         name = request.POST['name']
+        other_name = request.POST['other_name']
+        id_number = request.POST['id_number']
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']       
 
         if password1 == password2:
-            user= User.objects.create_user(username=email,password=password1)
+            user= User.objects.create_user(username=email,password=password1,email=email)
             user.save()
 
-            profile=Profile(name=name,email=email)
+            profile=Profile(user=user,name=name,other_name=other_name,id_number=id_number,email=email)
             profile.save()
 
             return redirect(home)

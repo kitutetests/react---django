@@ -165,6 +165,12 @@ form{
   }
 
 @media (max-width: 768px) {
+
+    #scrollToTopBtn {
+        bottom: 10px; /* Place the button 20px from the bottom */
+        right: 20px;
+        font-size: 15px;
+    }
     .main-container{
         width: 100%;
     }
