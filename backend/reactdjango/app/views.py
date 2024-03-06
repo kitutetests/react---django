@@ -161,3 +161,6 @@ def search_property(request):
             properties = properties.filter(property_type__icontains=query_type)
         
     return render(request ,'search_property_on_sale.html',{'properties':properties})
+
+def faq_view(request):
+    return render(request, 'faq.html')

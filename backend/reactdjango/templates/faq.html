@@ -1,0 +1,70 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'faq.css' %}">
+    <title>Frequent asked questions</title>
+</head>
+<body>
+    <div class="main-container">
+        <h2>Frequent asked questions</h2>
+        <hr>
+        <div class="question">
+            <p>question 1</p>
+        </div>
+        <div class="answer">
+            <p>We will routinely post selected units available ready for import units sourced by our global team that you can make an enquiry on direct from this page. If your preferred vehicle is not listed on this page, Browse through the various global car listing websites in markets like Japan, UK and Singapore (ie autotrader uk or goo net japan) select a preferred vehicle then share it with us for a quick landing cost quote upto your doorstep. Alternatively, send us a DM with your preferred specs and our team will source the vehicle and revert with a quote that includes a breakdown of CIF value, all taxes and our 3% commission.
+                Payment
+                This is done in two batches, The first payment is the CIF (cost & freight) which covers the cost of the car upto the port of Mombasa. This payment can be wired directly to the supplier abroad or to our local office depending on client preference. The second payment is done once we confirm that the vehicle is in Mombasa and covers taxation , clearing & our 3% commission.</p>
+        </div>
+
+        <hr>
+
+        <div class="question">
+            <p>question 1</p>
+        </div>
+        <div class="answer">
+            <p>answer 1</p>
+        </div>
+
+        <hr>
+
+        <div class="question">
+            <p>question 1</p>
+        </div>
+        <div class="answer">
+            <p>We will routinely post selected units available ready for import units sourced by our global team that you can make an enquiry on direct from this page. If your preferred vehicle is not listed on this page, Browse through the various global car listing websites in markets like Japan, UK and Singapore (ie autotrader uk or goo net japan) select a preferred vehicle then share it with us for a quick landing cost quote upto your doorstep. Alternatively, send us a DM with your preferred specs and our team will source the vehicle and revert with a quote that includes a breakdown of CIF value, all taxes and our 3% commission.
+                Payment
+                This is done in two batches, The first payment is the CIF (cost & freight) which covers the cost of the car upto the port of Mombasa. This payment can be wired directly to the supplier abroad or to our local office depending on client preference. The second payment is done once we confirm that the vehicle is in Mombasa and covers taxation , clearing & our 3% commission.</p>
+        </div>
+
+        <hr>
+
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+    
+        // Loop through each question element
+        questions.forEach(question => {
+            // Add click event listener to each question
+            question.addEventListener('click', () => {
+
+            const openAnswers = document.querySelectorAll('.answer.open');
+            openAnswers.forEach(answer => {
+                answer.classList.remove('open'); // Remove the 'open' class to hide the answer
+            });
+                // Toggle the visibility of the corresponding answer
+                const answer = question.nextElementSibling; // Select the next sibling element, which is the answer
+                answer.classList.toggle('open'); // Toggle the 'open' class to show/hide the answer
+            });
+        });
+    </script>
+
+    {% endblock %}
+</body>
+</html>

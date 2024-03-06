@@ -15,7 +15,8 @@ urlpatterns = [
 
     path('buy_property',views.properties_on_sale,name='buy_property'),
 
-    path('view_property_on_sale_details/<int:pk>',views.property_on_sale_details,     name='view_property_on_sale_details'),
+    path('view_property_on_sale_details/<int:pk>',views.property_on_sale_details,                       name='view_property_on_sale_details'),
 
     path('search_property',views.search_property,name='search_property'),
+    path('faqs',views.faq_view,name='faq'),
 ]
