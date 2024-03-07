@@ -2,21 +2,25 @@
     padding: 0;
     margin: 0;
 }
-body{
-    background-color: rgb(207, 204, 204);
+
+p{
+    margin-bottom: 20px;
+}
+.main-container{
+    background-color: white;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.main-container{
-    /* background-image: url(images/realestate.webp); */
-    background-color: rgb(207, 204, 204);
-    background-position: center;
-    background-size: cover; 
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .content{
     display: flex;
     justify-content: space-between;
@@ -25,19 +29,46 @@ body{
     margin-right: auto;
 }
 
-.developer, .tenant{
-    background-color: rgb(30, 32, 30);
+ a .developer, a .tenant{
+    background-color: rgb(38, 216, 38);
     border-radius: 10px;
-    width: 45%;
-    height: 40px;   
-}
-
-.developer a, .tenant a{
+    width: 80%;
+    height: 40px;  
     display: flex;
     align-items: center;
     text-align: center;
-    justify-content: space-around;
-    padding-top: 8px;
-    color: white;
+    justify-content: center; 
+}
+
+a{
     text-decoration: none; 
+    width: 45%;
+}
+.developer , .tenant {
+   font-weight: bold;
+    color: white;
+   
+}
+@media (max-width: 768px) {
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: space-between;
+        height: 20vh;
+        align-items: center;
+        text-align: center;
+       
+
+    }
+    a .developer, a .tenant{
+        width: 100%;
+        height: 30px;
+    }
+    a{
+        width: 90%;
+    }
+    .image img{
+        width: 45%;
+    }
 }

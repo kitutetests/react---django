@@ -54,8 +54,8 @@ input[type=submit]{
     color: white;
 
 }
-
 @media (max-width: 768px) {
+
     .big_container{ 
         width: 100%;
         margin-top: 0;

@@ -6,17 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'homepage.css' %}">
-    <title>Home</title>
+    <title>J.L.C limited</title>
 </head>
 <body>
     <div class="main-container">
+
+        <div class="logo">
+             <div class="image">
+                 <img src="{% static 'images/realestatelogo.png' %}" alt="">
+             </div>
+             <p style="font-weight: bold;">J.L.C limited</p>
+             <p>Linking Spaces, Building Connections</p>
+        </div>
+
         <div class="content">
-            <div class="developer">
-                <a href="/login">Post Property</a>
-            </div>
-            <div class="tenant">
-                <a href="/view_property">Search Property</a>
-            </div>
+            
+            <a href="/login">
+                <div class="developer">
+                   Post Property
+                </div>
+            </a>
+           
+
+            <a href="/view_property">
+                <div class="tenant">
+                    Search Property
+                </div>
+           </a>
         </div>
         
     </div>

@@ -48,3 +48,31 @@ span{
 p{
     margin: 20px;
 }
+@media (max-width: 768px) {
+    .profile{
+        width: 68%;
+        vertical-align: top;
+        border: 1px solid white;
+        height: 90vh;
+      
+    }
+    .profile-image{
+        height: 140px;
+    }
+
+    .dp{
+        height: 120px;
+        width: 120px;
+    }
+    p{
+        margin: 15px;
+        margin-left: 0;
+    }
+    span{
+        font-size: 17px;
+        font-weight: 900;
+    }
+    .profile-credentials{
+        text-align: left;
+    }
+}

@@ -63,7 +63,6 @@ def home(request):
 def developer_page(request):
      user = request.user
      developer = Profile.objects.get(email=user.username)
-
      return render(request, 'developerpage.html',{'developer':developer})
 
 def developer_profile(request):
@@ -80,6 +79,7 @@ def developer_profile_update(request):
      if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=developer)
         if form.is_valid():
+            
             form.save()
             return redirect('developer_profile')  # Redirect to the developer profile page after saving
      else:
@@ -102,7 +102,7 @@ def post_rentals(request):
                 post.save()
      else:
           form = HouseRentForm()
-     return render (request , 'post-rentals.html',{'form':form})
+     return render (request , 'post-rentals.html',{'form':form,'developer':developer})
 
 
 def sell_property(request):
@@ -118,7 +118,7 @@ def sell_property(request):
                 post.save()
      else:
           form = SellPropertyForm()
-     return render (request , 'sellproperty.html',{'form':form})
+     return render (request , 'sellproperty.html',{'form':form,'developer':developer})
 
 def view_properties(request):
      rentals = Property_for_renting.objects.all()

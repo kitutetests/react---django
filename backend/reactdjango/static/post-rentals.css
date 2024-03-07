@@ -3,7 +3,7 @@
     margin-left: 10px;
     display: inline-block;
     width: 50%;
-   margin-top: 5px;
+    margin-top: 5px;
     }
 p{
     margin-bottom: 30px;
@@ -11,4 +11,28 @@ p{
 textarea{
     height: 60px;
     display: block;
+}
+button{
+    background-color: rgb(7, 4, 19);
+    color: white;
+    width: 30%;
+    height: 30px;
+    border: none;
+}
+@media (max-width: 768px) {
+    .post-property{
+        width: 68%;
+        margin-left: 0;
+    }
+    p{
+        margin-bottom: 15px;
+    }
+    textarea{
+        height: 60px;
+        width: 90%;
+        display: block;
+    }
+    button{
+        width: 60%;
+    }
 }
