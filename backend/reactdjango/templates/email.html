@@ -1,0 +1,28 @@
+{% extends 'header.html' %}
+
+{% load static%}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'email.css' %}">
+    <title>Email Us</title>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <form action="/send_email" method="POST">
+            {% csrf_token %}
+            <h3>Email Us</h3>
+            <input type="text" name="name" required>
+            <input type="email" name="email" required>
+            <textarea name="message" rows="4" cols="20"></textarea>
+            <input type="submit" class="send" value="send">
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

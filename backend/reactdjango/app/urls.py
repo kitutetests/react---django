@@ -21,4 +21,5 @@ urlpatterns = [
 
     path('search_property',views.search_property,name='search_property'),
     path('faqs',views.faq_view,name='faq'),
+    path('send_email',views.email,name="send_email")
 ]

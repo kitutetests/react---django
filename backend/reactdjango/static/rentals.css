@@ -50,11 +50,7 @@ body{
 p{
     margin: 5px;
 }
-.social-icons{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .size , .location{
     display: inline-block;
@@ -148,6 +144,46 @@ form{
     
 }
 
+.pagination{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.current{
+    font-size: large;
+    margin-bottom: 10px;
+}
+.step-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+.step-links ul a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    border: 1px solid black;
+    height: 30px;
+    width: 20%;
+}
+.step-links ul a:hover{
+    border: none;
+    background-color: rgb(38, 216, 38);
+    color: white;
+}
+
+.step-links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
 #scrollToTopBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
@@ -207,5 +243,21 @@ form{
     }
     p{
         margin: 2px;
+    }
+    .pagination{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .step-links ul a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        border: 1px solid black;
+        height: 30px;
+        width: 25%;
+        margin-right: 5px;
     }
 }

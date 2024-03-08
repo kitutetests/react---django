@@ -5,6 +5,8 @@ from django.contrib import auth,messages
 from . forms import *
 from django.db.models import Q
 from django.contrib.auth import logout
+from django.core.mail import send_mail
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def register(request):
    
@@ -122,6 +124,18 @@ def sell_property(request):
 
 def view_properties(request):
      rentals = Property_for_renting.objects.all()
+     paginator = Paginator(rentals, 4)
+     page = request.GET.get('page')
+     try:
+          rentals = paginator.page(page)
+   
+     except PageNotAnInteger:
+          # If page is not an integer, deliver first page.
+          rentals = paginator.page(1)
+     except EmptyPage:
+          # If page is out of range (e.g. 9999), deliver last page of results.
+          rentals = paginator.page(paginator.num_pages)
+
      return render (request , 'rentals.html',{'rentals':rentals})
 
 def rentals_details(request, pk):
@@ -190,3 +204,20 @@ def search_property(request):
 
 def faq_view(request):
     return render(request, 'faq.html')
+
+def email(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        message = request.POST['message']
+        email = request.POST['email']
+
+        
+        send_mail(
+            email,  # Subject
+            message,  # Message
+            email , # From email
+            ['geffmutua001@gmail.com'],  # To email
+            fail_silently=False,
+                )
+       
+    return render(request,'email.html')   

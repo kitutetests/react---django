@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="icon" href="{% static 'images/realestatelogo.png' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>J.L.C limited</title>
     
 </head>
 <body>
@@ -38,32 +42,46 @@
     {% block content%}    
     {% endblock%}
 <footer>
-    <div class="logo">
-         <div class="logo-image">
-            <img src="{% static 'images/realestatelogo.png' %}" alt="">
-         </div>
-         <h3>J.L.C limited</h3>
-        
-        <p> &copy; <script>document.write(new Date().getFullYear())</script> J.L.C  <span>All rights reserved</p></span>
-        
-    </div>
-
-    <div class="footer-container">
-
-        <div class="company">
-            <P>Company</P>
-            <a href="">About</a>
-            <a href="https://maps.app.goo.gl/eKKyjDRfYyHFNHXJ8" target="_blank">Location</a>
-            <a href="">Terms and Conditions</a>
+    <div class="quick-links-logo">
+        <div class="logo">
+            <div class="logo-image">
+                <img src="{% static 'images/realestatelogo.png' %}" alt="">
+            </div>
+            <h3>J.L.C limited</h3>
+           
+           <p> &copy; <script>document.write(new Date().getFullYear())</script> J.L.C  <span>All rights reserved</p></span>
+           
         </div>
-
-        <div class="support">
-            <P>Support</P>
-            <a href="" >Contact</a>
-            <a href="">Email Us</a>
-            <a href="/faqs">FAQS</a>
+   
+        <div class="footer-container">
+   
+           <div class="company">
+               <P>Company</P>
+               <a href="">About</a>
+               <a href="https://maps.app.goo.gl/eKKyjDRfYyHFNHXJ8" target="_blank">Location</a>
+               <a href="">Terms and Conditions</a>
+            </div>
+   
+           <div class="support">
+               <P>Support</P>
+               <a href="/send_email">Email Us</a>
+               <a href="" >Contact</a>
+               <a href="/faqs">FAQS</a>
+            
+            </div>
         </div>
     </div>
+   
+    <div class="social-media">
+        <div class="social-links">
+            <a href=""><img src="{% static 'images/ig.jpg' %}" alt=""></a>
+            <a href=""><img src="{% static 'images/WhatsApp1.png' %}" alt=""></a>
+            <a href=""><img src="{% static 'images/tiktok.png' %}" alt=""></a>
+            <a href=""><img src="{% static 'images/X_logo.png' %}" alt=""></a>
+        </div>
+    </div>
+   
+
 </footer>
 </body>
 </html>

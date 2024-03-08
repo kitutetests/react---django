@@ -8,10 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'rentals.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <title>Rentals</title>
+   
+</head>
 </head>
 <body>
 
@@ -66,12 +64,7 @@
             <p>We are provide a safe platform for you to buy a property(Land,House etc) in kenya</p>
             <p>We also connect landlords with potential tenants </p>
             <p>call us through <b>+254769624433</b></p>
-            <div class="social-icons">
-                <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href=""><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-                <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-            </div>
+          
         </div>
 
         {% for rental in rentals reversed %}
@@ -95,6 +88,41 @@
         </a>
         
         {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+
+                <span class="current">
+                    Page {{ rentals.number }} of {{ rentals.paginator.num_pages }}.
+                </span>
+
+                <ul>
+                    {% if rentals.has_previous %}
+                    <a href="?page=1">
+                        <li> &laquo; first</li>
+                    </a>
+                    
+                       
+                    <a href="?page={{ rentals.previous_page_number }}">
+                        <li>previous </li>
+                    </a>
+                   
+                    {% endif %}
+        
+        
+                    {% if rentals.has_next %}
+                    <a href="?page={{ rentals.next_page_number }}">
+                       <li>next</li>
+                    </a>
+
+                    <a href="?page={{ rentals.paginator.num_pages }}">
+                        <li>last &raquo;</li>
+                    </a>
+                    {% endif %}
+                </ul>
+               
+            </span>
+        </div>
 
     <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 
