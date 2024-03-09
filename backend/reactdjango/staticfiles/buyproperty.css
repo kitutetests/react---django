@@ -1,0 +1,170 @@
+.buy-property{
+    display: none;
+}
+
+.main-container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+}
+
+.main-container a{
+    color: black;
+    text-decoration: none;
+}
+
+.search-container{
+    display: inline-block;
+    background-color: white;
+    width: 50%;
+    height: auto;
+    /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 3px;
+    box-shadow:  5px 0 5px rgba(0, 0, 0, 0.5),
+                 0 -5px 5px rgba(0, 0, 0, 0.5), /* Top side */
+                 0 5px 5px rgba(0, 0, 0, 0.5); /* Bottom side */
+                 /* -5px 0 5px rgba(0, 0, 0, 0.5), Left side  left*/
+}
+
+.size , .location{
+    display: inline-block;
+    width: 40%;
+}
+.size{
+    vertical-align: top;
+}
+.size input , .location input{
+    width: 100%;
+}
+
+.min-Price , .max-Price{
+    display: inline-block;
+    width: 30%;
+}
+
+input , select{
+    display: block;
+    width: 30%;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+label{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+span{
+    display: block;
+    padding: 5px 0;
+}
+.search-btn{
+    background-color: rgb(37, 35, 35);
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+form{
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+    
+}
+
+.adverts{
+    background-color: rgb(11, 10, 27);
+    color: white;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    vertical-align: top;
+    width: 46%;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+p{
+    margin: 5px;
+}
+.property-container{
+    background-color: white;
+    width: 24%;
+    display: inline-block;
+    border-top-left-radius: 5px; /* Adjust the radius value as needed */
+    border-top-right-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid rgb(38, 216, 38);
+    vertical-align: top;
+   
+}
+.photo-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-container img{
+    max-width: 100%;
+    max-heidght: 100%;
+    object-fit: cover;
+}
+
+.property-details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.property-cost{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: rgb(38, 216, 38);
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+        .search-container{
+            width: 100%;
+            margin-top: 5px;
+        }
+        .size , .location{
+       
+            width: 47%;
+        }
+        .min-rent , .max-rent{
+            width: 45%;
+        }
+        input , select{
+            width: 70%;
+        }
+        .adverts{
+            display: none;
+            
+        }
+        .property-container{
+            width: 47%;
+            margin-left: 5px;
+            margin-right: 0;
+            
+        }
+        .photo-container {
+            height: 170px;
+        }
+        p{
+            margin: 2px;
+        }
+    }

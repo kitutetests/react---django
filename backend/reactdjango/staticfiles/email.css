@@ -1,0 +1,32 @@
+.main-container{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 400px;
+    margin-bottom: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+input{
+    width: 50%;
+}
+input, textarea{
+    margin-top: 20px;
+}
+.send{
+    background-color: black;
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    height: 30px;
+}

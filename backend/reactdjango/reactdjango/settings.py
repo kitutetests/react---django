@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-)pj81om(r*v1vo^=a#*lbd^+0h8%2p9w_tf8)+2)889po#$*s_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'reactdjango.urls'
@@ -112,6 +114,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

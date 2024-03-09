@@ -1,0 +1,263 @@
+*{
+   padding: 0;
+   margin: 0;
+}
+body{
+    background-color: rgb(235, 225, 225);
+}
+
+.rent-property{
+   display: none; 
+}
+.main-container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+    position: relative;
+}
+
+.main-container a{
+    color: black;
+}
+
+.search-container{
+    background-color: white;
+    width: 60%;
+    height: auto;
+    /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 3px;
+    box-shadow:  5px 0 5px rgba(0, 0, 0, 0.5),
+                 0 -5px 5px rgba(0, 0, 0, 0.5), /* Top side */
+                 0 5px 5px rgba(0, 0, 0, 0.5); /* Bottom side */
+                 /* -5px 0 5px rgba(0, 0, 0, 0.5), Left side  left*/
+}
+
+.adverts{
+    background-color: rgb(11, 10, 27);
+    color: white;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    vertical-align: top;
+    width: 35%;
+    font-size: 17px;
+    border-radius: 3px;
+}
+p{
+    margin: 5px;
+}
+
+
+.size , .location{
+    display: inline-block;
+    width: 30%;
+}
+.size{
+    vertical-align: top;
+}
+.size input , .location input{
+    width: 100%;
+}
+.min-rent , .max-rent{
+    display: inline-block;
+    width: 30%;
+}
+
+input{
+    display: block;
+    width: 30%;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+label{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+span{
+    display: block;
+    padding: 5px 0;
+}
+.search-btn{
+    background-color: rgb(37, 35, 35);
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+form{
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+    
+}
+
+
+.houses-container{
+    background-color: white;
+    width: 24%;
+    display: inline-block;
+    border-top-left-radius: 5px; /* Adjust the radius value as needed */
+    border-top-right-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid rgb(38, 216, 38);
+    vertical-align: top;
+   
+}
+.photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo img{
+    max-width: 100%;
+    max-heiyght: 100%;
+    object-fit: cover;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cost{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: rgb(38, 216, 38);
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.pagination{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.current{
+    font-size: large;
+    margin-bottom: 10px;
+}
+.step-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+.step-links ul a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    border: 1px solid black;
+    height: 30px;
+    width: 20%;
+}
+.step-links ul a:hover{
+    border: none;
+    background-color: rgb(38, 216, 38);
+    color: white;
+}
+
+.step-links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button 20px from the bottom */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it's on top of other content */
+    font-size: 18px; /* Increase font size */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #333; /* Black background color */
+    color: white; /* White text color */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    padding: 15px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+@media (max-width: 768px) {
+
+    #scrollToTopBtn {
+        bottom: 10px; /* Place the button 20px from the bottom */
+        right: 20px;
+        font-size: 15px;
+    }
+    .main-container{
+        width: 100%;
+    }
+    .search-container{
+        width: 100%;
+        margin-top: 5px;
+    }
+    .adverts{
+        display: none;
+        
+    }
+    .houses-container{
+        width: 47%;
+        margin-left: 5px;
+        margin-right: 0;
+        
+    }
+    .photo {
+        height: 170px;
+    }
+    .size , .location{
+       
+        width: 47%;
+    }
+    .min-rent , .max-rent{
+        width: 45%;
+    }
+    input{
+        width: 70%;
+    }
+    form{
+
+        width: 95%;
+    }
+    p{
+        margin: 2px;
+    }
+    .pagination{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .step-links ul a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        border: 1px solid black;
+        height: 30px;
+        width: 25%;
+        margin-right: 5px;
+    }
+}

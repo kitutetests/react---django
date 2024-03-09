@@ -1,0 +1,231 @@
+.main-container{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 53px;
+}
+.image-container{
+    width: 40%;
+    height: 300px;
+    
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+.image-container img{
+    max-width: 100%;
+    object-fit: cover;
+    max-height: 100%;
+}
+.video-container{
+    width: 40%;
+    display: inline-block;
+    
+    vertical-align: top;
+}
+.video-container video{
+    max-width: 100%;
+    height: 300px;
+}
+.about{
+    margin-top: 10px;
+    background-color: rgb(4, 221, 40);
+    width: 100%;
+    border-radius: 3px;
+}
+.about-property{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+.Features{
+    width: 90%;
+    margin-left: 15px;
+}
+
+
+.Features ul li{
+    padding: 4px;
+    font-size: 17px;
+}
+.about-property p{
+    font-size: 18px;
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+}
+.book{
+    width: 100%;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.book a{
+    text-decoration: none;
+}
+.contact{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.call-owner , .whatsapp-owner{
+   height: 40px;
+   border-radius: 20px;
+   width: 300px;
+   background-color: rgb(4, 221, 40);
+   color: white;
+   font-weight: bold;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.google-map{
+    width: 5%;
+    background-color: white;
+    float: right;
+}
+.google-map img{
+    width: 100%;
+  
+}
+.property-in-the-area{
+    margin-top: 10px;
+}
+.property-container{
+    background-color: white;
+    width: 24%;
+    display: inline-block;
+    border-top-left-radius: 5px; /* Adjust the radius value as needed */
+    border-top-right-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid rgb(38, 216, 38)
+    
+   
+}
+.photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.photo img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+p{
+    margin: 5px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.cost{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: rgb(38, 216, 38);
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .main-container{
+        width: 99%;
+        margin-top: 53px;
+    }
+    .image-container{
+        width: 100%;
+        height: auto;
+
+    }
+    .video-container{
+        width: 100%;
+    }
+    .video-container video{
+        width: 100%;
+        height: auto;
+    }
+
+    .about{
+        border-radius: 0;
+    }
+
+    .about-property{
+        width: 100%;
+    }
+    .about-property p{
+        display: block;
+        width: 95%;
+        padding: 7px;
+        margin: 0;
+        font-size: 16px;
+    }
+    .google-map{
+        width: 10%;
+        float: initial;
+        background-color: rgb(38, 216, 38);
+        padding-bottom: 10px;
+    }
+   
+    .Features {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .Features ul li{
+        padding: 6px;
+        font-size: 15px;
+    }
+    ul{
+        padding: 13px;
+        margin: 0;
+        padding-top: 5px;
+    }
+    
+    h3{
+        width: 95%;
+        font-size: 15px
+    }
+    .call-owner , .whatsapp-owner{
+        height: 30px;
+        border-radius: 10px;
+        width: 100%;
+        font-weight: lighter;
+    }
+    .call-owner p , .whatsapp-owner p{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .contact {
+        margin-top: 10px;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .property-container{
+        width: 47%;
+        margin-left: 5px;
+        margin-right: 0;
+        
+    }
+    .photo {
+        height: 170px;
+    }
+    p{
+        margin: 2px
+    }
+}
