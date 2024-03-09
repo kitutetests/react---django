@@ -71,7 +71,7 @@ def developer_profile(request):
      user = request.user
      developer = Profile.objects.get(email=user.username)
 
-     return render(request, 'profile.html',{'developer':developer})
+     return render(request, 'developer-profile.html',{'developer':developer})
 
 
 def developer_profile_update(request):
