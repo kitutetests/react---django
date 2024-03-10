@@ -15,6 +15,6 @@ class Property_on_rentAdmin(admin.ModelAdmin):
 admin.site.register(Property_for_renting,Property_on_rentAdmin)
 
 class Property_on_saleAdmin(admin.ModelAdmin):
-    list_display = ('owner', 'property_type','location')
+    list_display = ('owner', 'property_type','location','contact')
 
 admin.site.register(Property_on_sale,Property_on_saleAdmin)

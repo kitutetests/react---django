@@ -73,4 +73,4 @@ class Property_on_sale(models.Model):
     is_available = models.BooleanField(default=True)  
     
     def __str__(self):
-            return str(self.property_type)
+            return str(self.property_type)  + str(self.contact)

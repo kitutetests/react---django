@@ -7,6 +7,8 @@ from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, get_object_or_404
+
 # Create your views here.
 def register(request):
    
@@ -106,6 +108,36 @@ def post_rentals(request):
           form = HouseRentForm()
      return render (request , 'post-rentals.html',{'form':form,'developer':developer})
 
+def developer_properties(request):
+    user = request.user
+    developer = Profile.objects.get(email=user.username)
+
+    properties_for_renting = Property_for_renting.objects.filter(owner=developer)
+    properties_on_sale = Property_on_sale.objects.filter(owner=developer)
+
+    properties = list(properties_for_renting) + list(properties_on_sale)
+
+    return render(request,'developer-properties.html',{'properties':properties})
+
+# def edit_rental(request,pk):
+#     Property = Property_for_renting.objects.get(id=pk)
+#     return render(request,'rental-edit.html',{'Property':Property})
+
+# def edit_on_sale_property(request,pk):
+#     Property = Property_on_sale.objects.get(id=pk)
+#     return render(request,'on-sale-edit.html',{'Property':Property})
+
+def edit_property(request, pk):
+    property_for_renting = None
+    property_on_sale = None
+    try:
+        property_for_renting = Property_for_renting.objects.get(id=pk)
+        template = 'rental-edit.html'
+    except Property_for_renting.DoesNotExist:
+        property_on_sale = get_object_or_404(Property_on_sale, id=pk)
+        template = 'on-sale-edit.html'
+
+    return render(request, template, {'property_for_renting': property_for_renting, 'property_on_sale': property_on_sale})
 
 def sell_property(request):
      user = request.user

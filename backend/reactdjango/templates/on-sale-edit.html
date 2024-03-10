@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+      
+        <form action="/edit_property/{{property.id}}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <p>property_type </p> <input type="text" name="size"  value="{{property_on_sale.property_type }}">
+            <hr>
+            
+            <p>Features</p> 
+            <textarea name="features" cols="30" rows="10">{{ property_on_sale.features }}</textarea>
+            <hr>
+            <p>price</p> <input type="number" name="price" value="{{property_on_sale.price}}">
+            <hr>
+            <p>payment_process</p> 
+            <textarea name="payment_process" cols="30" rows="10">{{property_on_sale.payment_process}}</textarea>
+           
+            <hr>
+            <p>contact</p> <input type="text" name="contact" value="{{on_sale_property.contact}}">
+            <hr>
+            <input class="save" type="submit" value="save">
+            <hr>
+      
+        </form>
+        
+    </div>
+</body>
+</html>

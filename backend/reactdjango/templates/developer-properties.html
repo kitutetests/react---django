@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'developer-properties.css' %}">
+</head>
+<body>
+<div class="main-container">
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>photo</td>
+                <td>size</td>
+                <td>location</td>
+                <td>edit</td>
+                <td>delete</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for property in properties %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>
+                    <div class="image">
+                        <img src="{{property.photos.url}}" alt="">
+                    </div>
+
+                </td>
+                <td>{{property.size}}  {{property.property_type}}</td>
+                <td>{{property.location}}</td>
+                <td><a href="/edit_property/{{property.id}}">edit</a></td>
+                <td><a href="">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+</body>
+</html>
