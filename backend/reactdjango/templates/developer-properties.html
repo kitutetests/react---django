@@ -21,7 +21,7 @@
         </thead>
 
         <tbody>
-            {% for property in properties %}
+            {% for property in properties reversed %}
             <tr>
                 <td>{{forloop.counter}}</td>
                 <td>
@@ -36,26 +36,80 @@
                
                 <td>
                     {% if property in properties_on_sale %}
-                    <a href="edit_property/{{property.id}}">Edit</a>
-
+                    <div class="edit-cont">
+                        <a class="edit" href="edit_property/{{property.id}}">Edit</a>
+                    </div>
+                    
                     {% elif property in properties_for_renting %}
-                    <a href="edit_rental/{{property.id}}">Edit</a>
+                    <a class="edit" href="edit_rental/{{property.id}}">Edit</a>
                     {% endif %}
 
                 </td>
                 
                 <td>
                     {% if property in properties_on_sale %}
-                    <a href="delete_property/{{property.id}}">Delete</a>
+                    <a class="delete" href="delete_property/{{property.id}}">Delete</a>
 
                     {% elif property in properties_for_renting %}
-                    <a href="delete_rental/{{property.id}}">Delete</a>
+                    <a class="delete" href="delete_rental/{{property.id}}">Delete</a>
                     {% endif %}
                 </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+           
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Edit property form goes here -->
+            <h2>Are you sure you want to delete </h2>
+            {% if property in properties_on_sale %}
+            <form action="delete_property/{{property.id}}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>
+                   {{property.property_type}} in {{property.location}}
+                </h3>
+                <input type="submit" value="Delete">
+            </form>
+            {% elif property in properties_for_renting %}
+            <form action="delete_rental/{{property.id}}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>
+                    {{property.size}} in {{property.location}}
+                 </h3>
+                <input type="submit" value="Delete">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</tr>
+{% endfor %}          
+</tbody>
+</table>
+    
+    <script>
+        // JavaScript to handle modal functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById("myModal");
+            var editLinks = document.querySelectorAll(".delete");
+
+            editLinks.forEach(function(link) {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    modal.style.display = "block";
+                });
+            });
+
+            var closeModalButton = document.querySelector(".close");
+            closeModalButton.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
 </div>
     
 </body>

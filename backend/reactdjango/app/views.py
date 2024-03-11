@@ -117,14 +117,13 @@ def developer_properties(request):
 
     properties = list(properties_for_renting) + list(properties_on_sale)
 
-    return render(request,'developer-properties.html',{'properties':properties,'properties_for_renting':properties_for_renting,'properties_on_sale':properties_on_sale})
+    return render(request,'developer-property.html',{'properties':properties,'properties_for_renting':properties_for_renting,'properties_on_sale':properties_on_sale})
 
 def edit_rental(request,pk):
     property_for_renting = Property_for_renting.objects.get(id=pk)
 
     if request.method == 'POST':
         apartment_name = request.POST['apartment_name']
-       
         features = request.POST['features']
         price = request.POST['price']
         deposit = request.POST['deposit']
@@ -132,17 +131,17 @@ def edit_rental(request,pk):
         garbage_fee = request.POST['garbage_fee']
         contact = request.POST['contact']
 
-        property_for_renting.apartment_name = apartment_name
-        
+        # assign new values
+        property_for_renting.apartment_name = apartment_name 
         property_for_renting.features = features
         property_for_renting.price = price
         property_for_renting.deposit = deposit
         property_for_renting.water_fee = water_fee
         property_for_renting.garbage_fee = garbage_fee
         property_for_renting.contact = contact
-        
+        #save to db
         property_for_renting.save()
-
+        return redirect(developer_properties)
     return render(request,'rental-edit.html',{'property_for_renting':property_for_renting})
 
 def delete_rental(request,pk):
@@ -152,6 +151,21 @@ def delete_rental(request,pk):
 
 def edit_on_sale_property(request,pk):
     property_on_sale = Property_on_sale.objects.get(id=pk)
+    if request.method == 'POST':
+          features = request.POST['features']
+          price = request.POST['price']
+          deposit = request.POST['deposit']
+          payment_process = request.POST['payment_process']
+          contact = request.POST['contact']  
+         
+          property_on_sale.features = features
+          property_on_sale.price = price
+          property_on_sale.deposit = deposit
+          property_on_sale.payment_process = payment_process
+          property_on_sale.contact = contact
+
+          property_on_sale.save()
+          return redirect(developer_properties)
     return render(request,'on-sale-edit.html',{'property_on_sale':property_on_sale})
 
 def delete_property(request,pk):

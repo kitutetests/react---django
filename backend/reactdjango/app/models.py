@@ -65,6 +65,7 @@ class Property_on_sale(models.Model):
     photos = models.ImageField(upload_to='images/' ,null=True)
     video = models.FileField(upload_to='videos/',  blank=True,null=True) 
     price = models.IntegerField()
+    deposit = models.IntegerField(null=True)
     payment_process = models.TextField(null=True)
     contact = models.CharField(max_length=20) 
     id_photo_front = models.ImageField(upload_to='images/' ,null=True)

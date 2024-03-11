@@ -1,9 +1,12 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'rentals-edit.css' %}">
+    <title>J.L.C limited</title>
 </head>
 <body>
     <div class="main-container">
@@ -11,26 +14,35 @@
         <form action="/edit_rental/{{property_for_renting.id}}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
            
+            <span>Apartment name</span>
+            <input type="text" name="apartment_name" value="{{property_for_renting.apartment_name}}" required="false">
            
-            <p>apartment name</p> <input type="text" name="apartment_name" value="{{property_for_renting.apartment_name}}" required="false">
-            <hr>
-            
-            <p>Features</p> 
+            <span>Features</span>  
             <textarea name="features" cols="30" rows="10">{{ property_for_renting.features }}</textarea>
-            <hr>
-            <p>price</p> <input type="number" name="price" value="{{property_for_renting.price}}"  required="false">
-            <hr>
-            <p>deposit</p> <input type="number" name="deposit" value="{{property_for_renting.deposit}}" required="false">
-            <hr>
+           
+           
+            <span>Price</span>  
+            <input type="number" name="price" value="{{property_for_renting.price}}"  required="false">
+           
+          
+            <span>Deposit</span>  
+            <input type="number" name="deposit" value="{{property_for_renting.deposit}}" required="false">
+           
 
-            <p>water fee</p> <input type="number" name="water_fee" value="{{property_for_renting.water_fee}}" required="false">
-            <hr>
-            <p>garbage_fee</p> <input type="number" name="garbage_fee" value="{{property_for_renting.garbage_fee}}" required="false">
-            <hr>
-           <p>contact</p> <input type="text" name="contact" value="{{property_for_renting.landlord_contact}}" required="false">
-            <hr>
+          
+            <span>Water fee</span>  
+            <input type="number" name="water_fee" value="{{property_for_renting.water_fee}}" required="false">
+            
+           
+            <span>Garbage fee</span>  
+            <input type="number" name="garbage_fee" value="{{property_for_renting.garbage_fee}}" required="false">
+           
+           
+           <span>Contact</span> 
+           <input type="text" name="contact" value="{{property_for_renting.landlord_contact}}" required="false">
+            
             <input class="save" type="submit" value="save">
-            <hr>
+           
       
         </form>
         

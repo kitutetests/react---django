@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'developer-properties.css' %}">
+</head>
+<body>
+<div class="main-container">
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>photo</td>
+                <td>size</td>
+                <td>location</td>
+                <td>edit</td>
+                <td>delete</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for property in properties reversed %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>
+                    <div class="image">
+                        <img src="{{property.photos.url}}" alt="">
+                    </div>
+                </td>
+                <td>{{property.size}}  {{property.property_type}}</td>
+                <td>{{property.location}}</td>
+                <td>
+                    {% if property in properties_on_sale %}
+                    <a class="edit" href="edit_property/{{property.id}}">Edit</a>
+                    {% elif property in properties_for_renting %}
+                    <a class="edit" href="edit_rental/{{property.id}}">Edit</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if property in properties_on_sale %}
+                    <a class="delete" href="#" data-property-type="sale" data-property-id="{{property.id}}">Delete</a>
+                    {% elif property in properties_for_renting %}
+                    <a class="delete" href="#" data-property-type="rent" data-property-id="{{property.id}}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Are you sure you want to delete?</h2>
+            <h3 id="property-details"></h3>
+            <form id="delete-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
+</div>
+    
+<script>
+    // JavaScript to handle modal functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        var modal = document.getElementById("myModal");
+        var deleteLinks = document.querySelectorAll(".delete");
+        var propertyDetails = document.getElementById("property-details");
+        var deleteForm = document.getElementById("delete-form");
+
+        deleteLinks.forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                modal.style.display = "block";
+                var propertyType = this.getAttribute("data-property-type");
+                var propertyId = this.getAttribute("data-property-id");
+                if (propertyType === "sale") {
+                    propertyDetails.textContent = "Property for sale with ID: " + propertyId;
+                    deleteForm.action = "delete_property/" + propertyId;
+                } else if (propertyType === "rent") {
+                    propertyDetails.textContent = "Property for rent with ID: " + propertyId;
+                    deleteForm.action = "delete_rental/" + propertyId;
+                }
+            });
+        });
+
+        var closeModalButton = document.querySelector(".close");
+        closeModalButton.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+</script>
+</body>
+</html>
