@@ -32,8 +32,26 @@
                 </td>
                 <td>{{property.size}}  {{property.property_type}}</td>
                 <td>{{property.location}}</td>
-                <td><a href="/edit_property/{{property.id}}">edit</a></td>
-                <td><a href="">delete</a></td>
+                
+               
+                <td>
+                    {% if property in properties_on_sale %}
+                    <a href="edit_property/{{property.id}}">Edit</a>
+
+                    {% elif property in properties_for_renting %}
+                    <a href="edit_rental/{{property.id}}">Edit</a>
+                    {% endif %}
+
+                </td>
+                
+                <td>
+                    {% if property in properties_on_sale %}
+                    <a href="delete_property/{{property.id}}">Delete</a>
+
+                    {% elif property in properties_for_renting %}
+                    <a href="delete_rental/{{property.id}}">Delete</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

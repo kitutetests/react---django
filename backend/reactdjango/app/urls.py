@@ -13,7 +13,10 @@ urlpatterns = [
     path('developer_properties',views.developer_properties,name='developer_properties'),
     path('sell_property',views.sell_property,name='sell_property'),
     path('view_property',views.view_properties,name='view_property'),
-    path('edit_property/<int:pk>',views.edit_property,name='edit_property'),
+    path('edit_rental/<int:pk>',views.edit_rental,name='edit_rental'),
+    path('delete_rental/<int:pk>',views.delete_rental,name='delete_rental'),
+     path('delete_property/<int:pk>',views.delete_property,name='delete_property'),
+    path('edit_property/<int:pk>',views.edit_on_sale_property,name='edit_property'),
     path('property_details/<int:pk>',views.rentals_details,name='property_details'),
     path('search_rentals',views.search_rental,name='search_rentals'),
 

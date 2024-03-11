@@ -8,12 +8,9 @@
 <body>
     <div class="main-container">
       
-        <form action="/edit_property/{{property.id}}" method="POST" enctype="multipart/form-data">
+        <form action="/edit_property/{{property_on_sale.id}}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
         
-            <p>property_type </p> <input type="text" name="size"  value="{{property_on_sale.property_type }}">
-            <hr>
-            
             <p>Features</p> 
             <textarea name="features" cols="30" rows="10">{{ property_on_sale.features }}</textarea>
             <hr>
@@ -23,7 +20,7 @@
             <textarea name="payment_process" cols="30" rows="10">{{property_on_sale.payment_process}}</textarea>
            
             <hr>
-            <p>contact</p> <input type="text" name="contact" value="{{on_sale_property.contact}}">
+            <p>contact</p> <input type="text" name="contact" value="{{property_on_sale.contact}}">
             <hr>
             <input class="save" type="submit" value="save">
             <hr>

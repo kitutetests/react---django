@@ -117,27 +117,47 @@ def developer_properties(request):
 
     properties = list(properties_for_renting) + list(properties_on_sale)
 
-    return render(request,'developer-properties.html',{'properties':properties})
+    return render(request,'developer-properties.html',{'properties':properties,'properties_for_renting':properties_for_renting,'properties_on_sale':properties_on_sale})
 
-# def edit_rental(request,pk):
-#     Property = Property_for_renting.objects.get(id=pk)
-#     return render(request,'rental-edit.html',{'Property':Property})
+def edit_rental(request,pk):
+    property_for_renting = Property_for_renting.objects.get(id=pk)
 
-# def edit_on_sale_property(request,pk):
-#     Property = Property_on_sale.objects.get(id=pk)
-#     return render(request,'on-sale-edit.html',{'Property':Property})
+    if request.method == 'POST':
+        apartment_name = request.POST['apartment_name']
+       
+        features = request.POST['features']
+        price = request.POST['price']
+        deposit = request.POST['deposit']
+        water_fee = request.POST['water_fee']
+        garbage_fee = request.POST['garbage_fee']
+        contact = request.POST['contact']
 
-def edit_property(request, pk):
-    property_for_renting = None
-    property_on_sale = None
-    try:
-        property_for_renting = Property_for_renting.objects.get(id=pk)
-        template = 'rental-edit.html'
-    except Property_for_renting.DoesNotExist:
-        property_on_sale = get_object_or_404(Property_on_sale, id=pk)
-        template = 'on-sale-edit.html'
+        property_for_renting.apartment_name = apartment_name
+        
+        property_for_renting.features = features
+        property_for_renting.price = price
+        property_for_renting.deposit = deposit
+        property_for_renting.water_fee = water_fee
+        property_for_renting.garbage_fee = garbage_fee
+        property_for_renting.contact = contact
+        
+        property_for_renting.save()
 
-    return render(request, template, {'property_for_renting': property_for_renting, 'property_on_sale': property_on_sale})
+    return render(request,'rental-edit.html',{'property_for_renting':property_for_renting})
+
+def delete_rental(request,pk):
+    property_for_renting = Property_for_renting.objects.get(id=pk)
+    property_for_renting.delete()
+    return redirect(developer_properties)
+
+def edit_on_sale_property(request,pk):
+    property_on_sale = Property_on_sale.objects.get(id=pk)
+    return render(request,'on-sale-edit.html',{'property_on_sale':property_on_sale})
+
+def delete_property(request,pk):
+    property_on_sale = Property_on_sale.objects.get(id=pk)
+    property_on_sale.delete()
+    return redirect(developer_properties)
 
 def sell_property(request):
      user = request.user
