@@ -137,8 +137,68 @@ p{
     align-items: center;
     text-align: center;
 }
+.pagination{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.current{
+    font-size: large;
+    margin-bottom: 10px;
+}
+.step-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+.step-links ul a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    border: 1px solid black;
+    height: 30px;
+    width: 20%;
+}
+.step-links ul a:hover{
+    border: none;
+    background-color: rgb(38, 216, 38);
+    color: white;
+}
+
+.step-links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button 20px from the bottom */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it's on top of other content */
+    font-size: 18px; /* Increase font size */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #333; /* Black background color */
+    color: white; /* White text color */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    padding: 15px; /* Add some padding */
+    border-radius: 10px; /* Rounded corners */
+  }
 
 @media (max-width: 768px) {
+    #scrollToTopBtn {
+        bottom: 10px; /* Place the button 20px from the bottom */
+        right: 20px;
+        font-size: 15px;
+    }
         .search-container{
             width: 100%;
             margin-top: 5px;
@@ -168,5 +228,21 @@ p{
         }
         p{
             margin: 2px;
+        }
+        .pagination{
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    
+        .step-links ul a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            border: 1px solid black;
+            height: 30px;
+            width: 25%;
+            margin-right: 5px;
         }
     }

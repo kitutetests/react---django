@@ -17,10 +17,10 @@
             <div class="container">
                 <div class="profile-image">
                     <div class="dp">
-                        {% if developer.profile_photo %}
-                            <img src="{{ developer.profile_photo.url }}" alt="Profile Picture">
+                        {% if developer.profile_picture %}
+                            <img src="{{ developer.profile_picture.url }}" alt="Profile Picture">
                         {% else %}
-                            <img src="{% static 'images/default dp.jpg' %}" alt="Default Profile Picture">
+                             <img src="{% static 'images/default dp.jpg' %}" alt="Profile Picture">
                         {% endif %}
                         
                     </div>

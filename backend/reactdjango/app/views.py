@@ -81,13 +81,14 @@ def developer_profile_update(request):
      developer = Profile.objects.get(email=user.username)
      
      if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=developer)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            
-            form.save()
+            dp = form.cleaned_data['profile_picture']
+            developer.profile_picture = dp
+            developer.save()
             return redirect('developer_profile')  # Redirect to the developer profile page after saving
      else:
-        form = ProfileForm(instance=developer) 
+        form = ProfileForm() 
 
      return render(request, 'profile-update.html',{'form':form})
 
@@ -233,6 +234,17 @@ def search_rental(request):
 
 def properties_on_sale(request):
      properties = Property_on_sale.objects.all()
+     paginator = Paginator(properties, 4)
+     page = request.GET.get('page')
+     try:
+          properties = paginator.page(page)
+   
+     except PageNotAnInteger:
+          # If page is not an integer, deliver first page.
+          properties = paginator.page(1)
+     except EmptyPage:
+          # If page is out of range (e.g. 9999), deliver last page of results.
+          properties = paginator.page(paginator.num_pages)
      return render(request, 'buyproperty.html' ,{'properties':properties})
 
 

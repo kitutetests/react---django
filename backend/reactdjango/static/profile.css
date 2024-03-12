@@ -27,8 +27,9 @@
     overflow: hidden;
 }
 .dp img{
+   
     max-width: 100%;
-    max-height: 100%;
+    max-hedight: 100%;
     object-fit: cover;
 
 }

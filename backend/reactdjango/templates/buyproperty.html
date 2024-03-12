@@ -78,6 +78,47 @@
         </a>
         
         {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+
+                <span class="current">
+                    Page {{ properties.number }} of {{ properties.paginator.num_pages }}.
+                </span>
+
+                <ul>
+                    {% if properties.has_previous %}
+                    <a href="?page=1">
+                        <li> &laquo; first</li>
+                    </a>
+                    
+                       
+                    <a href="?page={{ properties.previous_page_number }}">
+                        <li>previous </li>
+                    </a>
+                   
+                    {% endif %}
+        
+        
+                    {% if properties.has_next %}
+                    <a href="?page={{ properties.next_page_number }}">
+                       <li>next</li>
+                    </a>
+
+                    <a href="?page={{ properties.paginator.num_pages }}">
+                        <li>last &raquo;</li>
+                    </a>
+                    {% endif %}
+                </ul>
+               
+            </span>
+        </div>
+
+        <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+        <script src="{% static 'home-btn.js'%}"></script>
+        </div>
+
     </div>
 
     {% endblock %}    
