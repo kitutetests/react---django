@@ -51,7 +51,10 @@
     cursor: pointer;
     z-index: 10;
 }
-
+.swiper-button-next:after, .swiper-button-prev:after {
+   
+    color: white;
+}
 .swiper-button-prev {
     left: 10px;
 }
