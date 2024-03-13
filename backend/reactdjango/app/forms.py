@@ -24,7 +24,7 @@ class SellPropertyForm(forms.ModelForm):
    
     class Meta:
         model = Property_on_sale
-        fields = ['property_type','features','location','pin_location','photos','video','price','deposit','payment_process','contact','id_photo_front','id_photo_back']
+        fields = ['property_type','features','location','pin_location','main_photo','video','price','deposit','payment_process','contact','id_photo_front','id_photo_back']
         widgets = {'pin_location': forms.TextInput(attrs={'placeholder': '(optional)'}),
                   'contact': forms.TextInput(attrs={'placeholder':  '+2547XXXXXXXX'}),
                  

@@ -114,6 +114,7 @@ def post_rentals(request):
 
                for photo in photos:
                 PropertyImage.objects.create(property_renting=post, image=photo)
+               #  return render(post_rentals)
                 
                 
      else:
@@ -186,17 +187,24 @@ def delete_property(request,pk):
     property_on_sale.delete()
     return redirect(developer_properties)
 
+
+# post property for sale
 def sell_property(request):
      user = request.user
      developer = Profile.objects.get(email=user.username)
      
      if request.method == 'POST':
           form = SellPropertyForm(request.POST , request.FILES)
-
+          photos = request.FILES.getlist('photos')
           if form.is_valid():
                 post = form.save(commit=False)
                 post.owner = developer
                 post.save()
+
+                photos = request.FILES.getlist('photos')
+
+                for photo in photos:
+                    PropertyImage.objects.create(property_on_sale=post, image=photo)
      else:
           form = SellPropertyForm()
      return render (request , 'sellproperty.html',{'form':form,'developer':developer})
@@ -263,6 +271,9 @@ def properties_on_sale(request):
 
 def property_on_sale_details(request, pk):
      on_sale_property = Property_on_sale.objects.get(id = pk)
+
+     photos = on_sale_property.property_on_photos.all()
+
      features_list = on_sale_property.features.split('.') if on_sale_property.features else []
 
      related_property = Property_on_sale.objects.filter(
@@ -271,7 +282,7 @@ def property_on_sale_details(request, pk):
                          Q(property_type=on_sale_property.property_type, price=on_sale_property.price)
                          ).exclude(id=pk)                  
 
-     return render (request , 'on_sale_property_details.html',{'on_sale_property':on_sale_property,'features_list':features_list,'related_property': related_property})
+     return render (request , 'on_sale_property_details.html',{'on_sale_property':on_sale_property,'features_list':features_list,'related_property': related_property,'photos':photos})
   
 
 def search_property(request):
