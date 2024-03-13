@@ -72,8 +72,12 @@ WSGI_APPLICATION = 'reactdjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'real-estate',
+        'USER': 'postgres',
+        'PASSWORD': 'jeff1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
