@@ -64,8 +64,8 @@
             <div class="about-house">
                 <p>House type : {{rental.size}}</p>
                 <p>Location :  {{rental.location}}</p>
-                <p>Rent per month : ksh {{rental.price}}</p>
-                <p>Deposit : {{rental.deposit}}</p>
+                <p>Rent per month : ksh {{rental.price|intcomma }}</p>
+                <p>Deposit : {{rental.deposit|intcomma }}</p>
                 <p>Water cost : {{rental.water_fee}}</p>
                 <p>Garbage cost : {{rental.garbage_fee}}</p>
                  
