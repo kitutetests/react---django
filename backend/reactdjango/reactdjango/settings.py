@@ -81,7 +81,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgres://real_estate_xsxb_user:g6bwYgYxtBhcINNXCNEgd8wc3d7Nktit@dpg-cnotvpljm4es738c34gg-a.oregon-postgres.render.com/real_estate_xsxb")
+# Parse the database URL from the environment variable for production
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
 # 
 
 # Password validation
