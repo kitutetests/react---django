@@ -68,7 +68,9 @@
                 <p>Deposit : {{rental.deposit}}</p>
                 <p>Water cost : {{rental.water_fee}}</p>
                 <p>Garbage cost : {{rental.garbage_fee}}</p>
+                 
 
+               {% if on_sale_property.pin_location %} 
                 <a href="{{on_sale_property.pin_location}}" target="_blank">
                     <div class="google-map">
                         <img src="{% static 'images/googlemapslogo.webp' %}" alt="googlemaps">
@@ -76,6 +78,8 @@
                     </div>
                    
                 </a>
+
+                {% endif %}
             </div>
         </div>
         {% if features_list %}
