@@ -104,12 +104,14 @@
     
    
 }
-.photo {
+.swiper-slide {
+    border: 1px solid rgb(6, 5, 12);
     width: 100%;
     height: 200px;
+    display: block;
     overflow: hidden;
 }
-.photo img{
+.swiper-slide img{
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;

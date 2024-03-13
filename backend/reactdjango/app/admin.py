@@ -1,6 +1,8 @@
 from django.contrib import admin
-from . models import Profile,Property_for_renting,Property_on_sale
+from . models import Profile,Property_for_renting,Property_on_sale,PropertyImage
 # Register your models here.
+
+admin.site.register(PropertyImage)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'name','other_name','email')
 

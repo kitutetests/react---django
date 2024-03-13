@@ -32,10 +32,12 @@
 
                 <div class="profile-credentials">
                     <p><span>First name</span> : {{developer.name}}</p>
-                    <p><span>Last name</span> : {{developer.name}}</p>
+                    <p><span>Last name</span> : {{developer.other_name}}</p>
                     <p><span>Email</span> : {{developer.email}}</p>
                     <p><span>Id Number</span> : {{developer.id_number}}</p>
-                    <p><span>Number of Houses</span> : {{developer.email}}</p>
+                    <p><span>Houses for Rent</span> : {{ developer.property_for_renting_set.count }}</p>
+                    <p><span>Properties for Sale</span> : {{ developer.property_on_sale_set.count }}</p>
+                </div>
                 </div>
                 
             </div>

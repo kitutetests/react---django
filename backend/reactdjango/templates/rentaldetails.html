@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="{% static 'rentaldetails.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <title>house details</title>
     <style>
         .rent-property{
@@ -19,8 +24,33 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="image-container">
-            <img src="{{rental.photos.url}}" alt="">
+        <div class="swiper-parent-container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Main image slide -->
+                    <div class="swiper-slide">
+                        <img src="{{ rental.main_image.url }}" alt="">
+                    </div> 
+                     
+                    <!-- Other images slides -->
+                    {% for photo in photos %}
+                    <div class="swiper-slide">
+                        <img src="{{ photo.image.url }}" alt="Product Image">
+                    </div>
+                    {% endfor %}
+                </div>
+        
+                <!-- Custom pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                
+                <button class="play-button"><i class="fa fa-play" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
 
         {% if rental.video %}
@@ -106,9 +136,10 @@
             {% endfor %}
             {% endif %}
         </div>
-    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+        <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 
-    <script src="{% static 'home-btn.js'%}"></script>  
+        <script src="{% static 'home-btn.js'%}"></script>
+        <script src="{% static 'swipper.js'%}"></script>    
     </div>
     {% endblock %}
 </body>

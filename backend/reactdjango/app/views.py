@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from . models import *
 from django.contrib import auth,messages
-from . forms import *
+from . forms import ProfileForm,HouseRentForm,SellPropertyForm
+
 from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
@@ -27,7 +28,7 @@ def register(request):
             profile=Profile(user=user,name=name,other_name=other_name,id_number=id_number,email=email)
             profile.save()
 
-            return redirect(home)
+            return redirect(login)
         else:
                 pass     
 
@@ -99,14 +100,25 @@ def post_rentals(request):
      developer = Profile.objects.get(email=user.username)
      
      if request.method == 'POST':
-          form = HouseRentForm(request.POST , request.FILES)
+          photos = request.FILES.getlist('photos')
 
+          form = HouseRentForm(request.POST , request.FILES)
+          
           if form.is_valid():
-                post = form.save(commit=False)
-                post.owner = developer
-                post.save()
+               post = form.save(commit=False)
+               post.owner = developer
+              
+               post.save()
+
+               photos = request.FILES.getlist('photos')
+
+               for photo in photos:
+                PropertyImage.objects.create(property_renting=post, image=photo)
+                
+                
      else:
           form = HouseRentForm()
+          
      return render (request , 'post-rentals.html',{'form':form,'developer':developer})
 
 def developer_properties(request):
@@ -207,9 +219,10 @@ def view_properties(request):
 
 def rentals_details(request, pk):
      rental = Property_for_renting.objects.get(id = pk)
+     photos = rental.rental_photos.all()  # Assuming 'rental_photos' is the related name
      features_list = rental.features.split('.') if rental.features else []
      related_rentals = Property_for_renting.objects.filter(location = rental.location, size = rental.size).exclude(id=pk)
-     return render (request , 'rentaldetails.html',{'rental':rental,'features_list':features_list,'related_rentals':related_rentals})
+     return render (request , 'rentaldetails.html',{'rental':rental,'photos':photos,'features_list':features_list,'related_rentals':related_rentals})
      
 
 def search_rental(request):

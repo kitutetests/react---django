@@ -70,9 +70,12 @@
         {% for rental in rentals reversed %}
         <a href="/property_details/{{rental.id}}">
             <div class="houses-container">
+                {% if rental.main_image %}
                 <div class="photo">
-                     <img src="{{rental.photos.url}}">
-                </div>
+                    <img src="{{ rental.main_image.url }}">
+               </div>
+               {% endif %}
+               
                 <div class="details">
                      <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>
                      <p>{{rental.size}}</p>

@@ -12,6 +12,7 @@ class Profile(models.Model):
    def __str__(self):
             return str(self.name)
 
+
 class Property_for_renting(models.Model):
     owner = models.ForeignKey(Profile,on_delete=models.CASCADE)
     apartment_name = models.CharField( max_length=500,null=True)
@@ -31,7 +32,7 @@ class Property_for_renting(models.Model):
     features= models.TextField()
     location = models.CharField(max_length=1000)
     pin_location = models.CharField(null=True,blank=True,max_length=1000)
-    photos = models.ImageField(upload_to='images/' ,null=True)
+    main_image = models.ImageField(upload_to='images/' ,null=True)
     video = models.FileField(upload_to='videos/',blank=True, null=True) 
     price = models.IntegerField()
     deposit = models.IntegerField(null=True,default=0)
@@ -48,6 +49,10 @@ class Property_for_renting(models.Model):
 
     def __str__(self):
             return str(self.owner )
+
+class PropertyImage(models.Model):
+    property_renting = models.ForeignKey(Property_for_renting, on_delete=models.CASCADE, related_name='rental_photos',null=True)
+    image = models.ImageField(upload_to='images/')
 
 class Property_on_sale(models.Model):
     owner = models.ForeignKey(Profile,on_delete=models.CASCADE)
@@ -75,3 +80,5 @@ class Property_on_sale(models.Model):
     
     def __str__(self):
             return str(self.property_type)  + str(self.contact)
+    
+
