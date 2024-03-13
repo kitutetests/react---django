@@ -18,6 +18,8 @@ button{
     width: 30%;
     height: 30px;
     border: none;
+    display: block;
+    margin-top: 10px;
 }
 @media (max-width: 768px) {
     .sell-property{
