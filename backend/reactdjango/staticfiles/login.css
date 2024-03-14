@@ -1,5 +1,7 @@
-
-.big_container{  
+body{
+    background-color: rgb(175, 172, 172);
+}
+.login-container{  
     background-color: white;
     cursor: pointer;
     width: 50%;
@@ -34,17 +36,21 @@
     margin-bottom: 20px;
     height: 30px;
 }
-.msg h4{
-    color: red;
-}
+
 .reset-password{
     color: #f1a310;
 }
 .register{
     color: #358f02;
 }
-body{
-    background-color: rgb(175, 172, 172);
+a{
+    text-decoration: none;
+}
+.message-success {
+    color: green;
+}
+.message-error {
+    color: red;
 }
 
 input[type=submit]{
@@ -54,9 +60,11 @@ input[type=submit]{
     color: white;
 
 }
-@media (max-width: 768px) {
-
-    .big_container{ 
+ @media (max-width: 768px) {
+    body{
+        background-color: white;
+    }
+    .login-container{ 
         width: 100%;
         margin-top: 0;
         margin-bottom: 0;

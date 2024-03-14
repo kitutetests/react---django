@@ -81,7 +81,9 @@ a {
     color: white;
 }
 @media (max-width: 768px) {
-
+     body{
+        font-size: 15px;
+     }
     .header{
         height: 60px;
     }

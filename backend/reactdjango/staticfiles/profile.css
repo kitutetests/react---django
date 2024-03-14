@@ -27,8 +27,9 @@
     overflow: hidden;
 }
 .dp img{
+   
     max-width: 100%;
-    max-height: 100%;
+    max-hedight: 100%;
     object-fit: cover;
 
 }
@@ -69,8 +70,8 @@ p{
         margin-left: 0;
     }
     span{
-        font-size: 17px;
-        font-weight: 900;
+        font-size: 16px;
+        font-weight: bold;
     }
     .profile-credentials{
         text-align: left;

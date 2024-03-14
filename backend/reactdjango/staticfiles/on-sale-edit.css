@@ -1,0 +1,32 @@
+.main-container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+form{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+textarea{
+    width: 55%;
+    height: 100px;
+    display: block;
+    margin-bottom: 20px;
+}
+input{
+    margin-bottom: 20px;
+}
+span{
+    display: block;
+}
+.save{
+    background-color: rgb(255, 110, 6);
+    border: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    width: 20%;
+    height: 30px;
+}
