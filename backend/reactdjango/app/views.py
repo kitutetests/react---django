@@ -28,9 +28,11 @@ def register(request):
             profile=Profile(user=user,name=name,other_name=other_name,id_number=id_number,email=email)
             profile.save()
 
+            messages.success(request, 'Registered successfully')
+            
             return redirect(login)
         else:
-                pass     
+              messages.error(request, 'Passwords do not match')
 
     else:
             pass    

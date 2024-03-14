@@ -22,6 +22,12 @@
             </form>
         </div>
 
+        {% for message in messages %}
+        <h4 class="{% if message.tags == 'error' %}message-error{% elif message.tags == 'success' %}message-success{% endif %}">
+            {{ message }}
+          </h4>
+        {% endfor %}
+
         <div class="res-password">
             <a class="reset-password" href="/reset_password" >forgot password?</a> 
               <h5>
@@ -32,13 +38,7 @@
         </div> 
               
                 
-        
-        {% for message in messages %}
-          <div class="msg">
-              <h4>{{message}}</h4>
-          </div>
-        {% endfor%}
-
+         
   </div>
 
 </body>

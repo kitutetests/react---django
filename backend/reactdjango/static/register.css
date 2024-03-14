@@ -42,27 +42,24 @@ input[type=submit]{
     text-align: center;
     margin-bottom: 30px;
 }
+a{
+    text-decoration: none;
+}
 .login-account a {
     color: green;
 }
-.msg{
+.message-success {
+    color: green;
+}
+.message-error {
     color: red;
-    text-align: center;
-
 }
 
 
-
-.submit input{
-    background-color: rgb(15, 231, 15);
-    color: white;
-    width: 80px;
-    height: 30px;
-    border-radius: 3px;
-   font-weight: bold;
-    border: none;
-}
 @media (max-width: 768px) {
+    body{
+        background-color: white;
+    }
     .register-container{ 
         width: 100%;
         margin-bottom: 0;

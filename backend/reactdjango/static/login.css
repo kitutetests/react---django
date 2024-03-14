@@ -36,16 +36,22 @@ body{
     margin-bottom: 20px;
     height: 30px;
 }
-.msg h4{
-    color: red;
-}
+
 .reset-password{
     color: #f1a310;
 }
 .register{
     color: #358f02;
 }
-
+a{
+    text-decoration: none;
+}
+.message-success {
+    color: green;
+}
+.message-error {
+    color: red;
+}
 
 input[type=submit]{
     width: 100%;
@@ -55,6 +61,9 @@ input[type=submit]{
 
 }
  @media (max-width: 768px) {
+    body{
+        background-color: white;
+    }
     .login-container{ 
         width: 100%;
         margin-top: 0;
