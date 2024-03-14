@@ -72,19 +72,14 @@ WSGI_APPLICATION = 'reactdjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'real-estate',
-        'USER': 'postgres',
-        'PASSWORD': 'jeff1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+} 
 
-# Parse the database URL from the environment variable for production
-if 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
-# 
+DATABASES["default"] = dj_database_url.parse("postgres://real_estate_xsxb_user:g6bwYgYxtBhcINNXCNEgd8wc3d7Nktit@dpg-cnotvpljm4es738c34gg-a.oregon-postgres.render.com/real_estate_xsxb")
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
