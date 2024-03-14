@@ -1,15 +1,15 @@
 body{
     padding: 0;
     margin: 0;
-   
+    background-color: rgb(175, 172, 172);
 }
-.login_container{ 
+.register-container{ 
     background-color:white;
     cursor: pointer;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 60px;
+    margin-top: 20px;
     border-radius: 5px;
     margin-bottom: 30px;
     display: flex;
@@ -57,21 +57,25 @@ input[type=submit]{
     background-color: rgb(15, 231, 15);
     color: white;
     width: 80px;
-    height: 28px;
+    height: 30px;
     border-radius: 3px;
    font-weight: bold;
     border: none;
 }
 @media (max-width: 768px) {
-    .login_container{ 
+    .register-container{ 
         width: 100%;
         margin-bottom: 0;
         margin-top: 0;
-        height: 60vh;
+        height: 90vh;
     }
     .user-credentials input{
         height: 20px;
     }
-
-
+    .user-credentials input {
+        margin-bottom: 10px;
+    }
+    input[type=submit]{
+     height: 30px;
+    }
 }
