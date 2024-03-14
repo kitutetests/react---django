@@ -1,7 +1,7 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: rgb(207, 204, 204);
+   
 }
 .login_container{ 
     background-color:white;
@@ -67,7 +67,7 @@ input[type=submit]{
         width: 100%;
         margin-bottom: 0;
         margin-top: 0;
-        height: 100vh;
+        height: 60vh;
     }
     .user-credentials input{
         height: 20px;
