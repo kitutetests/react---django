@@ -57,6 +57,7 @@ footer{
     position: relative;
     bottom: 0;
     height: 55vh;
+    margin-top: 10px;
 }
 .quick-links-logo{
     display: flex;
@@ -137,13 +138,16 @@ footer{
         margin-right: 10px;
     }
     footer{
-        height: 30vh;
+        height: auto;
+      
     }
     .logo{
-        margin-left: 5px;
+       width: 80%;
+       margin-left: auto;
+        margin-top: 10px;
+        margin-right: auto;
         color: white;
         font-size: 12px;
-        width: 39%;
     }
     .logo-image img{
         width: 15%;
@@ -157,20 +161,32 @@ footer{
         display: block;
     }
     .footer-container{
-        width: 61%;
+        flex-direction: column;
+        width: 80%;
+        
+        
+    }
+    .company, .support {
+      width: 80%;
+      align-items: start;
+      margin-top: 10px;
     }
     .support p , .company p{
-        font-size: 14px;
+        font-size: 17px;
         padding-bottom: 6px;
     }
     .footer-container a{
         padding: 5px;
-        font-size: 12px;
+        font-size: 14px;
     }
     .support{
         margin-right: 5px;
+        display: flex;
+        flex-direction: column;
+       
     }
     .quick-links-logo{ 
+        flex-direction: column;
         width: 100%;
     }
     .social-links{
