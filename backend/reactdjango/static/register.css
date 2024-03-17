@@ -56,10 +56,60 @@ a{
 }
 
 
+
+#terms-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999;
+}
+
+.terms-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 5px;
+}
+
+#times {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 50%;
+    color: black;
+    z-index: 999; 
+    cursor: pointer;
+}
+
+#terms-link{
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+.checkbox{
+    display: flex;
+    width: 60%;
+}
+label{
+    padding-top: 8px;
+}
+.checkbox input{
+    left: 0;
+    display: flex;
+    width: 20px;
+    align-items: start;
+}
+
 @media (max-width: 768px) {
     body{
         background-color: white;
     }
+
     .register-container{ 
         width: 100%;
         margin-bottom: 0;
@@ -68,9 +118,11 @@ a{
     }
     .user-credentials input{
         height: 20px;
-    }
-    .user-credentials input {
         margin-bottom: 10px;
+        width: 60%;
+    }
+    .user-credentials p{
+        font-size: 14px;
     }
     input[type=submit]{
      height: 30px;

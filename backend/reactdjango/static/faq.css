@@ -1,4 +1,9 @@
+body{
+    font-size: 17px;
+}
+
 .main-container{
+
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -6,7 +11,7 @@
     
 }
 .question{
-    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
 }
 .answer{
@@ -15,4 +20,10 @@
 .answer.open {
     display: block;
     transition: 1s ease; 
+}
+
+@media (max-width : 768px){
+    .question{
+        font-size: 15px;
+    }
 }

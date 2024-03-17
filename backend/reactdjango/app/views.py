@@ -63,6 +63,8 @@ def logout(request):
     auth.logout(request)
     return redirect(login)
 
+def terms_and_conditions(request):
+     return render(request, 'terms-and-conditions-developer.html')
    
 def home(request):
      return render(request, 'homepage.html')
