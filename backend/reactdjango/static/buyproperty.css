@@ -19,7 +19,10 @@
 a.dark-mode {
     color: white;
 }
-
+.dark-mode .search-btn{
+    background-color:  rgb(10, 10, 10);
+    
+}
 .dark-mode .property-container{
     background-color: rgb(32, 31, 31);
     color: white;
@@ -178,6 +181,10 @@ a .property-container{
     align-items: center;
     justify-content: center;
     height: 10vh;
+}
+.dark-mode .step-links ul a{
+    background-color: rgb(32, 31, 31);
+    color: white;
 }
 .step-links ul a{
     display: flex;

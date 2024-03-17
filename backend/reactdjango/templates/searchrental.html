@@ -22,9 +22,9 @@
     {% for rental in rentals %}
     <a href="/property_details/{{rental.id}}">
         <div class="houses-container">
-            
+           
             <div class="photo">
-                    <img src="{{rental.photos.url}}">
+                    <img src="{{ rental.main_image.url}}">
             </div>
             <div class="details">
                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{rental.location}}</p>

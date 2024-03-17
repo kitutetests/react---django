@@ -106,6 +106,11 @@ a.dark-mode {
     background-color: rgb(32, 31, 31);
     color: white;
 }
+.dark-mode .search-btn{
+     background-color:  rgb(10, 10, 10);
+     
+}
+
 a{
     color: black;
     text-decoration: none;
@@ -157,6 +162,11 @@ a{
     align-items: center;
     text-align: center;
     
+}
+
+.dark-mode .step-links ul a{
+    background-color: rgb(32, 31, 31);
+    color: white;
 }
 
 .pagination{
