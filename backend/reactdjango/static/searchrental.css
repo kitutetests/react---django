@@ -9,8 +9,23 @@ a{
     color: black;
 }
 
+
+a.dark-mode {
+    color: white;
+}
+
+.dark-mode .houses-container{
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+
+.dark-mode .cost{
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+
+
 .houses-container{
-    background-color: white;
     width: 24%;
     display: inline-block;
     border-top-left-radius: 5px; /* Adjust the radius value as needed */
@@ -18,8 +33,6 @@ a{
     margin-bottom: 5px;
     margin-right: 5px;
     vertical-align: top;
-    border: 1px solid rgb(6, 5, 12);
-   
 }
 .photo {
     width: 100%;
@@ -48,8 +61,7 @@ p{
     width: 100%;
     color: white;
     border: none;
-    background-color: rgb(6, 5, 12);
-
+    background-color: rgb(10, 10, 10);
     height: 43px;
     display: flex;
     justify-content: center;

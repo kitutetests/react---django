@@ -13,7 +13,7 @@
     <title>J.L.C limited</title>
     
 </head>
-<body>
+<body class="{% block body_class %}light-mode{% endblock %}">
     <header>
         <div class="nav-bar">
             <div class="logo-header">
@@ -21,7 +21,8 @@
              </div>
                 <h4 class="phone-contact"><i class="fa fa-phone" aria-hidden="true"></i> +254769624433</h4>
                 <h4 class="your-location"><i class="fa fa-map-marker" aria-hidden="true"></i> Njoro,Nakuru</h4>
-            
+              
+              
             <div class="btn">
                 <a href="/buy_property">
                     <div class="buy-property">
@@ -34,6 +35,9 @@
                         <span>Rentals</span>
                     </div>
                 </a>
+                <div class="moon">
+                    <i class="fa fa-moon-o" aria-hidden="true"></i>
+                </div>               
             </div>
             
         </div>
@@ -84,5 +88,8 @@
    
 
 </footer>
+
+<script src="{% static 'theme_toggle.js' %}"></script>
+
 </body>
 </html>

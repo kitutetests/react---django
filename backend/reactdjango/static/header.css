@@ -3,7 +3,27 @@ body{
     margin: 0;
     height: 100%;
 }
+:root {
+    --light-bg-color: white; 
+    --dark-bg-color: rgb(10, 10, 10);
+   
+}
+body.light-mode {
+   
+    background-color: var(--light-bg-color);
+    color: var( --dark-bg-color);
+}
 
+
+body.dark-mode {
+   
+    background-color: var( --dark-bg-color);
+    color:  var(--light-bg-color);
+}
+
+.dark-mode .nav-bar{
+    background-color: rgb(10, 10, 10);
+}
 .nav-bar{
     background-color: rgb(7, 4, 19);
     width: 100%;
@@ -24,6 +44,7 @@ body{
 
 .btn{
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 .buy-property , .rent-property{
@@ -34,16 +55,17 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 10px;
 }
 a .buy-property  , a .rent-property {
     color: white;
     font-weight: bold;
     text-align: center;
-    font-size: 15px;
-   
-   
-  
+    font-size: 15px; 
 }
+
+
+
 a{
     text-decoration: none;
 }

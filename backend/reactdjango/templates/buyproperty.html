@@ -1,6 +1,13 @@
 {% extends 'header.html' %}
 {% load humanize %}
 {% load static%}
+{% block body_class %}
+    {% if dark_mode %}
+        dark-mode
+    {% else %}
+        light-mode
+    {% endif %}
+{% endblock %}
 {%block content%}
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +65,7 @@
 
         {% for property in properties reversed %}
         <a href="/view_property_on_sale_details/{{property.id}}">
-            <div class="property-container">
+            <div  class="property-container {% if dark_mode %}dark-mode{% endif %}">
                 <div class="photo-container">
                      <img src="{{property.main_photo.url}}">
                 </div>

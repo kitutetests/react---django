@@ -2,6 +2,8 @@
     display: none;
 }
 
+
+
 .main-container{
     width: 95%;
     margin-left: auto;
@@ -10,16 +12,32 @@
 }
 
 .main-container a{
-    color: black;
+    
     text-decoration: none;
 }
 
+a.dark-mode {
+    color: white;
+}
+
+.dark-mode .property-container{
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+.dark-mode .search-container{
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+.dark-mode .property-cost{
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+
+
 .search-container{
     display: inline-block;
-    background-color: white;
     width: 50%;
     height: auto;
-    /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); */
     margin-bottom: 10px;
     margin-top: 10px;
     display: inline-block;
@@ -67,7 +85,7 @@ span{
     color: white;
     border: none;
     font-weight: bold;
-    font-size: 14px;
+    
 }
 form{
    width: 90%;
@@ -77,31 +95,35 @@ form{
 }
 
 .adverts{
-    background-color: rgb(11, 10, 27);
+    background-color: rgb(32, 31, 31);
     color: white;
     display: inline-block;
     margin-left: 10px;
     margin-top: 10px;
     vertical-align: top;
     width: 46%;
-    font-size: 17px;
     border-radius: 3px;
 }
 
 p{
     margin: 5px;
 }
+a .property-container{
+    color: black;
+    text-decoration: none; 
+}
 .property-container{
-    background-color: white;
     width: 24%;
     display: inline-block;
     border-top-left-radius: 5px; /* Adjust the radius value as needed */
     border-top-right-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    border:  rgb(6, 5, 12);
-
     vertical-align: top;
+    box-shadow:  3px 0 3px rgba(0, 0, 0, 0.5),/* right */
+                 /* 0 -5px 5px rgba(0, 0, 0, 0.5), Top side */
+                 0 3px 3px rgba(0, 0, 0, 0.5); /* Bottom side */
+                 /* -5px 0 5px rgba(0, 0, 0, 0.5), Left side  left*/
    
 }
 .photo-container {
@@ -125,17 +147,19 @@ p{
     margin-left: auto;
     margin-right: auto;
 }
-.property-cost{
-    width: 100%;
-    color: white;
-    border: none;
-    background-color: rgb(6, 5, 12);
 
+
+.property-cost{
+    background-color: rgb(10, 10, 10);
+    color: white;
+    width: 100%;
+    border: none;
     height: 43px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-weight: bold;
 }
 .pagination{
     width: 60%;
@@ -198,6 +222,15 @@ p{
         bottom: 10px; /* Place the button 20px from the bottom */
         right: 20px;
         font-size: 15px;
+    }
+    body{
+        font-size: 15px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .moon{
+        margin-right: 10px;
     }
         .search-container{
             width: 100%;
