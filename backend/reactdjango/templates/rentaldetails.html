@@ -78,8 +78,8 @@
                 <p>Garbage cost : {{rental.garbage_fee}}</p>
                  
 
-               {% if on_sale_property.pin_location %} 
-                <a href="{{on_sale_property.pin_location}}" target="_blank">
+               {% if rental.pin_location %} 
+                <a href="{{rental.pin_location}}" target="_blank">
                     <div class="google-map">
                         <img src="{% static 'images/googlemapslogo.webp' %}" alt="googlemaps">
                         

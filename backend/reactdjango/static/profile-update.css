@@ -4,7 +4,22 @@
     display: inline-block;
     width: 60%;
     vertical-align: top;
-    border: 1px solid black;
     height: 90vh;
   
+}
+
+.save{
+    margin-top: 10px;
+     border: none;
+     background-color: #171923;
+     font-weight: bold;
+     color: white;
+     width: 30%;
+     height: 30px;
+}
+@media (max-width: 768px) {
+    .save{
+        width: 40%;
+    }
+
 }

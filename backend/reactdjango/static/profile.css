@@ -2,9 +2,9 @@
 .profile{
     margin-top: 1px;
     display: inline-block;
-    width: 60%;
+    width: 79.5%;
+    border: 1px solid rgb(21, 255, 71);
     vertical-align: top;
-    border: 1px solid black;
     height: 90vh;
   
 }
@@ -13,11 +13,14 @@
     text-align: center;
 }
 .profile-image{
-    background-color: rgb(8, 5, 20);
+    background-color: #171923;
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.fa-camera:before {
+    color: black;
 }
 .dp{
     height: 150px;
