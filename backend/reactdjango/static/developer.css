@@ -45,16 +45,34 @@
 .link-container ul li{
     list-style: none;
     height: 40px;
-    text-align: center;
-   
+    text-align: center;  
 }
 .link-container ul li a{
     text-decoration: none;
     color: white;
-    
+    cursor: pointer;  
 }
 
+.terms{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.terms a{
+    text-decoration: none;
+    color: white;
+}
+.terms a:hover{
+    text-decoration: underline;
+}
+
+.phone{
+    display: none;
+}
 .log-out{
+    cursor: pointer;
     background-color: white;
     width: 50%;
     margin-left: auto;
@@ -64,6 +82,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    margin-top: 10px;
 }
 .log-out span{
     color: black;
@@ -102,8 +121,12 @@ a {
         width: 30%;
         height: 180vh;
     }
-   
-
+   .phone{
+    display: block;
+   }
+     .pc{
+        display: none;
+     }
     .log-out{
         width: 80%;
     }

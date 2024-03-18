@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/realestatelogo.png' %}">
     <link rel="stylesheet" href="{% static 'developer.css' %}">
-    <title>owner page</title>
+    <title>J.L.C limited</title>
 </head>
 <body>
     <div class="main-container">
@@ -25,13 +26,23 @@
                     <li><a href="/developer_properties">Properties</a></li>
                     <li><a href="/post_rentals">Post house</a></li>
                     <li><a href="/sell_property">Sell property</a></li>
+                   
                 </ul>
 
-                <a href="/logout">
-                    <div class="log-out">
-                         <span>Logout</span>
+                <div>
+                    <div class="terms">
+                        <a class="pc" href="/terms-and-conditions" target="_blank">Terms and conditions</a>
+                        <a class="phone" href="/terms-and-conditions">T&C</a>
                     </div>
-                </a>
+    
+    
+                    <a href="/logout">
+                        <div class="log-out">
+                             <span>Logout</span>
+                        </div>
+                    </a>
+                </div>
+                
             </div>
             
         </div>

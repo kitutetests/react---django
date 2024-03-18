@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="{% static 'login.css' %}">
-<title>login</title>
+          <link rel="stylesheet" href="{% static 'login.css' %}">
+          <link rel="icon" href="{% static 'images/realestatelogo.png' %}">
+          <title>Login</title>
 </head>
 <body>
     
@@ -14,11 +15,11 @@
         <div class="credentials">
             <form method="POST" action="login">
              {% csrf_token %}
-                <input type="text" name="email" placeholder="input email" required>
+                <input class="input" type="text" name="email" placeholder="input email" required>
                 
-                <input type="password" name="password" placeholder="input password" required>
+                <input  class="input" type="password" name="password" placeholder="input password" required>
                 
-                <input type="submit" value="login">
+                <input type="submit" value="Login">
             </form>
         </div>
 
@@ -33,7 +34,7 @@
               <h5>
                 Don't have an account?
               </h5>          
-            <a class="register" href="/register" >register here</a>
+            <a class="register" href="/register" >Register here</a>
 
         </div> 
               

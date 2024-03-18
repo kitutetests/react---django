@@ -9,14 +9,14 @@ body{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 5px;
-    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     justify-content: space-between;
+   
 }
 .user-credentials form{
     display: flex;
@@ -24,17 +24,18 @@ body{
     align-items: center;
     justify-content: space-between;
 }
-.user-credentials input{
+.user-credentials .input{
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     height: 30px;
 }
 input[type=submit]{
     width: 100%;
+    height: 40px;
     background-color: #f68b1e;
     border: none;
     color: white;
-
+    font-weight: bold;
 }
 .login-account{
     display: flex;
@@ -58,13 +59,14 @@ a{
 
 
 #terms-popup {
+    margin-top: 10px;
     display: none;
-    position: fixed;
+    height: 100vh;
     top: 0;
-    left: 0;
+    position: fixed;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);  
     z-index: 9999;
 }
 
@@ -75,6 +77,11 @@ a{
     margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
+    overflow-y: auto;
+    max-height: 200vh;
+}
+ol{
+    padding-left: 17px;
 }
 
 #times {
@@ -94,10 +101,10 @@ a{
 .checkbox{
     display: flex;
     width: 60%;
+    align-items: center;
+    margin-bottom: 10px;
 }
-label{
-    padding-top: 8px;
-}
+
 .checkbox input{
     left: 0;
     display: flex;
@@ -109,6 +116,10 @@ label{
     body{
         background-color: white;
     }
+    .terms-content {
+        padding: 5px;
+        width: 90%;
+    }
 
     .register-container{ 
         width: 100%;
@@ -116,7 +127,7 @@ label{
         margin-top: 0;
         height: 90vh;
     }
-    .user-credentials input{
+    .user-credentials .input{
         height: 20px;
         margin-bottom: 10px;
         width: 60%;
@@ -126,5 +137,6 @@ label{
     }
     input[type=submit]{
      height: 30px;
+     width: 60%;
     }
 }

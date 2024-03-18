@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/realestatelogo.png' %}">
     <link rel="stylesheet" href="{% static 'register.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,35 +21,34 @@
                 <form method="POST" action="/register">
                         {% csrf_token %}   
                          
-                        <input type="text" name="name" placeholder="input first name" required>
+                        <input class="input" type="text" name="name" placeholder="input first name" required>
 
-                        <input type="text" name="other_name" placeholder="input last name" required>
+                        <input  class="input" type="text" name="other_name" placeholder="input last name" required>
                 
-                        <input type="number" name="id_number" placeholder="input id number" maxlength="8">
+                        <input  class="input" type="number" name="id_number" placeholder="input id number" maxlength="8">
 
-                        <input type="email" name="email"  placeholder="input email" required>
+                        <input  class="input" type="email" name="email"  placeholder="input email" required>
            
-                        <input type="password" name="password1" placeholder="input password" required >
+                        <input  class="input" type="password" name="password1" placeholder="input password" required >
                    
-                        <input type="password" name="password2" placeholder="confirm password" required> 
+                        <input  class="input" type="password" name="password2" placeholder="confirm password" required> 
 
-                        <p style="text-align: center; width: 90%;
-                        ">
+                        <p style="text-align: center; width: 90%; ">
+                       
                             Please read 
                             <a href="#" id="terms-link">our terms</a>
                             and accept to proceed with registration.
                         </p>
 
                          <div class="checkbox">
-                            <label for="checkbox"> I accept </label>
+                            
                             <input type="checkbox" required>
+                            <label for="checkbox"> I accept </label>
+
                          </div>
                         
-                        <input type="submit" value="regiter">
-                </form>  
-
-                
-               
+                        <input type="submit" value="Regiter">
+                </form>                 
             </div>
            
             {% for message in messages %}
@@ -61,12 +61,12 @@
                 <h5>
                     Already have an account?
                 </h5>
-                <a href="/login">login here</a>
+                <a href="/login">Login here</a>
             </div>
        
     </div>  
 
-    <!-- <div id="terms-popup">
+    <div id="terms-popup">
         <div class="terms-content">
             <h2>
                 Terms and Conditions for landlords
@@ -84,6 +84,15 @@
                 <li>You can post as many photos of your property on our website. Editing the house description is also possible at your convenient</li>
                 <li>You can ask questions, place complaints and give compliments to J.C.L through the mobile number provided.
                 </li>
+
+                <li>J.C.L will be committed to ensure everyone searching your property has seen it.</li>
+                <li>You can post as many photos of your property on our website. Editing the house description is also possible at your convenient</li>
+                <li>You can ask questions, place complaints and give compliments to J.C.L through the mobile number provided.
+                </li> <li>J.C.L will be committed to ensure everyone searching your property has seen it.</li>
+                <li>You can post as many photos of your property on our website. Editing the house description is also possible at your convenient</li>
+                <li>You can ask questions, place complaints and give compliments to J.C.L through the mobile number provided.
+                </li>
+
                  <div id="times">
                     <span><i class="fa fa-times" aria-hidden="true"></i></span>
                  </div>
@@ -93,7 +102,7 @@
         </div>
        
     </div>
-</div> -->
+</div> 
     <script src="{% static 't&c.js' %}"></script>
                
 </body>

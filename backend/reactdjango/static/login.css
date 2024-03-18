@@ -1,6 +1,10 @@
 body{
     background-color: rgb(175, 172, 172);
 }
+*{
+    padding: 0;
+    margin: 0;
+}
 .login-container{  
     background-color: white;
     cursor: pointer;
@@ -19,12 +23,12 @@ body{
   
 }
 
-.credentials form{
+.credentials{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
 }
 .res-password{
     display: flex;
@@ -32,16 +36,19 @@ body{
     text-align: center;
     margin-bottom: 30px;
 }
-.credentials input{
+.credentials .input{
+    width: 80%;
     margin-bottom: 20px;
     height: 30px;
 }
 
 .reset-password{
     color: #f1a310;
+    padding-bottom: 8px;
 }
 .register{
     color: #358f02;
+    padding-top: 8px;
 }
 a{
     text-decoration: none;
@@ -54,13 +61,14 @@ a{
 }
 
 input[type=submit]{
-    width: 100%;
+    width: 50%;
     background-color: #f68b1e;
     border: none;
     color: white;
+    height: 30px;
 
 }
- @media (max-width: 768px) {
+@media (max-width: 768px) {
     body{
         background-color: white;
     }
