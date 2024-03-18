@@ -117,10 +117,14 @@ def post_rentals(request):
                photos = request.FILES.getlist('photos')
 
                for photo in photos:
-                PropertyImage.objects.create(property_renting=post, image=photo)
-               #  return render(post_rentals)
-                
-                
+                    PropertyImage.objects.create(property_renting=post, image=photo)
+
+               messages.success(request, "property submitted successfully")
+               return redirect(post_rentals)
+
+          else:      
+               messages.error(request, "sorry! submission failed") 
+               return redirect(post_rentals)
      else:
           form = HouseRentForm()
           
@@ -201,14 +205,21 @@ def sell_property(request):
           form = SellPropertyForm(request.POST , request.FILES)
           photos = request.FILES.getlist('photos')
           if form.is_valid():
-                post = form.save(commit=False)
-                post.owner = developer
-                post.save()
+               post = form.save(commit=False)
+               post.owner = developer
+               post.save()
 
-                photos = request.FILES.getlist('photos')
+               photos = request.FILES.getlist('photos')
 
-                for photo in photos:
+               for photo in photos:
                     PropertyImage.objects.create(property_on_sale=post, image=photo)
+
+               messages.success(request, "property submitted successfully")
+               return redirect(sell_property)
+
+          else:      
+               messages.error(request, "sorry! submission failed") 
+               return redirect(sell_property)    
      else:
           form = SellPropertyForm()
      return render (request , 'sellproperty.html',{'form':form,'developer':developer})

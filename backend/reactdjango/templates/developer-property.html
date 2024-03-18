@@ -26,7 +26,7 @@
                 <td>{{forloop.counter}}</td>
                 <td>
                     <div class="image">
-                        <img src="{{property.photos.url}}" alt="">
+                        <img src="{{property.main_image.url}} {{property.main_photo.url}}" alt="">
                     </div>
                 </td>
                 <td>{{property.size}}  {{property.property_type}}</td>
@@ -40,9 +40,9 @@
                 </td>
                 <td>
                     {% if property in properties_on_sale %}
-                    <a class="delete" href="#" data-property-type="sale" data-property-id="{{property.id}}">Delete</a>
+                    <a class="delete" href="#" data-property-type="on sale" data-property-id="{{ property.id }}" data-property-location="{{property.location}}">Delete</a>
                     {% elif property in properties_for_renting %}
-                    <a class="delete" href="#" data-property-type="rent" data-property-id="{{property.id}}">Delete</a>
+                    <a class="delete" href="#" data-property-type="rental" data-property-id="{{ property.id }}" data-property-location="{{property.location}}">Delete</a>
                     {% endif %}
                 </td>
             </tr>
@@ -57,7 +57,7 @@
             <h3 id="property-details"></h3>
             <form id="delete-form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="submit" value="Delete">
+                <input  class="btn" type="submit" value="Delete">
             </form>
         </div>
     </div>
@@ -77,12 +77,13 @@
                 modal.style.display = "block";
                 var propertyType = this.getAttribute("data-property-type");
                 var propertyId = this.getAttribute("data-property-id");
-                if (propertyType === "sale") {
-                    propertyDetails.textContent = "Property for sale with ID: " + propertyId;
-                    deleteForm.action = "delete_property/" + propertyId;
-                } else if (propertyType === "rent") {
-                    propertyDetails.textContent = "Property for rent with ID: " + propertyId;
-                    deleteForm.action = "delete_rental/" + propertyId;
+                var propertyLocation = this.getAttribute("data-property-location");
+                if (propertyType === "on sale") {
+                    propertyDetails.textContent = "Property on sale in " + propertyLocation;
+                    deleteForm.action = "/delete_property/" + propertyId;
+                } else if (propertyType === "rental") {
+                    propertyDetails.textContent = "rental in " + propertyLocation;
+                    deleteForm.action = "/delete_rental/" + propertyId;
                 }
             });
         });

@@ -12,12 +12,21 @@
 </head>
 <body>
  <div class="post-property">
+    {% for message in messages %}
+    <h4 class="{% if message.tags == 'error' %}message-error{% elif message.tags == 'success' %}message-success{% endif %}">
+            {{ message }}
+        </h4>
+    {% endfor %}
+    
     <form action="/post_rentals" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p}}
         <input type="file" name="photos" accept="image/*" multiple>
         <button type="submit">Post</button>
     </form>
+
+  
+
  </div>  
 
 {% endblock %}    

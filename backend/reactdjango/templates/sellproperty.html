@@ -12,6 +12,13 @@
 </head>
 <body>
  <div class="sell-property">
+
+    {% for message in messages %}
+    <h4 class="{% if message.tags == 'error' %}message-error{% elif message.tags == 'success' %}message-success{% endif %}">
+            {{ message }}
+        </h4>
+    {% endfor %}
+
     <form action="/sell_property" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p}}

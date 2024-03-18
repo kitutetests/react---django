@@ -78,3 +78,10 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+
+.btn{
+    background-color: rgb(236, 4, 4);
+    font-weight: bold;
+    color: white;
+    border: none;
+}
