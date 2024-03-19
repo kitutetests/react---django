@@ -139,9 +139,11 @@ def developer_properties(request):
 
     properties = list(properties_for_renting) + list(properties_on_sale)
 
-    return render(request,'developer-property.html',{'properties':properties,'properties_for_renting':properties_for_renting,'properties_on_sale':properties_on_sale})
+    return render(request,'developer-property.html',{'properties':properties,'properties_for_renting':properties_for_renting,'properties_on_sale':properties_on_sale,'developer':developer})
 
 def edit_rental(request,pk):
+    user = request.user
+    developer = Profile.objects.get(email=user.username)
     property_for_renting = Property_for_renting.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -152,6 +154,8 @@ def edit_rental(request,pk):
         water_fee = request.POST['water_fee']
         garbage_fee = request.POST['garbage_fee']
         contact = request.POST['contact']
+        main_photo = request.FILES.get('main_photo', None)
+        other_photos = request.FILES.getlist('photos') or []
 
         # assign new values
         property_for_renting.apartment_name = apartment_name 
@@ -161,10 +165,22 @@ def edit_rental(request,pk):
         property_for_renting.water_fee = water_fee
         property_for_renting.garbage_fee = garbage_fee
         property_for_renting.contact = contact
+
+       
+
+        if main_photo:
+              property_for_renting.main_image = main_photo
+
+        if other_photos: 
+           # Delete existing photos
+            property_for_renting.rental_photos.all().delete()
+            for photo in other_photos:
+                PropertyImage.objects.create(property_renting= property_for_renting, image=photo)
+          
         #save to db
         property_for_renting.save()
         return redirect(developer_properties)
-    return render(request,'rental-edit.html',{'property_for_renting':property_for_renting})
+    return render(request,'rental-edit.html',{'property_for_renting':property_for_renting,'developer':developer})
 
 def delete_rental(request,pk):
     property_for_renting = Property_for_renting.objects.get(id=pk)
@@ -172,23 +188,38 @@ def delete_rental(request,pk):
     return redirect(developer_properties)
 
 def edit_on_sale_property(request,pk):
+    user = request.user
+    developer = Profile.objects.get(email=user.username)
     property_on_sale = Property_on_sale.objects.get(id=pk)
     if request.method == 'POST':
           features = request.POST['features']
           price = request.POST['price']
           deposit = request.POST['deposit']
           payment_process = request.POST['payment_process']
-          contact = request.POST['contact']  
+          contact = request.POST['contact']
+          main_photo = request.FILES.get('main_photo', None)
+          other_photos = request.FILES.getlist('photos') or []  
          
           property_on_sale.features = features
           property_on_sale.price = price
           property_on_sale.deposit = deposit
           property_on_sale.payment_process = payment_process
           property_on_sale.contact = contact
+ 
+          
+
+          if main_photo:
+            property_on_sale.main_photo = main_photo
+          
+          if other_photos:
+            property_on_sale.property_on_photos.all().delete() 
+            for photo in other_photos:
+                         
+               PropertyImage.objects.create(property_on_sale= property_on_sale, image=photo)
 
           property_on_sale.save()
           return redirect(developer_properties)
-    return render(request,'on-sale-edit.html',{'property_on_sale':property_on_sale})
+    return render(request,'on-sale-edit.html',{'property_on_sale':property_on_sale,'developer':developer})
 
 def delete_property(request,pk):
     property_on_sale = Property_on_sale.objects.get(id=pk)

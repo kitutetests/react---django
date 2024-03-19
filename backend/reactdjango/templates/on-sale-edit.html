@@ -6,10 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'on-sale-edit.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>J.L.C limited</title>
 </head>
 <body>
     <div class="main-container">
+
+        <div class="header">
+            <div class="logo">
+                <img src="{% static 'images/realestatelogo.png' %}" alt="">
+           </div>
+           <div class="greet">
+               <h3>welcome {{developer.name}}</h3>
+           </div>
+       </div>
       
         <form action="/edit_property/{{property_on_sale.id}}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -36,12 +48,26 @@
            
             <span>Contact</span> 
             <input type="text" name="contact" value="{{property_on_sale.contact}}">
+
+            <span>Main photo <span style="opacity: 0.7;">(optional)</span></span> 
+            <input type="file" name="main_photo" >
+ 
+            <span>Other photos <span style="opacity: 0.7;">(optional)</span></span> 
+            <input type="file" name="photos"  accept="image/*" multiple >
+             
+             <input class="save" type="submit"  value="save">
            
-            <input class="save" type="submit" value="save">
+          
             
       
         </form>
-        
+    
+        <div class="home">
+            <a href="/developer-profile"><i class="fa fa-home" aria-hidden="true"></i></a>
+            
+        </div>
+    
+
     </div>
 </body>
 </html>

@@ -1,9 +1,43 @@
 .main-container{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid black;
+    width: 100%;
+   
 }
+.header{
+    background-color: #171923;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+
+}
+.logo{
+    margin-left: 20px;
+}
+.logo img{
+    width: 25%;
+    
+}
+.greet{
+    margin-right: 40px;
+}
+.home{
+    width: 2.7%;
+    border-radius: 50%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #171923;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.fa-home:before {
+    color: white;
+}
+
 form{
     width: 80%;
     margin-left: auto;
@@ -18,7 +52,7 @@ textarea{
 input{
     margin-bottom: 20px;
 }
-span{
+input ,textarea{
     display: block;
 }
 .save{
@@ -29,4 +63,31 @@ span{
     display: block;
     width: 20%;
     height: 30px;
+}
+@media (max-width : 768px){
+    body{
+        font-size: 15px;
+    }
+    textarea {
+        width: 90%;
+        height: 70px;
+    }
+    .logo{
+        margin-left: 10px;
+        width: 25%;
+        
+    }
+    .logo img{
+        width: 65%;
+        
+    }
+    .save{
+        width: 40%;
+    }
+    .greet{
+        margin-right: 10px;
+    }
+    h3{
+        font-size: 15px;
+    }
 }

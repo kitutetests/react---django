@@ -84,6 +84,10 @@ footer{
     height: 55vh;
     margin-top: 10px;
 }
+footer a:hover{
+    text-decoration: underline;
+}
+
 .quick-links-logo{
     display: flex;
     justify-content: center;

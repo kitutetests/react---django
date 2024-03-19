@@ -6,45 +6,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'rentals-edit.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>J.L.C limited</title>
 </head>
 <body>
     <div class="main-container">
-      
+        <div class="header">
+            <div class="logo">
+                <img src="{% static 'images/realestatelogo.png' %}" alt="">
+           </div>
+           <div class="greet">
+               <h3>welcome {{developer.name}}</h3>
+           </div>
+       </div>
+   
         <form action="/edit_rental/{{property_for_renting.id}}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
            
-            <span>Apartment name</span>
+            <span>Apartment name <span style="opacity: 0.7;">(optional)</span></span>
             <input type="text" name="apartment_name" value="{{property_for_renting.apartment_name}}" required="false">
            
-            <span>Features</span>  
+            <span>Features <span style="opacity: 0.7;">(optional)</span></span>  
             <textarea name="features" cols="30" rows="10">{{ property_for_renting.features }}</textarea>
            
            
-            <span>Price</span>  
+            <span>Price <span style="opacity: 0.7;">(optional)</span></span>  
             <input type="number" name="price" value="{{property_for_renting.price}}"  required="false">
            
           
-            <span>Deposit</span>  
+            <span>Deposit <span style="opacity: 0.7;">(optional)</span></span>  
             <input type="number" name="deposit" value="{{property_for_renting.deposit}}" required="false">
            
 
           
-            <span>Water fee</span>  
+            <span>Water fee <span style="opacity: 0.7;">(optional)</span></span>  
             <input type="number" name="water_fee" value="{{property_for_renting.water_fee}}" required="false">
             
            
-            <span>Garbage fee</span>  
+            <span>Garbage fee <span style="opacity: 0.7;">(optional)</span></span>  
             <input type="number" name="garbage_fee" value="{{property_for_renting.garbage_fee}}" required="false">
            
            
-           <span>Contact</span> 
+           <span>Contact <span style="opacity: 0.7;">(optional)</span></span> 
            <input type="text" name="contact" value="{{property_for_renting.landlord_contact}}" required="false">
+
+           <span>Main photo <span style="opacity: 0.7;">(optional)</span></span> 
+           <input type="file" name="main_photo" >
+
+           <span>Other photos <span style="opacity: 0.7;">(optional)</span></span> 
+           <input type="file" name="photos"  accept="image/*" multiple >
             
-            <input class="save" type="submit" value="save">
+            <input class="save" type="submit"  value="save">
            
       
         </form>
+
+        <div class="home">
+            <a href="/developer-profile"><i class="fa fa-home" aria-hidden="true"></i></a>
+            
+        </div>
         
     </div>
 </body>

@@ -2,9 +2,11 @@
     vertical-align: top;
     margin-left: 10px;
     display: inline-block;
-    width: 50%;
-   margin-top: 5px;
-    }
+    width: 70%;
+    margin-top: 5px;
+    overflow-y: auto;
+    max-height: 700px; 
+    } 
 p{
     margin-bottom: 30px;
 }
