@@ -192,6 +192,7 @@ a .property-container{
     border: 1px solid black;
     height: 30px;
     width: 20%;
+    color: black;
 }
 .step-links ul a:hover{
     border: none;
@@ -280,7 +281,7 @@ a .property-container{
             list-style: none;
             border: 1px solid black;
             height: 30px;
-            width: 25%;
+            width: 29%;
             margin-right: 5px;
         }
     }

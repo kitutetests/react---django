@@ -187,6 +187,35 @@ def delete_rental(request,pk):
     property_for_renting.delete()
     return redirect(developer_properties)
 
+# post property for sale
+def sell_property(request):
+     user = request.user
+     developer = Profile.objects.get(email=user.username)
+     
+     if request.method == 'POST':
+          form = SellPropertyForm(request.POST , request.FILES)
+          photos = request.FILES.getlist('photos')
+          if form.is_valid():
+               post = form.save(commit=False)
+               post.owner = developer
+               post.save()
+
+               photos = request.FILES.getlist('photos')
+
+               for photo in photos:
+                    PropertyImage.objects.create(property_on_sale=post, image=photo)
+
+               messages.success(request, "property submitted successfully")
+               return redirect(sell_property)
+
+          else:      
+               messages.error(request, "sorry! submission failed") 
+               return redirect(sell_property)    
+     else:
+          form = SellPropertyForm()
+     return render (request , 'sellproperty.html',{'form':form,'developer':developer})
+
+
 def edit_on_sale_property(request,pk):
     user = request.user
     developer = Profile.objects.get(email=user.username)
@@ -227,33 +256,6 @@ def delete_property(request,pk):
     return redirect(developer_properties)
 
 
-# post property for sale
-def sell_property(request):
-     user = request.user
-     developer = Profile.objects.get(email=user.username)
-     
-     if request.method == 'POST':
-          form = SellPropertyForm(request.POST , request.FILES)
-          photos = request.FILES.getlist('photos')
-          if form.is_valid():
-               post = form.save(commit=False)
-               post.owner = developer
-               post.save()
-
-               photos = request.FILES.getlist('photos')
-
-               for photo in photos:
-                    PropertyImage.objects.create(property_on_sale=post, image=photo)
-
-               messages.success(request, "property submitted successfully")
-               return redirect(sell_property)
-
-          else:      
-               messages.error(request, "sorry! submission failed") 
-               return redirect(sell_property)    
-     else:
-          form = SellPropertyForm()
-     return render (request , 'sellproperty.html',{'form':form,'developer':developer})
 
 def view_properties(request):
      rentals = Property_for_renting.objects.all()
@@ -273,7 +275,9 @@ def view_properties(request):
 
 def rentals_details(request, pk):
      rental = Property_for_renting.objects.get(id = pk)
+
      photos = rental.rental_photos.all()  # Assuming 'rental_photos' is the related name
+     
      features_list = rental.features.split('.') if rental.features else []
      related_rentals = Property_for_renting.objects.filter(location = rental.location, size = rental.size).exclude(id=pk)
      return render (request , 'rentaldetails.html',{'rental':rental,'photos':photos,'features_list':features_list,'related_rentals':related_rentals})
