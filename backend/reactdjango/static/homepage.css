@@ -50,6 +50,10 @@ a{
    
 }
 @media (max-width: 768px) {
+
+    body{
+        font-size: 15px;
+    }
     .content{
         display: flex;
         flex-direction: column;

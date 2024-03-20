@@ -1,6 +1,10 @@
 .main-container{
     width: 100%;
-   
+  
+}
+*{
+    padding: 0;
+    margin: 0;
 }
 
 .header{
@@ -75,6 +79,7 @@ a{
     font-weight: bold;
 }
 .delete{
+
     color: red;
     font-weight: bold;
 }
@@ -119,6 +124,9 @@ a{
     font-weight: bold;
     color: white;
     border: none;
+    width: 10%;
+    margin-top: 10px;
+    height: 30px;
 }
 
 
@@ -126,7 +134,9 @@ a{
     body{
         font-size: 15px;
     }
-  
+    .btn{
+        width: 30%;
+    }
     .logo{
         margin-left: 10px;
         width: 25%;
@@ -142,5 +152,8 @@ a{
     }
     h3{
         font-size: 15px;
+    }
+    .home{
+        width: 7%;
     }
 }

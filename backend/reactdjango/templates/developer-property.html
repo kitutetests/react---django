@@ -6,10 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/realestatelogo.png' %}">
     <link rel="stylesheet" href="{% static 'developer-properties.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>J.L.C limited</title>
 </head>
 <body>
 <div class="main-container">
@@ -26,13 +28,13 @@
    
     <table>
         <thead>
-            <tr>
+            <tr style="font-weight: bold;">
                 <td>#</td>
-                <td>photo</td>
-                <td>size</td>
-                <td>location</td>
-                <td>edit</td>
-                <td>delete</td>
+                <td>Photo</td>
+                <td>Size</td>
+                <td>Location</td>
+                <td>Edit</td>
+                <td>Delete</td>
             </tr>
         </thead>
 
@@ -47,6 +49,7 @@
                 </td>
                 <td>{{property.size}}  {{property.property_type}}</td>
                 <td>{{property.location}}</td>
+                
                 <td>
                     {% if property in properties_on_sale %}
                     <a class="edit" href="edit_property/{{property.id}}">Edit</a>
