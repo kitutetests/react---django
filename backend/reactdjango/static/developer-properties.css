@@ -5,7 +5,7 @@
 
 .header{
     background-color: #171923;
-    width: 100%;
+    max-width: 100%;
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -41,7 +41,7 @@
 
 table {
     border-collapse: collapse;
-    width: 99%;
+    width: 95%;
     border: 1px solid #ec8080;
     color: black;
     background-color: white;
@@ -49,8 +49,8 @@ table {
 }
 th, td {
 text-align: left;
-padding: 8px;
-border: 2px solid #ddd;
+padding: 3px;
+border: 1px solid #ddd;
 }
 
 th {
@@ -119,4 +119,28 @@ a{
     font-weight: bold;
     color: white;
     border: none;
+}
+
+
+@media (max-width: 768px) {
+    body{
+        font-size: 15px;
+    }
+  
+    .logo{
+        margin-left: 10px;
+        width: 25%;
+        
+    }
+    .logo img{
+        width: 65%;
+        
+    }
+   
+    .greet{
+        margin-right: 10px;
+    }
+    h3{
+        font-size: 15px;
+    }
 }
