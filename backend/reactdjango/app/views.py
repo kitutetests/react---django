@@ -61,6 +61,8 @@ def register_call_back_url(request):
 
     my_access_token = generate_access_token()
 
+    print(my_access_token)
+    
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
 
     headers = {"Authorization": "Bearer %s" % my_access_token}
