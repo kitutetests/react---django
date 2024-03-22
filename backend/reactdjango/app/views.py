@@ -49,8 +49,8 @@ def generate_access_token():
         r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
         
     print(r.text)
-    print(r.json())
-    json_response = (r.json())  
+    print(r.json(r))
+    json_response = (r.json(r))  
 
     my_access_token = json_response["access_token"]
     print(my_access_token)
@@ -124,7 +124,7 @@ def pay_for_rental(request):
     else:
      print("Error:", response.status_code)
 
-  
+    return HttpResponse(response.text) 
 
 
 
