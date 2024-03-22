@@ -50,6 +50,7 @@ def generate_access_token():
         
     print(r.text)
     print(r.json())
+    print(r.headers['Content-Type'])
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
