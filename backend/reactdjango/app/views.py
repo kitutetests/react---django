@@ -87,9 +87,24 @@ def pay_for_rental(request):
     developer = Profile.objects.get(email=user.username)
 
     formated_time = timestamp()
+
+    consumer_key = "pGRYvQYXjJCmkYwhQZABM6HEfzAIvmrbAUqJQsa9zzTcUdkQ"
+    consumer_secret = "Gkq1fL4DjAGZGPYUxRHKAUPJUPNuEU3yEK5KGrGRsP2CR8Ne8nU954qExpS6WvEu"
+    api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+  
+    try:
+        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    except:
+        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
+        
+    print(r.text)
+    print(r.json())
+    json_response = (r.json())  
+
+    my_access_token = json_response["access_token"]
    
-    access_token=generate_access_token()
-    print(access_token)
+    
+    access_token = my_access_token
    
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
