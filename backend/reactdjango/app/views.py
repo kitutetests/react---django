@@ -54,15 +54,15 @@ def generate_access_token():
 
     my_access_token = json_response["access_token"]
     
-    print(my_access_token)
+    
     return my_access_token
 
 def register_call_back_url(request):
 
     my_access_token = generate_access_token()
 
-    print(my_access_token)
     
+
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
 
     headers = {"Authorization": "Bearer %s" % my_access_token}
@@ -88,8 +88,11 @@ def pay_for_rental(request):
     developer = Profile.objects.get(email=user.username)
 
     formated_time = timestamp()
+
+    print(formated_time)
+   
     access_token=generate_access_token()
-    
+    print(access_token)
    
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
