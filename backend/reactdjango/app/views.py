@@ -109,7 +109,7 @@ def pay_for_rental(request):
     response = requests.post(api_url, json=request, headers=headers)
 
     print(response.text)
-    print(response.data)
+    
     return HttpResponse(response.text)
    
 
