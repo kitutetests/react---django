@@ -49,12 +49,11 @@ def generate_access_token():
         r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
         
     print(r.text)
-    print(r.json(r))
-    json_response = (r.json(r))  
+    print(r.json())
+    json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
-    print(my_access_token)
-    
+   
     return my_access_token
 
 def register_call_back_url(request):
@@ -88,8 +87,6 @@ def pay_for_rental(request):
     developer = Profile.objects.get(email=user.username)
 
     formated_time = timestamp()
-
-    print(formated_time)
    
     access_token=generate_access_token()
     print(access_token)
@@ -118,7 +115,7 @@ def pay_for_rental(request):
                data = response.json()
                print(data)
                return HttpResponse(response.text)
-          except json.decoder.JSONDecodeError as e:
+          except response.json.decoder.JSONDecodeError as e:
                print("Error decoding JSON:", e)
                # Handle the error appropriately
     else:
