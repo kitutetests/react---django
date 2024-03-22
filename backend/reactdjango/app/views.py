@@ -97,8 +97,8 @@ def pay_for_rental(request):
     except:
         r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
         
-    print(r.text)
-    print(r.json())
+#     print(r.text)
+#     print(r.json())
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
