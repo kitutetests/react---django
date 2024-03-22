@@ -110,8 +110,7 @@ def pay_for_rental(request):
 
     print(response.text)
     print(response.data)
-#     return HttpResponse(response.data)
-    return HttpResponse(response.data)
+    return HttpResponse(response.text)
    
 
 
