@@ -57,7 +57,30 @@ def generate_access_token():
     print(my_access_token)
     return my_access_token
 
+def register_call_back_url(request):
 
+    my_access_token = generate_access_token()
+
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
+
+    headers = {"Authorization": "Bearer %s" % my_access_token}
+
+    request = {
+        "ShortCode": '600988',
+        "ResponseType": "Completed",
+        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
+        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
+    }
+
+    try:
+        response = requests.post(api_url, json=request, headers=headers)
+    except:
+        response = requests.post(api_url, json=request, headers=headers, verify=False)
+
+    print(response.text)
+    return HttpResponse(response.text)
+    
+    
 def pay_for_rental(request):
     user = request.user
     developer = Profile.objects.get(email=user.username)
@@ -86,9 +109,9 @@ def pay_for_rental(request):
     response = requests.post(api_url, json=request, headers=headers)
 
     print(response.text)
-#     print(response.data)
+    print(response.data)
 #     return HttpResponse(response.data)
-    return HttpResponse(response.text)
+    return HttpResponse(response.data)
    
 
 

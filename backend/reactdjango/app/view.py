@@ -1,4 +1,4 @@
-from .models import Profile
+
 
 import requests
 import base64
@@ -47,9 +47,7 @@ def generate_access_token():
 
 
 def pay_for_rental(request):
-    user = request.user
-    developer = Profile.objects.get(email=user.username)
-
+    
     formated_time = timestamp()
     access_token=generate_access_token()
     
@@ -76,4 +74,28 @@ def pay_for_rental(request):
     print(response.text)
 
 
-pay_for_rental(request)
+# pay_for_rental(request)
+
+def register_call_back_url(request):
+
+    my_access_token = generate_access_token()
+
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
+
+    headers = {"Authorization": "Bearer %s" % my_access_token}
+
+    request = {
+        "ShortCode": '600996',
+        "ResponseType": "Completed",
+        "ConfirmationURL": "https://mysterious-oasis-16355.herokuapp.com/api/payments/c2b-confirmation/",
+        "ValidationURL":   "https://mysterious-oasis-16355.herokuapp.com/api/payments/c2b-validation/",
+    }
+
+    try:
+        response = requests.post(api_url, json=request, headers=headers)
+    except:
+        response = requests.post(api_url, json=request, headers=headers, verify=False)
+
+    print(response.text)
+
+    register_call_back_url()
