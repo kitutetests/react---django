@@ -79,7 +79,7 @@ def pay_for_rental(request):
         "PartyA": developer.phone_number,
         "PartyB":"174379",
         "PhoneNumber": "254769624433",
-        "CallBackURL": "https://react-django-qiy2.onrender.com",
+        "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
         "AccountReference": "1234",
         "TransactionDesc": "real estate payments",
     }
