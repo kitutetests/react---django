@@ -53,7 +53,7 @@ def generate_access_token():
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
-    
+    print(my_access_token)
     
     return my_access_token
 
