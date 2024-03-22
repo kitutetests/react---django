@@ -130,7 +130,7 @@ def pay_for_rental(request):
                data = response.json()
                print(data)
                return HttpResponse(response.text)
-          except response.json.decoder.JSONDecodeError as e:
+          except json.decoder.JSONDecodeError as e:
                print("Error decoding JSON:", e)
                # Handle the error appropriately
     else:
