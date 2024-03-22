@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Profile,Property_for_renting,Property_on_sale,PropertyImage
+from . models import Profile,Property_for_renting,Property_on_sale,PropertyImage,Subscription
 # Register your models here.
 
 admin.site.register(PropertyImage)
@@ -20,3 +20,9 @@ class Property_on_saleAdmin(admin.ModelAdmin):
     list_display = ('owner', 'property_type','location','contact')
 
 admin.site.register(Property_on_sale,Property_on_saleAdmin)
+
+
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('person', 'mpesa_code','payment_date','valid_till')
+
+admin.site.register(Subscription,SubscriptionAdmin)

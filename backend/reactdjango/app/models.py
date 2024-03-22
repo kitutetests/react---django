@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from datetime import timedelta
 # Create your models here.
 class Profile(models.Model):
    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
    name = models.CharField(max_length=100,null=True)
    other_name = models.CharField(max_length=100,null=True)
    id_number = models.CharField(max_length=8,null=True)
+   phone_number = models.CharField(max_length=13,null=True)
    email = models.EmailField(null=True)
    profile_picture = models.ImageField(upload_to='photo/' ,null=True ,blank=True)
    
@@ -83,3 +86,15 @@ class PropertyImage(models.Model):
     property_renting = models.ForeignKey(Property_for_renting, on_delete=models.CASCADE, related_name='rental_photos',null=True)
     property_on_sale = models.ForeignKey(Property_on_sale, on_delete=models.CASCADE, related_name='property_on_photos',null=True)
     image = models.ImageField(upload_to='images/')
+
+
+class Subscription(models.Model):
+      person = models.ForeignKey(Profile,on_delete=models.CASCADE)
+      full_name = models.CharField(max_length=1000,null=True)
+      mpesa_code = models.CharField(max_length=10,null=True)
+      date_and_time = models.CharField(max_length=1000,null=True)
+      amount = models.CharField(max_length=1000,null=True)
+      payment_date = models.DateTimeField(auto_now=True)   
+      valid_till = models.DateTimeField()
+
+    

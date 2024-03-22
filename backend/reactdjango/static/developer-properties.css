@@ -34,13 +34,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #171923;
+    background-color: white;
     position: fixed;
     bottom: 20px;
     right: 20px;
 }
 .fa-home:before {
-    color: white;
+    color: rgb(5, 5, 5);
 }
 
 table {
@@ -155,5 +155,9 @@ a{
     }
     .home{
         width: 7%;
+    }
+    .modal-content {
+        top: 50%;
+
     }
 }
