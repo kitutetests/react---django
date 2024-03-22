@@ -112,11 +112,19 @@ def pay_for_rental(request):
         "TransactionDesc": "real estate payments",
     }
     response = requests.post(api_url, json=request, headers=headers)
+    response = requests.post(api_url, json=request, headers=headers)
+    if response.status_code == 200:
+          try:
+               data = response.json()
+               print(data)
+               return HttpResponse(response.text)
+          except json.decoder.JSONDecodeError as e:
+               print("Error decoding JSON:", e)
+               # Handle the error appropriately
+    else:
+     print("Error:", response.status_code)
 
-    print(response.text)
-    
-    return HttpResponse(response.text)
-   
+  
 
 
 
