@@ -39,8 +39,8 @@ def password(formated_time):
 
 def generate_access_token():
    
-    consumer_key = "pGRYvQYXjJCmkYwhQZABM6HEfzAIvmrbAUqJQsa9zzTcUdkQ"
-    consumer_secret = "Gkq1fL4DjAGZGPYUxRHKAUPJUPNuEU3yEK5KGrGRsP2CR8Ne8nU954qExpS6WvEu"
+    consumer_key = "Fd4KnnG0lPHXhBnBAZoMshaOR2BFZ1ru1EGa96GOW9gcYR3Q"
+    consumer_secret = "VfjoJpsuSLaTjNHI3qUohkt6B6ND3l16GJMdXR9gbrURcGe1BJWDPoHLv7WbqHFA"
     api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
   
     try:
@@ -61,14 +61,12 @@ def register_call_back_url(request):
 
     my_access_token = generate_access_token()
 
-    
-
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
 
     headers = {"Authorization": "Bearer %s" % my_access_token}
 
     request = {
-        "ShortCode": '600988',
+        "ShortCode": '600978',
         "ResponseType": "Completed",
         "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
         "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
@@ -80,6 +78,7 @@ def register_call_back_url(request):
         response = requests.post(api_url, json=request, headers=headers, verify=False)
 
     print(response.text)
+    print(my_access_token)
     return HttpResponse(response.text)
     
     
