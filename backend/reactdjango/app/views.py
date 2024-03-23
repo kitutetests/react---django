@@ -17,6 +17,19 @@ import base64
 from datetime import datetime
 from requests.auth import HTTPBasicAuth
 
+from django_daraja.mpesa.core import MpesaClient
+
+def pay_rental(request):
+    
+    cl = MpesaClient()
+    phone_number = '0769624433'
+    amount = 1
+    account_reference = 'reference'
+    transaction_desc = 'Description'
+    callback_url = 'https://react-django-qiy2.onrender.com/pay_rental'
+    response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+    return HttpResponse(response)
+
 
 def timestamp():
     unformatted_time=datetime.now()#2024-03-23

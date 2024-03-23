@@ -12,7 +12,8 @@ urlpatterns = [
     path('developer-profile-update',views.developer_profile_update,name='developer_profile-update'),
 
     path('register_url',views.register_call_back_url,name='register_url'),
-    path('pay_rental',views.pay_for_rental,name='pay_rental'),
+    # path('pay_rental',views.pay_for_rental,name='pay_rental'),
+    path('pay_rental',views.pay_rental,name='pay_rental'),
     path('generate_token',views.generate_access_token,name='generate_token'),
 
     path('post_rentals',views.post_rentals,name='post_rentals'),
