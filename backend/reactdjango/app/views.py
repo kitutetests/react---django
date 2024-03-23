@@ -70,8 +70,8 @@ def register_call_back_url(request):
     request = {
         "ShortCode": '600988',
         "ResponseType": "Completed",
-        "ConfirmationURL": "https://react-django-qiy2.onrender.c",
-        "ValidationURL":   "https://react-django-qiy2.onrender.co",
+        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
+        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
     }
 
     try:
