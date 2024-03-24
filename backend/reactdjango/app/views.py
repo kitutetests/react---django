@@ -35,7 +35,7 @@ def password(formated_time):
 
 
 
-def generate_access_token():
+def generate_access_token(request):
    
     consumer_key = "Fd4KnnG0lPHXhBnBAZoMshaOR2BFZ1ru1EGa96GOW9gcYR3Q"
     consumer_secret = "VfjoJpsuSLaTjNHI3qUohkt6B6ND3l16GJMdXR9gbrURcGe1BJWDPoHLv7WbqHFA"
@@ -52,10 +52,12 @@ def generate_access_token():
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
-    return HttpResponse (my_access_token)
+   
     return my_access_token
 
-def register_call_back_url(request):
+
+
+def register_call_back_url():
 
     my_access_token = generate_access_token()
 
@@ -86,7 +88,7 @@ def pay_for_rental(request):
 
     formated_time = timestamp()
  
-    access_token = generate_access_token()
+    access_token = generate_access_token(request)
 
     print('this is it' + access_token)
    
