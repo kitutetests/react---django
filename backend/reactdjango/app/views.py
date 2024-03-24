@@ -8,18 +8,22 @@ from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from rest_framework.generics import CreateAPIView
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import AllowAny
 
-@method_decorator(csrf_exempt, name='dispatch')
-class LNMCallbackUrlAPIView(APIView):
-    def post(self, request, *args, **kwargs):
+
+from .serializers import LNMOnlineSerializer
+
+
+class LNMCallbackUrlAPIView(CreateAPIView):
+    queryset = Subscription.objects.all()
+    serializer_class = LNMOnlineSerializer
+    permission_classes = [AllowAny]
+
+    def create(self, request):
         print(request.data, "this is request.data")
-        # Process your data here
-        return Response({'message': 'Data received'}, status=status.HTTP_200_OK)
+
         
 
 
