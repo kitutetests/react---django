@@ -48,7 +48,7 @@ def generate_access_token(request):
         
     print(r.text)
     print(r.json())
-    print(r.headers['Content-Type'])
+ 
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
@@ -89,7 +89,7 @@ def pay_for_rental(request):
     formated_time = timestamp()
  
     access_token = generate_access_token(request)
-
+    
     print('this is it' + access_token)
    
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
@@ -112,6 +112,8 @@ def pay_for_rental(request):
     response = requests.post(api_url, json=request, headers=headers)
     response = requests.post(api_url, json=request, headers=headers)
    
+    print(response.json())
+    return HttpResponse(access_token)
     return HttpResponse(response.text)
       
 
