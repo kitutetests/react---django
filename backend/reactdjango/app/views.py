@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, get_object_or_404
+
 
 # Create your views here.
 
@@ -20,7 +20,6 @@ from requests.auth import HTTPBasicAuth
 def timestamp():
     unformatted_time=datetime.now()#2024-03-23
     formated_time=unformatted_time.strftime("%Y%m%d%H%M%S")#"20240323"
-    print(formated_time)
     return formated_time
     
 
@@ -67,8 +66,8 @@ def register_call_back_url(request):
     request = {
         "ShortCode": '600978',
         "ResponseType": "Completed",
-        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental/pay_rental",
-        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental/pay_rental",
+        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
+        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
     }
 
     try:
