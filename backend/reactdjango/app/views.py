@@ -12,7 +12,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
 
+@method_decorator(csrf_exempt, name='dispatch')
 class LNMCallbackUrlAPIView(APIView):
     def post(self, request, *args, **kwargs):
         print(request.data, "this is request.data")
