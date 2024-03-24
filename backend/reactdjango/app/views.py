@@ -9,6 +9,9 @@ from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+def LNMCallbackUrlAPIView(request):
+     print(request.data, "this is request.data")
+
 def register(request):
    
     if request.method == 'POST':

@@ -1,6 +1,3 @@
-from django.http import JsonResponse
-from django.shortcuts import render,redirect,HttpResponse
-
 import requests
 import base64
 from datetime import datetime
@@ -67,23 +64,22 @@ def register_call_back_url():
 
     print(response.text)
     print(my_access_token)
-    return HttpResponse(response.text)
+   
     
     
-def pay_for_rental(request):
+def pay_for_rental():
     
     formated_time = timestamp()
  
-    access_token = generate_access_token(request)
+    access_token = generate_access_token()
     
-    if access_token:
-        print('Access token:', access_token)
+ 
           
-        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-        headers = {"Authorization": "Bearer %s" % access_token}
+    headers = {"Authorization": "Bearer %s" % access_token}
 
-        request_data = {
+    request_data = {
             "BusinessShortCode": "174379",
             "Password": password(formated_time),
             "Timestamp": formated_time,
@@ -92,12 +88,12 @@ def pay_for_rental(request):
             "PartyA": '254769624433',
             "PartyB": "174379",
             "PhoneNumber": "254769624433",
-            "CallBackURL": "https://13a6-102-212-11-22.ngrok-free.app/pay_rental",
+            "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
             "AccountReference": "1234",
             "TransactionDesc": "real estate payments",
         }
 
-        response = requests.post(api_url, json=request, headers=headers)
+    response = requests.post(api_url, json=request_data, headers=headers)
 
     print(response.text)
 
