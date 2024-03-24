@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import LNMCallbackUrlAPIView
 
 urlpatterns = [
     path('',views.home,name='home'),
@@ -12,7 +13,7 @@ urlpatterns = [
     path('developer-profile-update',views.developer_profile_update,name='developer_profile-update'),
     path('post_rentals',views.post_rentals,name='post_rentals'),
 
-    path('pay_rental',views.LNMCallbackUrlAPIView,name='post_rentals'),
+    path('pay_rental', LNMCallbackUrlAPIView.as_view(), name='pay_rental'),
 
     path('developer_properties',views.developer_properties,name='developer_properties'),
     path('sell_property',views.sell_property,name='sell_property'),
