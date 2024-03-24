@@ -57,7 +57,7 @@ def generate_access_token(request):
 
 
 
-def register_call_back_url():
+def register_call_back_url(request):
 
     my_access_token = generate_access_token(request)
 
