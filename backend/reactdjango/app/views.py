@@ -9,12 +9,15 @@ from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from rest_framework.generics import CreateAPIView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
-class LNMCallbackUrlAPIView(CreateAPIView):
-
-    def create(self, request):
+class LNMCallbackUrlAPIView(APIView):
+    def post(self, request, *args, **kwargs):
         print(request.data, "this is request.data")
+        # Process your data here
+        return Response({'message': 'Data received'}, status=status.HTTP_200_OK)
         
 
 
