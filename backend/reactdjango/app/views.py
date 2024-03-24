@@ -117,7 +117,7 @@ def pay_for_rental(request):
           print(response.json())
           return HttpResponse(access_token)
     else:
-         print("no acess token")
+         return HttpResponse("no acess token")
     
       
 
