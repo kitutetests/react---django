@@ -87,6 +87,8 @@ def pay_for_rental(request):
     formated_time = timestamp()
  
     access_token = generate_access_token()
+
+    print('this is it' + access_token)
    
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
