@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     # adding commas
     'django.contrib.humanize',
+    'rest_framework',
      'app',
 ]
 
@@ -135,3 +136,11 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='geffmutua001@gmail.com'
 EMAIL_HOST_PASSWORD='njjhshvgrvzremlb'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ]
+}

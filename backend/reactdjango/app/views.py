@@ -9,8 +9,15 @@ from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def LNMCallbackUrlAPIView(request):
-     print(request.data, "this is request.data")
+from rest_framework.generics import CreateAPIView
+
+
+
+class LNMCallbackUrlAPIView(CreateAPIView):
+    
+    def create(self, request):
+        print(request.data, "this is request.data")
+        
 
 def register(request):
    
