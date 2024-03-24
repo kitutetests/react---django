@@ -82,7 +82,7 @@ def register_call_back_url():
     return HttpResponse(response.text)
     
     
-def pay_for_rental(request):
+def pay_for_rental():
     user = request.user
     developer = Profile.objects.get(email=user.username)
 
@@ -113,7 +113,7 @@ def pay_for_rental(request):
           }
           response = requests.post(api_url, json=request, headers=headers)
           response = requests.post(api_url, json=request, headers=headers)
-          
+        
           print(response.json())
           return HttpResponse(access_token)
     else:
