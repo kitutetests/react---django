@@ -94,6 +94,7 @@ def pay_for_rental(request):
         print('Access token:', access_token)
           
         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+
         headers = {"Authorization": "Bearer %s" % access_token}
 
         request_data = {
@@ -111,7 +112,7 @@ def pay_for_rental(request):
         }
 
         response = requests.post(api_url, json=request_data, headers=headers)
-
+        print(response.status_code)
         if response.status_code == 200:
             try:
                 # Try to parse JSON response
