@@ -30,7 +30,7 @@ def password(formated_time):
     encoded_password=base64.b64encode(data_to_encode.encode())
 
     decoded_password=encoded_password.decode('utf-8')
-    print(decoded_password)
+    print('password'+ decoded_password)
     return decoded_password
 
 
@@ -109,23 +109,9 @@ def pay_for_rental(request):
     }
     response = requests.post(api_url, json=request, headers=headers)
     response = requests.post(api_url, json=request, headers=headers)
-    if response.status_code == 200:
-        try:
-            # Attempt to decode the response as JSON
-            data = response.json()
-            print(data)
-            return HttpResponse(response.text)
-        except json.decoder.JSONDecodeError as e:
-            # Handle the error if the response is not in JSON format
-            print("Error decoding JSON:", e)
-            # Return a custom error response or perform other error handling
-            return HttpResponse("Error decoding JSON: " + str(e), status=500)
-    else:
-        # Handle the case where the request was not successful
-        print("Error:", response.status_code)
-        # Return an appropriate error response
-        return HttpResponse("Error: " + str(response.status_code), status=response.status_code)
- 
+   
+    return HttpResponse(response.text)
+      
 
 
 def validation_callback(request):
