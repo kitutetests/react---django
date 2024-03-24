@@ -68,8 +68,8 @@ def register_call_back_url():
     request = {
         "ShortCode": '600978',
         "ResponseType": "Completed",
-        "ConfirmationURL": "https://react-django-qiy2.onrender.com",
-        "ValidationURL":   "https://react-django-qiy2.onrender.com",
+        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
+        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
     }
 
     try:
@@ -82,7 +82,7 @@ def register_call_back_url():
     return HttpResponse(response.text)
     
     
-def pay_for_rental():
+def pay_for_rental(request):
     user = request.user
     developer = Profile.objects.get(email=user.username)
 
@@ -107,7 +107,7 @@ def pay_for_rental():
                "PartyA": developer.phone_number,
                "PartyB":"174379",
                "PhoneNumber": "254769624433",
-               "CallBackURL": "https://react-django-qiy2.onrender.com",
+               "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
                "AccountReference": "1234",
                "TransactionDesc": "real estate payments",
           }
