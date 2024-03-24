@@ -52,7 +52,7 @@ def generate_access_token():
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
-   
+    return HttpResponse (my_access_token)
     return my_access_token
 
 def register_call_back_url(request):
