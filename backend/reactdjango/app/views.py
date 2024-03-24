@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -66,8 +66,8 @@ def register_call_back_url(request):
     request = {
         "ShortCode": '600978',
         "ResponseType": "Completed",
-        "ConfirmationURL": "https://react-django-qiy2.onrender.com/pay_rental",
-        "ValidationURL":   "https://react-django-qiy2.onrender.com/pay_rental",
+        "ConfirmationURL": "https://react-django-qiy2.onrender.com",
+        "ValidationURL":   "https://react-django-qiy2.onrender.com",
     }
 
     try:
@@ -101,7 +101,7 @@ def pay_for_rental(request):
         "PartyA": developer.phone_number,
         "PartyB":"174379",
         "PhoneNumber": "254769624433",
-        "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
+        "CallBackURL": "https://react-django-qiy2.onrender.com",
         "AccountReference": "1234",
         "TransactionDesc": "real estate payments",
     }
@@ -123,10 +123,29 @@ def pay_for_rental(request):
         print("Error:", response.status_code)
         # Return an appropriate error response
         return HttpResponse("Error: " + str(response.status_code), status=response.status_code)
+ 
 
 
+def validation_callback(request):
+    if request.method == 'GET':
+        # Extract relevant information from the POST data
+        transaction_id = request.GET.get('transaction_id')
+        amount = request.GET.get('amount')
+        status = request.GET.get('status')
+        
+        # Process the information (e.g., validate the transaction)
+        # Your code to handle the validation details goes here...
 
-
+        # Return a JSON response with the received data
+        response_data = {
+            'transaction_id': transaction_id,
+            'amount': amount,
+            'status': status,
+        }
+        return JsonResponse(response_data)
+    else:
+        # If it's not a POST request, return an error response
+        return JsonResponse({'error': 'Invalid request method. Only POST requests are allowed.'}, status=405)
 
 
 

@@ -12,7 +12,7 @@ urlpatterns = [
     path('developer-profile-update',views.developer_profile_update,name='developer_profile-update'),
 
     path('register_url',views.register_call_back_url,name='register_url'),
-    # path('pay_rental',views.pay_for_rental,name='pay_rental'),
+    path('saf_info',views.validation_callback,name='pay_rental'),
     path('pay_rental',views.pay_for_rental,name='pay_rental'),
     path('generate_token',views.generate_access_token,name='generate_token'),
 
