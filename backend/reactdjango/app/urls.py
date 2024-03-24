@@ -10,12 +10,6 @@ urlpatterns = [
     path('developer-page',views.developer_page,name='developer_page'),
     path('developer-profile',views.developer_profile,name='developer_profile'),
     path('developer-profile-update',views.developer_profile_update,name='developer_profile-update'),
-
-    path('register_url',views.register_call_back_url,name='register_url'),
-    path('saf_info',views.validation_callback,name='pay_rental'),
-    path('pay_rental',views.pay_for_rental,name='pay_rental'),
-    path('generate_token',views.generate_access_token,name='generate_token'),
-
     path('post_rentals',views.post_rentals,name='post_rentals'),
     path('developer_properties',views.developer_properties,name='developer_properties'),
     path('sell_property',views.sell_property,name='sell_property'),
