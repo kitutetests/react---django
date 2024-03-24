@@ -9,6 +9,7 @@ from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import JsonResponse
+import json
 
 # Create your views here.
 
@@ -115,7 +116,7 @@ def pay_for_rental(request):
           response = requests.post(api_url, json=request, headers=headers)
         
           print(response.json())
-          return HttpResponse(access_token)
+          return HttpResponse(response.text)
     else:
          return HttpResponse("no acess token")
     
