@@ -48,8 +48,7 @@ def generate_access_token(request):
         r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret), verify=False)
         
     print(r.text)
-    print(r.json())
- 
+   
     json_response = (r.json())  
 
     my_access_token = json_response["access_token"]
@@ -91,34 +90,43 @@ def pay_for_rental(request):
  
     access_token = generate_access_token(request)
     
-
     if access_token:
-          print('this is it' + access_token)
+        print('Access token:', access_token)
           
-          api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        headers = {"Authorization": "Bearer %s" % access_token}
 
-          headers = {"Authorization": "Bearer %s" % access_token}
+        request_data = {
+            "BusinessShortCode": "174379",
+            "Password": password(formated_time),
+            "Timestamp": formated_time,
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": "1",
+            "PartyA": developer.phone_number,
+            "PartyB": "174379",
+            "PhoneNumber": "254769624433",
+            "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
+            "AccountReference": "1234",
+            "TransactionDesc": "real estate payments",
+        }
 
-          request = {
-               "BusinessShortCode": "174379",
-               "Password": password(formated_time),
-               "Timestamp": formated_time,
-               "TransactionType": "CustomerPayBillOnline",
-               "Amount": "1",
-               "PartyA": developer.phone_number,
-               "PartyB":"174379",
-               "PhoneNumber": "254769624433",
-               "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
-               "AccountReference": "1234",
-               "TransactionDesc": "real estate payments",
-          }
-          response = requests.post(api_url, json=request, headers=headers)
-          response = requests.post(api_url, json=request, headers=headers)
-        
-          print(response.json())
-          return HttpResponse(response.text)
+        response = requests.post(api_url, json=request_data, headers=headers)
+
+        if response.status_code == 200:
+            try:
+                # Try to parse JSON response
+                response_data = response.json()
+                print(response_data)
+                return HttpResponse(response_data)
+            except ValueError:
+                # If JSON parsing fails, return raw response text
+                print("Response is not valid JSON")
+                return HttpResponse(response.text)
+        else:
+            print("Request failed with status code:", response.status_code)
+            return HttpResponse("Request failed with status code: " + str(response.status_code))
     else:
-         return HttpResponse("no acess token")
+        return HttpResponse("No access token")
     
       
 
