@@ -59,7 +59,7 @@ def generate_access_token(request):
 
 def register_call_back_url():
 
-    my_access_token = generate_access_token()
+    my_access_token = generate_access_token(request)
 
     api_url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
 
