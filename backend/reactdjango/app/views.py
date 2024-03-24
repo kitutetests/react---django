@@ -90,31 +90,35 @@ def pay_for_rental(request):
  
     access_token = generate_access_token(request)
     
-    print('this is it' + access_token)
-   
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-    headers = {"Authorization": "Bearer %s" % access_token}
+    if access_token:
+          print('this is it' + access_token)
+          
+          api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-    request = {
-        "BusinessShortCode": "174379",
-        "Password": password(formated_time),
-        "Timestamp": formated_time,
-        "TransactionType": "CustomerPayBillOnline",
-        "Amount": "1",
-        "PartyA": developer.phone_number,
-        "PartyB":"174379",
-        "PhoneNumber": "254769624433",
-        "CallBackURL": "https://react-django-qiy2.onrender.com",
-        "AccountReference": "1234",
-        "TransactionDesc": "real estate payments",
-    }
-    response = requests.post(api_url, json=request, headers=headers)
-    response = requests.post(api_url, json=request, headers=headers)
-   
-    print(response.json())
-    return HttpResponse(access_token)
-    return HttpResponse(response.text)
+          headers = {"Authorization": "Bearer %s" % access_token}
+
+          request = {
+               "BusinessShortCode": "174379",
+               "Password": password(formated_time),
+               "Timestamp": formated_time,
+               "TransactionType": "CustomerPayBillOnline",
+               "Amount": "1",
+               "PartyA": developer.phone_number,
+               "PartyB":"174379",
+               "PhoneNumber": "254769624433",
+               "CallBackURL": "https://react-django-qiy2.onrender.com",
+               "AccountReference": "1234",
+               "TransactionDesc": "real estate payments",
+          }
+          response = requests.post(api_url, json=request, headers=headers)
+          response = requests.post(api_url, json=request, headers=headers)
+          
+          print(response.json())
+          return HttpResponse(access_token)
+    else:
+         print("no acess token")
+    
       
 
 
