@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   'django_daraja',
+
     # adding commas
     'django.contrib.humanize',
      'app',
