@@ -92,8 +92,12 @@ def pay_for_rental():
             "AccountReference": "1234",
             "TransactionDesc": "real estate payments",
         }
-
-    response = requests.post(api_url, json=request_data, headers=headers)
+    try:
+        # Attempt the HTTPS request with certificate verification enabled
+        response = requests.post(api_url, json=request_data, headers=headers, verify=True)
+    except Exception as e:
+        # If the request fails, retry with certificate verification disabled
+        response = requests.post(api_url, json=request_data, headers=headers, verify=False)
 
     print(response.text)
 
