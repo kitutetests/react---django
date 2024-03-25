@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models import Subscription
+from .models import Subscription
 
 
 class LNMOnlineSerializer(serializers.ModelSerializer):
