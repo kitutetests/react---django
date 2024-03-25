@@ -4,6 +4,8 @@ from . models import *
 from django.contrib import auth,messages
 from . forms import ProfileForm,HouseRentForm,SellPropertyForm
 
+from daraja.lnm import pay_for_rental
+
 from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
@@ -54,10 +56,11 @@ class LNMCallbackUrlAPIView(CreateAPIView):
         print(transaction_datetime, "this should be an transaction_datetime")
         
         aware_transaction_datetime = pytz.utc.localize(transaction_datetime)
-        print(aware_transaction_datetime, "this should be an aware_transaction_datetime")
+        nairobi_timezone = pytz.timezone('Africa/Nairobi')
+        aware_transaction_datetime_nairobi = aware_transaction_datetime.astimezone(nairobi_timezone)
 
         # Assuming transaction_datetime is already defined
-        expiry_date = aware_transaction_datetime + timedelta(days=365)
+        expiry_date = aware_transaction_datetime_nairobi + timedelta(days=365)
 
         print(expiry_date, "this should be the expiry_date")
 
@@ -71,7 +74,7 @@ class LNMCallbackUrlAPIView(CreateAPIView):
             ResultCode=result_code,
             ResultDesc=result_description,
             MpesaReceiptNumber=mpesa_receipt_number,
-            TransactionDate=aware_transaction_datetime,
+            TransactionDate=aware_transaction_datetime_nairobi,
             PhoneNumber=phone_number,
             valid_till = expiry_date
         )
@@ -173,35 +176,60 @@ def developer_profile_update(request):
 
 def post_rentals(request):
      user = request.user
-     developer = Profile.objects.get(email=user.username)
+     try:
+        developer = Profile.objects.get(email=user.username)
+     except Profile.DoesNotExist:
+        
+        return redirect(login) 
      
-     if request.method == 'POST':
-          photos = request.FILES.getlist('photos')
+     valid_subscriber = Subscription.objects.get(PhoneNumber=developer.phone_number)
 
-          form = HouseRentForm(request.POST , request.FILES)
-          
-          if form.is_valid():
-               post = form.save(commit=False)
-               post.owner = developer
-              
+     current_date = datetime.utcnow()
 
-               
-               post.save()
+     # Localize current_date to UTC timezone
+     current_utc = pytz.utc.localize(current_date)
 
+     # Convert to Kenya timezone
+     kenya_timezone = pytz.timezone('Africa/Nairobi')
+     current_kenya = current_utc.astimezone(kenya_timezone)
+
+     within_subscription_period = Subscription.objects.filter(
+          PhoneNumber=developer.phone_number,
+          valid_till__gte=current_kenya
+     ).exists()
+
+     print(str(valid_subscriber.valid_till) + " valid_till")
+     print(str(current_kenya) + " kenya")
+     if valid_subscriber and within_subscription_period:
+         
+          if request.method == 'POST':
                photos = request.FILES.getlist('photos')
 
-               for photo in photos:
-                    PropertyImage.objects.create(property_renting=post, image=photo)
+               form = HouseRentForm(request.POST , request.FILES)
+               
+               if form.is_valid():
+                    post = form.save(commit=False)
+                    post.owner = developer
+               
+                    post.save()
 
-               messages.success(request, "property submitted successfully")
-               return redirect(post_rentals)
+                    photos = request.FILES.getlist('photos')
 
-          else:      
-               messages.error(request, "sorry! submission failed") 
-               return redirect(post_rentals)
+                    for photo in photos:
+                         PropertyImage.objects.create(property_renting=post, image=photo)
+
+                    messages.success(request, "property submitted successfully")
+                    return redirect(post_rentals)
+
+               else:      
+                    messages.error(request, "sorry! submission failed") 
+                    return redirect(post_rentals)
+          else:
+               form = HouseRentForm()
+
      else:
-          form = HouseRentForm()
-          
+        return HttpResponse('pay please')
+     
      return render (request , 'post-rentals.html',{'form':form,'developer':developer})
 
 def developer_properties(request):
