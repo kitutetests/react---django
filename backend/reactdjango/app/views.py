@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from rest_framework.generics import CreateAPIView
 
 from rest_framework.permissions import AllowAny
@@ -22,7 +23,33 @@ class LNMCallbackUrlAPIView(CreateAPIView):
     permission_classes = [AllowAny]
 
     def create(self, request):
-        print(request.data, "this is request.data")
+     #    print(request.data, "this is request.data")
+
+        merchant_request_id = request.data["Body"]["stkCallback"]["MerchantRequestID"]
+        print(merchant_request_id, "this should be MerchantRequestID")
+        checkout_request_id = request.data["Body"]["stkCallback"]["CheckoutRequestID"]
+        result_code = request.data["Body"]["stkCallback"]["ResultCode"]
+        result_description = request.data["Body"]["stkCallback"]["ResultDesc"]
+        amount = request.data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][0][
+            "Value"
+        ]
+        print(amount, "this should be an amount")
+        mpesa_receipt_number = request.data["Body"]["stkCallback"]["CallbackMetadata"][
+            "Item"
+        ][1]["Value"]
+        print(mpesa_receipt_number, "this should be an mpesa_receipt_number")
+
+        balance = ""
+        transaction_date = request.data["Body"]["stkCallback"]["CallbackMetadata"][
+            "Item"
+        ][3]["Value"]
+        print(transaction_date, "this should be an transaction_date")
+
+        phone_number = request.data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][
+            4
+        ]["Value"]
+        print(phone_number, "this should be an phone_number")
+
 
         
 
