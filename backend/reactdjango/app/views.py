@@ -28,7 +28,7 @@ class LNMCallbackUrlAPIView(CreateAPIView):
     def create(self, request):
         # Assuming the POST request contains JSON data
         data = request.data
-        
+        print(data)
         # Extracting relevant information from the callback payload
         callback_data = data.get('Body', {}).get('stkCallback', {})
         checkout_request_id = callback_data.get('CheckoutRequestID')
