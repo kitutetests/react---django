@@ -89,12 +89,16 @@ class PropertyImage(models.Model):
 
 
 class Subscription(models.Model):
-      person = models.ForeignKey(Profile,on_delete=models.CASCADE)
-      full_name = models.CharField(max_length=1000,null=True)
-      mpesa_code = models.CharField(max_length=10,null=True)
-      date_and_time = models.CharField(max_length=1000,null=True)
-      amount = models.CharField(max_length=1000,null=True)
-      payment_date = models.DateTimeField(auto_now=True)   
-      valid_till = models.DateTimeField()
+    # person = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    CheckoutRequestID = models.CharField(max_length=50, blank=True, null=True)
+    MerchantRequestID = models.CharField(max_length=20, blank=True, null=True)
+    ResultCode = models.IntegerField(blank=True, null=True)
+    ResultDesc = models.CharField(max_length=120, blank=True, null=True)
+    Amount = models.FloatField(blank=True, null=True)
+    MpesaReceiptNumber = models.CharField(max_length=15, blank=True, null=True)
+    TransactionDate = models.DateTimeField(blank=True, null=True)
+    PhoneNumber = models.CharField(max_length=13, blank=True, null=True)
+    valid_till = models.DateTimeField()
+
 
     

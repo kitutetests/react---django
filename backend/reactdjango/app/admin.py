@@ -23,6 +23,6 @@ admin.site.register(Property_on_sale,Property_on_saleAdmin)
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('person', 'mpesa_code','payment_date','valid_till')
+    list_display = ('MpesaReceiptNumber','PhoneNumber','TransactionDate','valid_till')
 
 admin.site.register(Subscription,SubscriptionAdmin)

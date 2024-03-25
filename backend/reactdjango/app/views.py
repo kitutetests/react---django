@@ -18,7 +18,8 @@ from rest_framework.permissions import AllowAny
 
 
 from .serializer import LNMOnlineSerializer
-
+import pytz
+from datetime import datetime, timedelta
 
 class LNMCallbackUrlAPIView(CreateAPIView):
     queryset = Subscription.objects.all()
@@ -45,6 +46,37 @@ class LNMCallbackUrlAPIView(CreateAPIView):
         
         # Further processing logic or saving to the database
         
+
+        str_transaction_date = str(transaction_date)
+        print(str_transaction_date, "this should be an str_transaction_date")
+
+        transaction_datetime = datetime.strptime(str_transaction_date, "%Y%m%d%H%M%S")
+        print(transaction_datetime, "this should be an transaction_datetime")
+        
+        aware_transaction_datetime = pytz.utc.localize(transaction_datetime)
+        print(aware_transaction_datetime, "this should be an aware_transaction_datetime")
+
+        # Assuming transaction_datetime is already defined
+        expiry_date = aware_transaction_datetime + timedelta(days=365)
+
+        print(expiry_date, "this should be the expiry_date")
+
+       
+
+        our_model = Subscription.objects.create(
+            
+            CheckoutRequestID=checkout_request_id,
+            MerchantRequestID=merchant_request_id,
+            Amount=amount,
+            ResultCode=result_code,
+            ResultDesc=result_description,
+            MpesaReceiptNumber=mpesa_receipt_number,
+            TransactionDate=aware_transaction_datetime,
+            PhoneNumber=phone_number,
+            valid_till = expiry_date
+        )
+
+        our_model.save()
         # Returning a response
         return Response({'message': 'Callback received', 'data': data}, status=status.HTTP_200_OK)
 
