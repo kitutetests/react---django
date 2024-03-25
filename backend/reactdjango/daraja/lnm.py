@@ -2,6 +2,11 @@ import requests
 import base64
 from datetime import datetime
 from requests.auth import HTTPBasicAuth
+import urllib3
+
+# Suppress the InsecureRequestWarning
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 def timestamp():
     unformatted_time=datetime.now()#2024-03-23
