@@ -10,6 +10,9 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework.generics import CreateAPIView
+from rest_framework.response import Response
+from rest_framework import status
+
 
 from rest_framework.permissions import AllowAny
 
@@ -23,33 +26,27 @@ class LNMCallbackUrlAPIView(CreateAPIView):
     permission_classes = [AllowAny]
 
     def create(self, request):
-     #    print(request.data, "this is request.data")
-
-        merchant_request_id = request.data["Body"]["stkCallback"]["MerchantRequestID"]
-        print(merchant_request_id, "this should be MerchantRequestID")
-        checkout_request_id = request.data["Body"]["stkCallback"]["CheckoutRequestID"]
-        result_code = request.data["Body"]["stkCallback"]["ResultCode"]
-        result_description = request.data["Body"]["stkCallback"]["ResultDesc"]
-        amount = request.data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][0][
-            "Value"
-        ]
-        print(amount, "this should be an amount")
-        mpesa_receipt_number = request.data["Body"]["stkCallback"]["CallbackMetadata"][
-            "Item"
-        ][1]["Value"]
-        print(mpesa_receipt_number, "this should be an mpesa_receipt_number")
-
-        balance = ""
-        transaction_date = request.data["Body"]["stkCallback"]["CallbackMetadata"][
-            "Item"
-        ][3]["Value"]
-        print(transaction_date, "this should be an transaction_date")
-
-        phone_number = request.data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][
-            4
-        ]["Value"]
-        print(phone_number, "this should be an phone_number")
-
+        # Assuming the POST request contains JSON data
+        data = request.data
+        
+        # Extracting relevant information from the callback payload
+        callback_data = data.get('Body', {}).get('stkCallback', {})
+        checkout_request_id = callback_data.get('CheckoutRequestID')
+        merchant_request_id = callback_data.get('MerchantRequestID')
+        result_code = callback_data.get('ResultCode')
+        result_description = callback_data.get('ResultDesc')
+        callback_metadata = callback_data.get('CallbackMetadata', {}).get('Item', [])
+        
+        # Extracting specific items from the CallbackMetadata
+        amount = next((item['Value'] for item in callback_metadata if item['Name'] == 'Amount'), None)
+        mpesa_receipt_number = next((item['Value'] for item in callback_metadata if item['Name'] == 'MpesaReceiptNumber'), None)
+        transaction_date = next((item['Value'] for item in callback_metadata if item['Name'] == 'TransactionDate'), None)
+        phone_number = next((item['Value'] for item in callback_metadata if item['Name'] == 'PhoneNumber'), None)
+        
+        # Further processing logic or saving to the database
+        
+        # Returning a response
+        return Response({'message': 'Callback received', 'data': data}, status=status.HTTP_200_OK)
 
         
 
