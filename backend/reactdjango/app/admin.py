@@ -1,10 +1,10 @@
 from django.contrib import admin
-from . models import Profile,Property_for_renting,Property_on_sale,PropertyImage,Subscription
+from . models import Profile,Property_for_renting,Property_on_sale,PropertyImage,Subscription,RentalSubscription
 # Register your models here.
 
 admin.site.register(PropertyImage)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name','other_name','email')
+    list_display = ('user', 'name','other_name','phone_number','email')
 
 admin.site.register(Profile,ProfileAdmin)
 
@@ -26,3 +26,8 @@ class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('MpesaReceiptNumber','PhoneNumber','TransactionDate','valid_till')
 
 admin.site.register(Subscription,SubscriptionAdmin)
+
+class RentalSubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('person','email','phone_number')
+
+admin.site.register(RentalSubscription,RentalSubscriptionAdmin)

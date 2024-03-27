@@ -4,7 +4,6 @@ from . models import *
 from django.contrib import auth,messages
 from . forms import ProfileForm,HouseRentForm,SellPropertyForm
 
-from daraja.lnm import pay_for_rental
 
 from django.db.models import Q
 from django.contrib.auth import logout
@@ -23,6 +22,8 @@ from .serializer import LNMOnlineSerializer
 import pytz
 from datetime import datetime, timedelta
 
+import requests
+from daraja.lnm import password,generate_access_token,timestamp
 class LNMCallbackUrlAPIView(CreateAPIView):
     queryset = Subscription.objects.all()
     serializer_class = LNMOnlineSerializer
@@ -62,12 +63,11 @@ class LNMCallbackUrlAPIView(CreateAPIView):
         # Assuming transaction_datetime is already defined
         expiry_date = aware_transaction_datetime_nairobi + timedelta(days=365)
 
-        print(expiry_date, "this should be the expiry_date")
-
-       
-
+        print(expiry_date, "this should be the expiry_date") 
+        user = request.user
+        developer = Profile.objects.get(email=user.username)
         our_model = Subscription.objects.create(
-            
+            person = developer,
             CheckoutRequestID=checkout_request_id,
             MerchantRequestID=merchant_request_id,
             Amount=amount,
@@ -93,6 +93,7 @@ def register(request):
         other_name = request.POST['other_name']
         id_number = request.POST['id_number']
         email = request.POST['email']
+        phone_number = request.POST['phone_number']
         password1 = request.POST['password1']
         password2 = request.POST['password2']       
 
@@ -100,7 +101,7 @@ def register(request):
             user= User.objects.create_user(username=email,password=password1,email=email)
             user.save()
 
-            profile=Profile(user=user,name=name,other_name=other_name,id_number=id_number,email=email)
+            profile=Profile(user=user,name=name,other_name=other_name,id_number=id_number,email=email,phone_number=phone_number)
             profile.save()
 
             messages.success(request, 'Registered successfully')
@@ -182,55 +183,102 @@ def post_rentals(request):
         
         return redirect(login) 
      
-     valid_subscriber = Subscription.objects.get(PhoneNumber=developer.phone_number)
+     try:
+          valid_subscriber = Subscription.objects.get(PhoneNumber=developer.phone_number)
 
-     current_date = datetime.utcnow()
+          current_date = datetime.utcnow()
 
-     # Localize current_date to UTC timezone
-     current_utc = pytz.utc.localize(current_date)
+          # Localize current_date to UTC timezone
+          current_utc = pytz.utc.localize(current_date)
 
-     # Convert to Kenya timezone
-     kenya_timezone = pytz.timezone('Africa/Nairobi')
-     current_kenya = current_utc.astimezone(kenya_timezone)
+          # Convert to Kenya timezone
+          kenya_timezone = pytz.timezone('Africa/Nairobi')
+          current_kenya = current_utc.astimezone(kenya_timezone)
 
-     within_subscription_period = Subscription.objects.filter(
-          PhoneNumber=developer.phone_number,
-          valid_till__gte=current_kenya
-     ).exists()
+          within_subscription_period = Subscription.objects.filter(
+               PhoneNumber=developer.phone_number,
+               valid_till__gte=current_kenya
+          ).exists()
 
-     print(str(valid_subscriber.valid_till) + " valid_till")
-     print(str(current_kenya) + " kenya")
-     if valid_subscriber and within_subscription_period:
-         
-          if request.method == 'POST':
-               photos = request.FILES.getlist('photos')
-
-               form = HouseRentForm(request.POST , request.FILES)
-               
-               if form.is_valid():
-                    post = form.save(commit=False)
-                    post.owner = developer
-               
-                    post.save()
-
+          print(str(valid_subscriber.valid_till) + " valid_till")
+          print(str(current_kenya) + " kenya")
+          if valid_subscriber and within_subscription_period:
+          
+               if request.method == 'POST':
                     photos = request.FILES.getlist('photos')
 
-                    for photo in photos:
-                         PropertyImage.objects.create(property_renting=post, image=photo)
+                    form = HouseRentForm(request.POST , request.FILES)
+                    
+                    if form.is_valid():
+                         post = form.save(commit=False)
+                         post.owner = developer
+                    
+                         post.save()
 
-                    messages.success(request, "property submitted successfully")
-                    return redirect(post_rentals)
+                         photos = request.FILES.getlist('photos')
 
-               else:      
-                    messages.error(request, "sorry! submission failed") 
-                    return redirect(post_rentals)
-          else:
-               form = HouseRentForm()
+                         for photo in photos:
+                              PropertyImage.objects.create(property_renting=post, image=photo)
 
-     else:
-        return HttpResponse('pay please')
-     
-     return render (request , 'post-rentals.html',{'form':form,'developer':developer})
+                         messages.success(request, "property submitted successfully")
+                         return redirect(post_rentals)
+
+                    else:      
+                         messages.error(request, "sorry! submission failed") 
+                         return redirect(post_rentals)
+               else:
+                    form = HouseRentForm()
+               return render (request , 'post-rentals.html',{'form':form,'developer':developer})     
+
+     except Subscription.DoesNotExist:
+          if request.method == 'POST':
+                email = request.POST['email']
+                phone_number = request.POST['phone_number']
+
+                rentalsubscriberdetails = RentalSubscription(person=developer,email=email,phone_number=phone_number)
+                rentalsubscriberdetails.save()
+                pay_for_rental(request)
+               #  return redirect(post_rentals)
+          return render (request , 'pay-for-rentals.html',{'developer':developer})          
+
+    
+def pay_for_rental(request):
+    user = request.user
+    developer = Profile.objects.get(email=user.username)
+    subscriber = RentalSubscription.objects.get(person=developer)
+
+    formated_time = timestamp()
+ 
+    access_token = generate_access_token()
+       
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+
+    headers = {"Authorization": "Bearer %s" % access_token}
+
+    request_data = {
+            "BusinessShortCode": "174379",
+            "Password": password(formated_time),
+            "Timestamp": formated_time,
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": "1",
+            "PartyA": subscriber.phone_number,
+            "PartyB": "174379",
+            "PhoneNumber": subscriber.phone_number,
+            "CallBackURL": "https://9173-102-212-11-22.ngrok-free.app/pay_rental",
+            "AccountReference": subscriber.phone_number,
+            "TransactionDesc": "real estate payments",
+        }
+    try:
+        # Attempt the HTTPS request with certificate verification enabled
+        response = requests.post(api_url, json=request_data, headers=headers, verify=True)
+    except Exception as e:
+        # If the request fails, retry with certificate verification disabled
+        response = requests.post(api_url, json=request_data, headers=headers, verify=False)
+
+    print(response.text)
+  
+
+      
 
 def developer_properties(request):
     user = request.user

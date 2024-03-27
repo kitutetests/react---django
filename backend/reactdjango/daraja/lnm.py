@@ -4,6 +4,10 @@ from datetime import datetime
 from requests.auth import HTTPBasicAuth
 import urllib3
 
+
+from app.models import *
+
+
 # Suppress the InsecureRequestWarning
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -72,42 +76,7 @@ def register_call_back_url():
    
     
     
-def pay_for_rental():
-    
-    formated_time = timestamp()
- 
-    access_token = generate_access_token()
-    
- 
-          
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-    headers = {"Authorization": "Bearer %s" % access_token}
-
-    request_data = {
-            "BusinessShortCode": "174379",
-            "Password": password(formated_time),
-            "Timestamp": formated_time,
-            "TransactionType": "CustomerPayBillOnline",
-            "Amount": "1",
-            "PartyA": '254769624433',
-            "PartyB": "174379",
-            "PhoneNumber": "254769624433",
-            "CallBackURL": "https://react-django-qiy2.onrender.com/pay_rental",
-            "AccountReference": "1234",
-            "TransactionDesc": "real estate payments",
-        }
-    try:
-        # Attempt the HTTPS request with certificate verification enabled
-        response = requests.post(api_url, json=request_data, headers=headers, verify=True)
-    except Exception as e:
-        # If the request fails, retry with certificate verification disabled
-        response = requests.post(api_url, json=request_data, headers=headers, verify=False)
-
-    print(response.text)
-
-
-pay_for_rental()
 
 
 

@@ -89,7 +89,7 @@ class PropertyImage(models.Model):
 
 
 class Subscription(models.Model):
-    # person = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    person = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
     CheckoutRequestID = models.CharField(max_length=200, blank=True, null=True)
     MerchantRequestID = models.CharField(max_length=200, blank=True, null=True)
     ResultCode = models.IntegerField(blank=True, null=True)
@@ -100,5 +100,8 @@ class Subscription(models.Model):
     PhoneNumber = models.CharField(max_length=13, blank=True, null=True)
     valid_till = models.DateTimeField()
 
-
+class RentalSubscription(models.Model):
+      person = models.ForeignKey(Profile,on_delete=models.CASCADE)
+      email = models.EmailField(null=True)
+      phone_number = models.CharField(max_length=13,null=True)
     

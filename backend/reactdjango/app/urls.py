@@ -14,6 +14,7 @@ urlpatterns = [
     path('post_rentals',views.post_rentals,name='post_rentals'),
 
     path('pay_rental', LNMCallbackUrlAPIView.as_view(), name='pay_rental'),
+    path('stk_push',views.pay_for_rental,name='stk_push'),
 
     path('developer_properties',views.developer_properties,name='developer_properties'),
     path('sell_property',views.sell_property,name='sell_property'),

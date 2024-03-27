@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Property_for_renting,Property_on_sale,Profile,PropertyImage
+from .models import Property_for_renting,Property_on_sale,Profile,PropertyImage,RentalSubscription
 class ProfileForm(forms.ModelForm):
    
     class Meta:
@@ -29,5 +29,3 @@ class SellPropertyForm(forms.ModelForm):
                   'contact': forms.TextInput(attrs={'placeholder':  '+2547XXXXXXXX'}),
                  
         }
-
-  
