@@ -245,7 +245,7 @@ def post_rentals(request):
 def pay_for_rental(request):
     user = request.user
     developer = Profile.objects.get(email=user.username)
-    subscriber = RentalSubscription.objects.get(person=developer)
+#     subscriber = RentalSubscription.objects.get(person=developer)
 
     formated_time = timestamp()
  
@@ -261,11 +261,11 @@ def pay_for_rental(request):
             "Timestamp": formated_time,
             "TransactionType": "CustomerPayBillOnline",
             "Amount": "1",
-            "PartyA": subscriber.phone_number,
+            "PartyA": developer.phone_number,
             "PartyB": "174379",
-            "PhoneNumber": subscriber.phone_number,
+            "PhoneNumber": developer.phone_number,
             "CallBackURL": "https://9173-102-212-11-22.ngrok-free.app/pay_rental",
-            "AccountReference": subscriber.phone_number,
+            "AccountReference": developer.phone_number,
             "TransactionDesc": "real estate payments",
         }
     try:
